@@ -37,18 +37,31 @@
       margin: 0 auto;
       padding: 2rem;
     }
-    .project {
-      margin-bottom: 3rem;
+    .accordion {
+      margin-bottom: 2rem;
+    }
+    .accordion summary {
+      font-size: 1.2rem;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 1rem;
       background-color: #1a1a1a;
-      padding: 1.5rem;
       border-radius: 10px;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
-      transition: transform 0.2s ease-in-out;
+      margin-bottom: 0.5rem;
+      list-style: none;
     }
-    .project:hover {
-      transform: scale(1.02);
+    .accordion[open] summary {
+      border-bottom: 1px solid #333;
+      margin-bottom: 0.5rem;
     }
-    .project img {
+    .accordion-content {
+      padding: 1rem;
+      background-color: #1a1a1a;
+      border-radius: 10px;
+      margin-top: -0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .accordion-content img {
       width: 100%;
       border-radius: 8px;
       margin-bottom: 1rem;
@@ -70,13 +83,6 @@
     .links a:hover {
       text-decoration: underline;
     }
-    footer {
-      text-align: center;
-      font-size: 0.9rem;
-      margin-top: 4rem;
-      padding-bottom: 2rem;
-      color: #aaa;
-    }
     .skills, .certifications {
       margin-top: 2rem;
       line-height: 1.8;
@@ -84,11 +90,6 @@
     .skills ul, .certifications ul {
       list-style-type: square;
       padding-left: 1.2rem;
-    }
-    .project a.full-project {
-      display: block;
-      color: #fff;
-      text-decoration: none;
     }
     .resume-section {
       margin-top: 3rem;
@@ -105,6 +106,13 @@
     }
     .resume-section a:hover {
       background-color: #66ccff;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      margin-top: 4rem;
+      padding-bottom: 2rem;
+      color: #aaa;
     }
   </style>
 </head>
@@ -142,32 +150,34 @@
 
     <h2>Projects</h2>
 
-    <div class="project">
-      <a href="projects/nova.html" class="full-project">
+    <details class="accordion">
+      <summary>NovaTech Distributors – Sales Dashboard</summary>
+      <div class="accordion-content">
         <img src="images/nova.png" alt="NovaTech Dashboard Preview" />
-        <div class="project-title">NovaTech Distributors – Sales Dashboard</div>
+        <div class="project-title">Excel Dashboard</div>
         <div class="project-description">
           Excel dashboard using slicers, KPIs, and product segmentation to uncover performance gaps. Only 47% of targets were met — insight that redirected regional strategies.
         </div>
-      </a>
-      <div class="links">
-        <a href="https://www.loom.com/share/19461c0fd60b408a80d9675aa1ff0de2?sid=417d9f22-4104-4c15-ad32-c6a63c0a2911" target="_blank">Demo Video</a>
+        <div class="links">
+          <a href="https://www.loom.com/share/19461c0fd60b408a80d9675aa1ff0de2?sid=417d9f22-4104-4c15-ad32-c6a63c0a2911" target="_blank">Demo Video</a>
+        </div>
       </div>
-    </div>
+    </details>
 
-    <div class="project">
-      <a href="projects/uvap.html" class="full-project">
+    <details class="accordion">
+      <summary>UV-Vis Spectrophotometer Trimmer – Streamlit App</summary>
+      <div class="accordion-content">
         <img src="images/uv.app.png" alt="UV-Vis App Preview" />
-        <div class="project-title">UV-Vis Spectrophotometer Trimmer – Streamlit App</div>
+        <div class="project-title">Streamlit App</div>
         <div class="project-description">
           Built for a PhD lab: cleans and trims 240-sample UV-Vis spectrophotometry datasets between 400–600 nm. Users adjust ranges, preview spectra, and export clean files — no code required.
         </div>
-      </a>
-      <div class="links">
-        <a href="https://github.com/GabrielOyetunji/uvvis-spectrophotometer-app" target="_blank">GitHub Repo</a>
-        <a href="https://www.loom.com/share/e372774ab4f74a1db40446944c25fa72?sid=3b9c31a3-ab27-469c-ae60-fe394d46f401" target="_blank">Demo Video</a>
+        <div class="links">
+          <a href="https://github.com/GabrielOyetunji/uvvis-spectrophotometer-app" target="_blank">GitHub Repo</a>
+          <a href="https://www.loom.com/share/e372774ab4f74a1db40446944c25fa72?sid=3b9c31a3-ab27-469c-ae60-fe394d46f401" target="_blank">Demo Video</a>
+        </div>
       </div>
-    </div>
+    </details>
 
     <div class="resume-section">
       <h2>Résumé</h2>
