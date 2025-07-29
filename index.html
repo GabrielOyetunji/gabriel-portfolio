@@ -44,41 +44,48 @@
     }
     .project-card {
       background-color: #1a1a1a;
-      border-radius: 10px;
+      border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 0 15px rgba(0,0,0,0.3);
-      transition: transform 0.3s ease;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .project-card:hover {
-      transform: scale(1.02);
+      transform: scale(1.015);
+      box-shadow: 0 0 20px rgba(0, 188, 212, 0.5);
     }
     .project-card img {
       width: 100%;
       display: block;
     }
     .project-card-content {
-      padding: 1.2rem;
+      padding: 1rem 1.2rem 1.5rem;
     }
     .project-card h3 {
-      font-size: 1.3rem;
+      font-size: 1.25rem;
       margin-bottom: 0.5rem;
     }
     .project-card p {
-      line-height: 1.5;
-      margin-bottom: 1rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 1.2rem;
+      color: #ccc;
     }
     .project-card a {
       display: inline-block;
-      background-color: #00bcd4;
-      color: #000;
-      padding: 0.5rem 1rem;
+      background-color: transparent;
+      border: 1px solid #00bcd4;
+      color: #00bcd4;
+      padding: 0.4rem 0.9rem;
       margin-right: 0.5rem;
-      border-radius: 6px;
+      border-radius: 5px;
+      font-size: 0.85rem;
       font-weight: 600;
       text-decoration: none;
+      transition: all 0.3s ease;
     }
     .project-card a:hover {
-      background-color: #26c6da;
+      background-color: #00bcd4;
+      color: #000;
     }
     .skills, .certifications {
       margin-top: 2rem;
@@ -88,21 +95,32 @@
       padding-left: 1.2rem;
       line-height: 1.8;
     }
+    .certifications a {
+      color: #00bcd4;
+      text-decoration: none;
+    }
+    .certifications a:hover {
+      text-decoration: underline;
+    }
     .resume-section {
       margin-top: 3rem;
     }
     .resume-section a {
       display: inline-block;
-      background-color: #00bcd4;
-      color: #000;
-      padding: 0.6rem 1.2rem;
+      background-color: transparent;
+      border: 1px solid #00bcd4;
+      color: #00bcd4;
+      padding: 0.5rem 1rem;
       margin: 0.5rem 1rem 0.5rem 0;
       border-radius: 6px;
       font-weight: 600;
+      font-size: 0.9rem;
       text-decoration: none;
+      transition: all 0.3s ease;
     }
     .resume-section a:hover {
-      background-color: #26c6da;
+      background-color: #00bcd4;
+      color: #000;
     }
     footer {
       text-align: center;
@@ -110,6 +128,12 @@
       margin-top: 4rem;
       padding-bottom: 2rem;
       color: #aaa;
+    }
+    a {
+      color: #00bcd4;
+    }
+    a:hover {
+      color: #26c6da;
     }
   </style>
 </head>
@@ -152,7 +176,7 @@
         <div class="project-card-content">
           <h3>NovaTech Distributors – Sales Dashboard</h3>
           <p>Excel dashboard using slicers, KPIs, and product segmentation to uncover performance gaps. Only 47% of targets were met — insight that redirected regional strategies.</p>
-          <a href="https://www.loom.com/share/19461c0fd60b408a80d9675aa1ff0de2?sid=417d9f22-4104-4c15-ad32-c6a63c0a2911" target="_blank">▶️ Watch Demo</a>
+          <a href="https://www.loom.com/share/19461c0fd60b408a80d9675aa1ff0de2?sid=417d9f22-4104-4c15-ad32-c6a63c0a2911" target="_blank">▶️ Demo</a>
         </div>
       </div>
 
@@ -161,16 +185,16 @@
         <div class="project-card-content">
           <h3>UV-Vis Spectrophotometer Trimmer – Streamlit App</h3>
           <p>Built for a PhD lab: cleans and trims 240-sample UV-Vis spectrophotometry datasets between 400–600 nm. Users adjust ranges, preview spectra, and export clean files — no code required.</p>
-          <a href="https://github.com/GabrielOyetunji/uvvis-spectrophotometer-app" target="_blank">📂 GitHub Repo</a>
-          <a href="https://www.loom.com/share/e372774ab4f74a1db40446944c25fa72?sid=3b9c31a3-ab27-469c-ae60-fe394d46f401" target="_blank">▶️ Watch Demo</a>
+          <a href="https://github.com/GabrielOyetunji/uvvis-spectrophotometer-app" target="_blank">📂 GitHub</a>
+          <a href="https://www.loom.com/share/e372774ab4f74a1db40446944c25fa72?sid=3b9c31a3-ab27-469c-ae60-fe394d46f401" target="_blank">▶️ Demo</a>
         </div>
       </div>
     </div>
 
     <div class="resume-section">
       <h2>Résumé</h2>
-      <a href="resume.pdf" target="_blank">📄 View Résumé</a>
-      <a href="resume.pdf" download>⬇️ Download Résumé</a>
+      <a href="resume.pdf" target="_blank">📄 View</a>
+      <a href="resume.pdf" download>⬇️ Download</a>
     </div>
 
     <h2>Contact</h2>
