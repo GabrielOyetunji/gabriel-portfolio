@@ -39,32 +39,25 @@
     }
     .accordion {
       margin-bottom: 2rem;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
     }
     .accordion summary {
       font-size: 1.2rem;
       font-weight: 600;
       cursor: pointer;
-      padding: 1rem 1.2rem;
-      background: linear-gradient(135deg, #1a1a1a 0%, #1f1f1f 100%);
-      border-radius: 10px;
-      margin-bottom: 0.5rem;
-      list-style: none;
-      transition: all 0.3s ease;
+      padding: 1.2rem 1.5rem;
+      background: #1e1e1e;
+      border: none;
+      outline: none;
     }
     .accordion summary:hover {
-      background-color: #2a2a2a;
-    }
-    .accordion[open] summary {
-      border-bottom: 1px solid #333;
-      margin-bottom: 0.5rem;
+      background: #292929;
     }
     .accordion-content {
-      padding: 1.2rem;
-      background-color: #1c1c1c;
-      border-radius: 10px;
-      margin-top: -0.5rem;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 0 8px rgba(0,0,0,0.2);
+      background-color: #1a1a1a;
+      padding: 1.5rem;
     }
     .accordion-content img {
       width: 100%;
@@ -82,16 +75,17 @@
     }
     .links a {
       display: inline-block;
-      background-color: #4db8ff;
+      background-color: #00bcd4;
       color: #000;
-      padding: 0.5rem 1.1rem;
+      padding: 0.5rem 1.2rem;
       margin: 0.3rem 0.5rem 0 0;
-      border-radius: 8px;
+      border-radius: 6px;
       font-weight: 600;
       text-decoration: none;
+      transition: background-color 0.3s;
     }
     .links a:hover {
-      background-color: #66ccff;
+      background-color: #26c6da;
     }
     .skills, .certifications {
       margin-top: 2rem;
@@ -106,16 +100,16 @@
     }
     .resume-section a {
       display: inline-block;
-      background-color: #4db8ff;
+      background-color: #00bcd4;
       color: #000;
       padding: 0.6rem 1.2rem;
       margin: 0.5rem 1rem 0.5rem 0;
-      border-radius: 8px;
+      border-radius: 6px;
       font-weight: 600;
       text-decoration: none;
     }
     .resume-section a:hover {
-      background-color: #66ccff;
+      background-color: #26c6da;
     }
     footer {
       text-align: center;
@@ -161,7 +155,7 @@
     <h2>Projects</h2>
 
     <details class="accordion">
-      <summary>NovaTech Distributors – Sales Dashboard</summary>
+      <summary>📊 NovaTech Distributors – Sales Dashboard</summary>
       <div class="accordion-content">
         <img src="images/nova.png" alt="NovaTech Dashboard Preview" />
         <div class="project-title">Excel Dashboard</div>
@@ -169,13 +163,13 @@
           Excel dashboard using slicers, KPIs, and product segmentation to uncover performance gaps. Only 47% of targets were met — insight that redirected regional strategies.
         </div>
         <div class="links">
-          <a href="https://www.loom.com/share/19461c0fd60b408a80d9675aa1ff0de2?sid=417d9f22-4104-4c15-ad32-c6a63c0a2911" target="_blank">▶️ Demo Video</a>
+          <a href="https://www.loom.com/share/19461c0fd60b408a80d9675aa1ff0de2?sid=417d9f22-4104-4c15-ad32-c6a63c0a2911" target="_blank">▶️ Watch Demo</a>
         </div>
       </div>
     </details>
 
     <details class="accordion">
-      <summary>UV-Vis Spectrophotometer Trimmer – Streamlit App</summary>
+      <summary>🧪 UV-Vis Spectrophotometer Trimmer – Streamlit App</summary>
       <div class="accordion-content">
         <img src="images/uv.app.png" alt="UV-Vis App Preview" />
         <div class="project-title">Streamlit App</div>
@@ -184,7 +178,7 @@
         </div>
         <div class="links">
           <a href="https://github.com/GabrielOyetunji/uvvis-spectrophotometer-app" target="_blank">📂 GitHub Repo</a>
-          <a href="https://www.loom.com/share/e372774ab4f74a1db40446944c25fa72?sid=3b9c31a3-ab27-469c-ae60-fe394d46f401" target="_blank">▶️ Demo Video</a>
+          <a href="https://www.loom.com/share/e372774ab4f74a1db40446944c25fa72?sid=3b9c31a3-ab27-469c-ae60-fe394d46f401" target="_blank">▶️ Watch Demo</a>
         </div>
       </div>
     </details>
