@@ -15,7 +15,7 @@
     }
     header {
       text-align: center;
-      padding: 2rem;
+      padding: 2rem 1rem;
     }
     header img {
       width: 120px;
@@ -24,76 +24,69 @@
     }
     h1 {
       font-size: 2.5rem;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.3rem;
     }
     h2 {
       font-size: 1.8rem;
-      margin: 3rem 0 1rem;
+      margin: 3rem 0 1.2rem;
       border-bottom: 2px solid #444;
       display: inline-block;
     }
     .container {
-      max-width: 960px;
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 2rem;
+      padding: 2rem 1rem;
     }
-    .accordion {
-      margin-bottom: 2rem;
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .project-card {
+      background-color: #1a1a1a;
       border-radius: 10px;
       overflow: hidden;
-      box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
     }
-    .accordion summary {
-      font-size: 1.2rem;
-      font-weight: 600;
-      cursor: pointer;
-      padding: 1.2rem 1.5rem;
-      background: #1e1e1e;
-      border: none;
-      outline: none;
+    .project-card:hover {
+      transform: scale(1.02);
     }
-    .accordion summary:hover {
-      background: #292929;
-    }
-    .accordion-content {
-      background-color: #1a1a1a;
-      padding: 1.5rem;
-    }
-    .accordion-content img {
+    .project-card img {
       width: 100%;
-      border-radius: 8px;
-      margin-bottom: 1rem;
+      display: block;
     }
-    .project-title {
-      font-size: 1.4rem;
-      font-weight: 600;
+    .project-card-content {
+      padding: 1.2rem;
+    }
+    .project-card h3 {
+      font-size: 1.3rem;
       margin-bottom: 0.5rem;
     }
-    .project-description {
+    .project-card p {
+      line-height: 1.5;
       margin-bottom: 1rem;
-      line-height: 1.6;
     }
-    .links a {
+    .project-card a {
       display: inline-block;
       background-color: #00bcd4;
       color: #000;
-      padding: 0.5rem 1.2rem;
-      margin: 0.3rem 0.5rem 0 0;
+      padding: 0.5rem 1rem;
+      margin-right: 0.5rem;
       border-radius: 6px;
       font-weight: 600;
       text-decoration: none;
-      transition: background-color 0.3s;
     }
-    .links a:hover {
+    .project-card a:hover {
       background-color: #26c6da;
     }
     .skills, .certifications {
       margin-top: 2rem;
-      line-height: 1.8;
     }
     .skills ul, .certifications ul {
-      list-style-type: square;
+      list-style: square;
       padding-left: 1.2rem;
+      line-height: 1.8;
     }
     .resume-section {
       margin-top: 3rem;
@@ -153,35 +146,26 @@
     </div>
 
     <h2>Projects</h2>
-
-    <details class="accordion">
-      <summary>📊 NovaTech Distributors – Sales Dashboard</summary>
-      <div class="accordion-content">
-        <img src="images/nova.png" alt="NovaTech Dashboard Preview" />
-        <div class="project-title">Excel Dashboard</div>
-        <div class="project-description">
-          Excel dashboard using slicers, KPIs, and product segmentation to uncover performance gaps. Only 47% of targets were met — insight that redirected regional strategies.
-        </div>
-        <div class="links">
+    <div class="projects-grid">
+      <div class="project-card">
+        <img src="images/nova.png" alt="NovaTech Dashboard Preview">
+        <div class="project-card-content">
+          <h3>NovaTech Distributors – Sales Dashboard</h3>
+          <p>Excel dashboard using slicers, KPIs, and product segmentation to uncover performance gaps. Only 47% of targets were met — insight that redirected regional strategies.</p>
           <a href="https://www.loom.com/share/19461c0fd60b408a80d9675aa1ff0de2?sid=417d9f22-4104-4c15-ad32-c6a63c0a2911" target="_blank">▶️ Watch Demo</a>
         </div>
       </div>
-    </details>
 
-    <details class="accordion">
-      <summary>🧪 UV-Vis Spectrophotometer Trimmer – Streamlit App</summary>
-      <div class="accordion-content">
-        <img src="images/uv.app.png" alt="UV-Vis App Preview" />
-        <div class="project-title">Streamlit App</div>
-        <div class="project-description">
-          Built for a PhD lab: cleans and trims 240-sample UV-Vis spectrophotometry datasets between 400–600 nm. Users adjust ranges, preview spectra, and export clean files — no code required.
-        </div>
-        <div class="links">
+      <div class="project-card">
+        <img src="images/uv.app.png" alt="UV-Vis App Preview">
+        <div class="project-card-content">
+          <h3>UV-Vis Spectrophotometer Trimmer – Streamlit App</h3>
+          <p>Built for a PhD lab: cleans and trims 240-sample UV-Vis spectrophotometry datasets between 400–600 nm. Users adjust ranges, preview spectra, and export clean files — no code required.</p>
           <a href="https://github.com/GabrielOyetunji/uvvis-spectrophotometer-app" target="_blank">📂 GitHub Repo</a>
           <a href="https://www.loom.com/share/e372774ab4f74a1db40446944c25fa72?sid=3b9c31a3-ab27-469c-ae60-fe394d46f401" target="_blank">▶️ Watch Demo</a>
         </div>
       </div>
-    </details>
+    </div>
 
     <div class="resume-section">
       <h2>Résumé</h2>
