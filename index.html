@@ -12,7 +12,6 @@
       font-family: 'Inter', sans-serif;
       background-color: #0f0f0f;
       color: #f1f1f1;
-      line-height: 1.7;
     }
     header {
       text-align: center;
@@ -40,34 +39,20 @@
     }
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 2rem;
+      margin-top: 2rem;
     }
     .project-card {
-      background: rgba(26, 26, 26, 0.6);
-      border-radius: 12px;
+      background-color: #181818;
+      border-radius: 10px;
       overflow: hidden;
-      box-shadow: 0 8px 20px rgba(0, 188, 212, 0.1);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      transform: translateY(0);
+      border: 1px solid #2a2a2a;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      animation: fadeIn 0.8s ease-in-out forwards;
-      opacity: 0;
     }
     .project-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 30px rgba(0, 188, 212, 0.3);
-    }
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      transform: translateY(-5px);
+      box-shadow: 0 0 20px rgba(0, 188, 212, 0.4);
     }
     .project-card img {
       width: 100%;
@@ -77,9 +62,8 @@
       padding: 1rem 1.2rem 1.5rem;
     }
     .project-card h3 {
-      font-size: 1.3rem;
-      font-weight: 600;
-      color: #fff;
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
     }
     .project-card p {
       font-size: 0.95rem;
@@ -93,7 +77,7 @@
       border: 1px solid #00bcd4;
       color: #00bcd4;
       padding: 0.4rem 0.9rem;
-      margin-right: 0.5rem;
+      margin-top: 0.5rem;
       border-radius: 5px;
       font-size: 0.85rem;
       font-weight: 600;
@@ -111,8 +95,6 @@
       list-style: square;
       padding-left: 1.2rem;
       line-height: 1.8;
-      color: #ddd;
-      font-size: 0.95rem;
     }
     .certifications a {
       color: #00bcd4;
@@ -157,6 +139,103 @@
   </style>
 </head>
 <body>
-<!-- your existing HTML content remains unchanged -->
+  <header>
+    <img src="images/profile.jpg" alt="Profile Picture">
+    <h1>Gabriel Oyetunji</h1>
+    <p>Data Analyst | Data Scientist . Excel · Power BI · Python · SQL</p>
+    <p>📊 Turning raw data into sharp insights.</p>
+  </header>
+
+  <div class="container">
+    <h2>About Me</h2>
+    <p>
+      I'm a Data Analyst & Data Scientist with over 4 years of experience turning raw data into clear, actionable insights. I specialize in using Python, SQL, Power BI, and Excel to clean data, automate reporting, and build dashboards that empower smarter decisions.
+      I've contributed to impactful projects across the healthcare, NGO, and tech sectors, helping organizations solve real-world problems through data. I’m also skilled in data storytelling, stakeholder engagement, and remote team collaboration.
+      Currently, I’m deepening my expertise in machine learning, predictive analytics, and NLP through the Data Science Career Track on DataCamp.
+    </p>
+
+    <div class="skills">
+      <h2>Skills</h2>
+      <ul>
+        <li>Data Cleaning & Wrangling (Pandas, Excel)</li>
+        <li>Dashboard Design (Power BI, Excel)</li>
+        <li>Data Visualization & Storytelling</li>
+        <li>Automation (Python scripting, Streamlit)</li>
+        <li>SQL for querying & analysis</li>
+        <li>Statistical Analysis & Hypothesis Testing</li>
+        <li>Machine Learning (Scikit-learn, XGBoost)</li>
+        <li>Natural Language Processing (NLP basics)</li>
+        <li>Model Evaluation & Interpretability</li>
+      </ul>
+    </div>
+
+    <div class="certifications">
+      <h2>Certifications</h2>
+      <ul>
+        <li><a href="https://www.datacamp.com/certificate/DA0022509689479" target="_blank">✅ Data Analyst – DataCamp (April 2025)</a></li>
+      </ul>
+    </div>
+
+    <h2>Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <img src="images/nova.png" alt="NovaTech Dashboard Preview">
+        <div class="project-card-content">
+          <h3>NovaTech Distributors – Sales Dashboard</h3>
+          <p>
+            NovaTech Distributors, a Canadian tech wholesaler, needed a clear view of its 2025 sales performance to guide strategic decisions. This Excel-based project analyzed sales vs. targets across four regions, ranked product performance, and segmented customers by channel and geography.
+          </p>
+          <ul style="padding-left: 1.2rem; margin-top: 1rem; line-height: 1.6;">
+            <li>📊 Highlights KPIs like <strong>total sales</strong>, <strong>variance</strong>, and <strong>% target met</strong></li>
+            <li>📈 Visualizes monthly and regional <strong>sales trends</strong></li>
+            <li>🏆 Ranks top/bottom products by <strong>revenue</strong></li>
+            <li>🛍️ Segments customers into <strong>Retail, Online, and Wholesale</strong></li>
+          </ul>
+          <p style="margin-top: 1rem;">
+            ⚠️ The dashboard revealed that only <strong>47%</strong> of targets were met — highlighting regional gaps and guiding leadership in refining their sales strategy and reallocating resources.
+          </p>
+          <a href="https://www.loom.com/share/19461c0fd60b408a80d9675aa1ff0de2?sid=417d9f22-4104-4c15-ad32-c6a63c0a2911" target="_blank">▶️ Watch Demo</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="images/uv.app.png" alt="UV-Vis App Preview">
+        <div class="project-card-content">
+          <h3>UV-Vis Spectrophotometer Trimmer – Streamlit App</h3>
+          <p>
+            This project was developed for a PhD researcher working on UV-Vis spectrophotometry data. The core challenge involved processing raw, messy CSVs from the CARY 50 spectrophotometer — each containing hundreds of paired wavelength and absorbance columns.
+          </p>
+          <ul style="padding-left: 1.2rem; margin-top: 1rem; line-height: 1.6;">
+            <li>🧹 <strong>Data Cleaning Scripts</strong> – Remove redundant headers, convert string values to numeric, and filter by wavelength range (400–600 nm)</li>
+            <li>📁 <strong>Batch Processing</strong> – Automatically process and export 240+ cleaned sample files</li>
+            <li>🌐 <strong>Streamlit Web App</strong> – Upload raw files, preview spectra, trim wavelength interactively, and export clean datasets — no coding required</li>
+            <li>🧪 <strong>Optimized for lab use</strong> — built for real researchers needing fast, reproducible workflows</li>
+          </ul>
+          <p style="margin-top: 1rem;">
+            📌 <strong>Tools Used:</strong> Python, Pandas, Streamlit, Matplotlib, Anaconda, GitHub
+          </p>
+          <a href="https://github.com/GabrielOyetunji/uvvis-spectrophotometer-app" target="_blank">📂 GitHub Repo</a>
+          <a href="https://www.loom.com/share/e372774ab4f74a1db40446944c25fa72?sid=3b9c31a3-ab27-469c-ae60-fe394d46f401" target="_blank">▶️ Watch Demo</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="resume-section">
+      <h2>Résumé</h2>
+      <a href="resume.pdf" target="_blank">📄 View</a>
+      <a href="resume.pdf" download>⬇️ Download</a>
+    </div>
+
+    <h2>Contact</h2>
+    <p>
+      📧 <a href="mailto:gabrieloyetunji25@gmail.com">gabrieloyetunji25@gmail.com</a><br />
+      🔗 <a href="https://github.com/gabrieloyetunji" target="_blank">GitHub</a> |
+      <a href="https://linkedin.com/in/gabriel-oyetunji-a7aa9513b" target="_blank">LinkedIn</a>
+    </p>
+  </div>
+
+  <footer>
+    &copy; 2025 Gabriel Oyetunji. All rights reserved.
+  </footer>
 </body>
 </html>
