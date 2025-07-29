@@ -2,138 +2,112 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Gabriel Oyetunji | Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Data Analyst Portfolio of Gabriel Oyetunji - Projects in Excel, Power BI, and Python." />
+  <title>Gabriel Oyetunji | Data Analyst Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
-      background-color: #000;
-      color: #E0E0E0;
-      font-family: 'Segoe UI', sans-serif;
       margin: 0;
-      padding: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #0f0f0f;
+      color: #f1f1f1;
     }
-    header, section, footer {
-      max-width: 900px;
-      margin: auto;
-      padding: 2rem;
+    header {
+      text-align: center;
+      padding: 4rem 2rem 2rem;
     }
-    img.profile {
-      width: 140px;
-      border-radius: 50%;
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
     }
-    .tool-tag {
-      background-color: #3b82f6;
-      color: white;
-      padding: 5px 10px;
-      border-radius: 10px;
-      margin: 2px;
-      font-size: 13px;
+    h2 {
+      font-size: 1.8rem;
+      margin: 3rem 0 1rem;
+      border-bottom: 2px solid #444;
       display: inline-block;
     }
-    .section-title {
-      font-size: 26px;
-      margin-top: 3rem;
-      font-weight: 700;
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2rem;
     }
-    hr {
-      border: none;
-      height: 1px;
-      background-color: #222;
-      margin: 2rem 0;
+    .project {
+      margin-bottom: 3rem;
+      background-color: #1a1a1a;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
     }
-    a {
-      color: #3b82f6;
+    .project-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .project-description {
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+    .links a {
+      margin-right: 1rem;
+      color: #4db8ff;
       text-decoration: none;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      margin-top: 4rem;
+      padding-bottom: 2rem;
+      color: #aaa;
     }
   </style>
 </head>
 <body>
+  <header>
+    <h1>Gabriel Oyetunji</h1>
+    <p>Data Analyst | Excel · Power BI · Python · SQL</p>
+  </header>
 
-<header>
-  <div style="display: flex; align-items: center; gap: 1.5rem;">
-    <img src="images/profile.jpg" alt="Gabriel Oyetunji" class="profile">
-    <div>
-      <h2>Gabriel Oyetunji</h2>
-      <p>Data Analyst | Data Scientist</p>
-      <p><em>📊 Turning raw data into sharp insights.</em></p>
+  <div class="container">
+    <h2>Projects</h2>
+
+    <div class="project">
+      <div class="project-title">NovaTech Distributors – Regional Sales Dashboard</div>
+      <div class="project-description">
+        A complete sales performance analysis using Excel and Power BI. This project features customer segmentation, sales target tracking, and dynamic insights by region. Insights helped improve marketing focus and sales distribution strategy.
+      </div>
+      <div class="links">
+        <a href="https://github.com/gabrieloyetunji/novatech-dashboard" target="_blank">GitHub Repo</a>
+        <a href="https://youtu.be/nova-demo" target="_blank">Demo Video</a>
+      </div>
     </div>
+
+    <div class="project">
+      <div class="project-title">UV-Vis Spectrophotometer Data Processor App</div>
+      <div class="project-description">
+        A Python + Streamlit app built for a PhD research client to process multiple spectrophotometer readings. The tool enables trimming, filtering, and export of cleaned results. Made to streamline a manual and repetitive lab workflow.
+      </div>
+      <div class="links">
+        <a href="https://github.com/gabrieloyetunji/uvvis-app" target="_blank">GitHub Repo</a>
+        <a href="https://youtu.be/uvvis-demo" target="_blank">Demo Video</a>
+      </div>
+    </div>
+
+    <h2>About Me</h2>
+    <p>
+      I'm a data analyst with a background in economics and a passion for turning messy data into clear insights. I work with Excel, Power BI, Python, and SQL to clean, analyze, and visualize data. I help businesses and researchers make better decisions with actionable dashboards and automation tools.
+    </p>
+
+    <h2>Contact</h2>
+    <p>
+      📧 gabriel.oyetunji.analysis@gmail.com<br />
+      🔗 <a href="https://github.com/gabrieloyetunji" target="_blank">GitHub</a> |
+      <a href="https://linkedin.com/in/gabrieloyetunji" target="_blank">LinkedIn</a>
+    </p>
   </div>
-</header>
 
-<hr>
-
-<section>
-  <h3 class="section-title">🧾 About Me</h3>
-  <p>
-    I'm a Data Analyst & Data Scientist focused on clarity, efficiency, and impact.  
-    I use Python, SQL, Power BI, and Excel to clean data, build automated workflows,
-    and design dashboards that guide better decisions — not just prettier reports.
-  </p>
-</section>
-
-<section>
-  <h3 class="section-title">📑 Certifications</h3>
-  <ul>
-    <li><a href="https://www.datacamp.com/certificate/DA0022509689479" target="_blank">
-      ✅ Data Analyst – DataCamp (April 2025)</a></li>
-  </ul>
-</section>
-
-<section>
-  <h3 class="section-title">🗂️ Projects</h3>
-
-  <details>
-    <summary><strong>NovaTech Sales Dashboard</strong></summary>
-    <p><img src="images/nova.png" width="100%" alt="NovaTech Dashboard"/></p>
-    <p>Recorded walkthrough showing slicers, KPIs, and regional sales insights.</p>
-    <p>
-      <span class="tool-tag">Excel</span>
-    </p>
-    <p>
-      This interactive Excel dashboard uses slicers, charts, and conditional formatting to show sales vs target performance across regions.
-      <br><br>
-      NovaTech Distributors needed a clear view of its 2025 sales performance to inform decisions. I built:
-      <ul>
-        <li>KPI cards for total sales and target variance</li>
-        <li>Monthly and regional breakdowns</li>
-        <li>Top/bottom product rankings</li>
-        <li>Segmentation by customer type</li>
-      </ul>
-      The dashboard revealed that only 47% of targets were met, guiding strategy refinement.
-    </p>
-    <p><a href="https://www.loom.com/share/19461c0fd60b408a80d9675aa1ff0de2?sid=417d9f22-4104-4c15-ad32-c6a63c0a2911" target="_blank">▶️ Watch Demo</a></p>
-  </details>
-
-  <details>
-    <summary><strong>Interactive UV-Vis Spectra Trimmer</strong></summary>
-    <p><img src="images/uv.app.png" width="100%" alt="UV App"/></p>
-    <p>
-      This project was developed for a PhD researcher to clean UV-Vis spectrophotometry data. It processes hundreds of messy CSVs.
-    </p>
-    <p>
-      <span class="tool-tag">Python</span>
-      <span class="tool-tag">Streamlit</span>
-      <span class="tool-tag">Pandas</span>
-    </p>
-    <ul>
-      <li>🧹 Auto-removal of redundant headers</li>
-      <li>📁 Batch-processing of 240+ samples</li>
-      <li>🌐 Web app with sliders, preview, and export</li>
-    </ul>
-    <p>
-      <a href="https://github.com/GabrielOyetunji/uvvis-spectrophotometer-app" target="_blank">🔗 GitHub</a> |
-      <a href="https://www.loom.com/share/e372774ab4f74a1db40446944c25fa72?sid=3b9c31a3-ab27-469c-ae60-fe394d46f401" target="_blank">▶️ Watch Demo</a>
-    </p>
-  </details>
-</section>
-
-<section>
-  <h3 class="section-title">📬 Contact Me</h3>
-  <p>📧 <a href="mailto:gabrieloyetunji25@gmail.com">gabrieloyetunji25@gmail.com</a></p>
-  <p>🧠 <a href="https://github.com/gabrieloyetunji" target="_blank">GitHub</a></p>
-  <p>💼 <a href="https://www.linkedin.com/in/gabriel-oyetunji-a7aa9513b" target="_blank">LinkedIn</a></p>
-</section>
-
+  <footer>
+    &copy; 2025 Gabriel Oyetunji. All rights reserved.
+  </footer>
 </body>
 </html>
