@@ -7,41 +7,81 @@
   <title>Gabriel Oyetunji | Data Analyst Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
       background-color: #0f0f0f;
       color: #f1f1f1;
     }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      background-color: #121212;
+      padding: 0.8rem 1rem;
+      z-index: 999;
+      border-bottom: 1px solid #222;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .navbar-container {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .navbar a {
+      color: #00bcd4;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+    }
+
+    .navbar a:hover {
+      color: #26c6da;
+    }
+
     header {
       text-align: center;
       padding: 2rem 1rem;
     }
+
     header img {
       width: 120px;
       border-radius: 50%;
       margin-bottom: 1rem;
     }
+
     h1 {
       font-size: 2.5rem;
       margin-bottom: 0.3rem;
     }
+
     h2 {
       font-size: 1.8rem;
       margin: 3rem 0 1.2rem;
       border-bottom: 2px solid #444;
       display: inline-block;
     }
+
     .container {
       max-width: 1100px;
       margin: 0 auto;
       padding: 2rem 1rem;
     }
+
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
     }
+
     .project-card {
       background: rgba(26, 26, 26, 0.7);
       backdrop-filter: blur(8px);
@@ -51,31 +91,38 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       animation: fadeIn 0.8s ease-in-out;
     }
+
     .project-card:hover {
       transform: scale(1.02);
       box-shadow: 0 0 20px rgba(0, 188, 212, 0.5);
     }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
     .project-card img {
       width: 100%;
       display: block;
     }
+
     .project-card-content {
       padding: 1rem 1.2rem 1.5rem;
     }
+
     .project-card h3 {
       font-size: 1.25rem;
       margin-bottom: 0.5rem;
     }
+
     .project-card p {
       font-size: 0.95rem;
       line-height: 1.6;
       margin-bottom: 1.2rem;
       color: #ccc;
     }
+
     .project-card a {
       display: inline-block;
       background-color: transparent;
@@ -89,28 +136,35 @@
       text-decoration: none;
       transition: all 0.3s ease;
     }
+
     .project-card a:hover {
       background-color: #00bcd4;
       color: #000;
     }
+
     .skills, .certifications {
       margin-top: 2rem;
     }
+
     .skills ul, .certifications ul {
       list-style: square;
       padding-left: 1.2rem;
       line-height: 1.8;
     }
+
     .certifications a {
       color: #00bcd4;
       text-decoration: none;
     }
+
     .certifications a:hover {
       text-decoration: underline;
     }
+
     .resume-section {
       margin-top: 3rem;
     }
+
     .resume-section a {
       display: inline-block;
       background-color: transparent;
@@ -124,10 +178,12 @@
       text-decoration: none;
       transition: all 0.3s ease;
     }
+
     .resume-section a:hover {
       background-color: #00bcd4;
       color: #000;
     }
+
     footer {
       text-align: center;
       font-size: 0.9rem;
@@ -135,15 +191,28 @@
       padding-bottom: 2rem;
       color: #aaa;
     }
+
     a {
       color: #00bcd4;
     }
+
     a:hover {
       color: #26c6da;
     }
   </style>
 </head>
 <body>
+
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#resume">Résumé</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
   <header>
     <img src="images/profile.jpg" alt="Profile Picture">
     <h1>Gabriel Oyetunji</h1>
@@ -152,7 +221,7 @@
   </header>
 
   <div class="container">
-    <h2>About Me</h2>
+    <h2 id="about">About Me</h2>
     <p>
       I'm a Data Analyst & Data Scientist with over 4 years of experience turning raw data into clear, actionable insights. I specialize in using Python, SQL, Power BI, and Excel to clean data, automate reporting, and build dashboards that empower smarter decisions.
 
@@ -161,7 +230,7 @@
       Currently, I’m deepening my expertise in machine learning, predictive analytics, and NLP through the Data Science Career Track on DataCamp.
     </p>
 
-    <div class="skills">
+    <div class="skills" id="skills">
       <h2>Skills</h2>
       <ul>
         <li>Data Cleaning & Wrangling (Pandas, Excel)</li>
@@ -183,7 +252,7 @@
       </ul>
     </div>
     
- <h2>Projects</h2>
+    <h2 id="projects">Projects</h2>
 
     <div class="projects-grid">
     
@@ -238,14 +307,13 @@
 
     </div>
 
-   <div class="resume-section">
-  <h2>Résumé</h2>
-  <a href="resume/Gabriel_Oyetunji_Resume.pdf" target="_blank">📄 View</a>
-  <a href="resume/Gabriel_Oyetunji_Resume.pdf" download>⬇ Download</a>
-</div>
+    <div class="resume-section" id="resume">
+      <h2>Résumé</h2>
+      <a href="resume/Gabriel_Oyetunji_Resume.pdf" target="_blank">📄 View</a>
+      <a href="resume/Gabriel_Oyetunji_Resume.pdf" download>⬇ Download</a>
+    </div>
 
-
-    <h2>Contact</h2>
+    <h2 id="contact">Contact</h2>
     <p>
       📧 <a href="mailto:gabrieloyetunji25@gmail.com">gabrieloyetunji25@gmail.com</a><br />
       🔗 <a href="https://github.com/gabrieloyetunji" target="_blank">GitHub</a> |
