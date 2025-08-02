@@ -5,35 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Data Analyst Portfolio of Gabriel Oyetunji - Projects in Excel, Power BI, and Python." />
   <title>Gabriel Oyetunji | Data Analyst Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      font-family: 'Space Grotesk', sans-serif;
-      background-color: #000;
-      color: #fff;
+      font-family: 'Inter', sans-serif;
+      background-color: #0f0f0f;
+      color: #f1f1f1;
     }
     header {
       text-align: center;
-      padding: 3rem 1rem;
+      padding: 2rem 1rem;
     }
     header img {
-      width: 110px;
+      width: 120px;
       border-radius: 50%;
       margin-bottom: 1rem;
-      box-shadow: 0 0 12px rgba(255, 255, 255, 0.1);
     }
     h1 {
-      font-size: 2.8rem;
-      font-weight: 600;
+      font-size: 2.5rem;
+      margin-bottom: 0.3rem;
     }
     h2 {
-      font-size: 1.6rem;
-      font-weight: 500;
-      margin-top: 3rem;
-      border-bottom: 1px solid #444;
+      font-size: 1.8rem;
+      margin: 3rem 0 1.2rem;
+      border-bottom: 2px solid #444;
       display: inline-block;
-      padding-bottom: 0.4rem;
     }
     .container {
       max-width: 1100px;
@@ -42,54 +39,83 @@
     }
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
-      margin-top: 2rem;
     }
     .project-card {
-      background-color: #fff;
-      color: #000;
+      background: rgba(26, 26, 26, 0.7);
+      backdrop-filter: blur(8px);
       border-radius: 12px;
-      padding: 1.5rem;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 12px rgba(0,0,0,0.15);
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeIn 0.8s ease-in-out;
     }
     .project-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+      transform: scale(1.02);
+      box-shadow: 0 0 20px rgba(0, 188, 212, 0.5);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .project-card img {
+      width: 100%;
+      display: block;
+    }
+    .project-card-content {
+      padding: 1rem 1.2rem 1.5rem;
     }
     .project-card h3 {
-      font-size: 1.3rem;
+      font-size: 1.25rem;
       margin-bottom: 0.5rem;
     }
     .project-card p {
       font-size: 0.95rem;
       line-height: 1.6;
-      color: #222;
+      margin-bottom: 1.2rem;
+      color: #ccc;
     }
     .project-card a {
       display: inline-block;
-      margin-top: 0.8rem;
-      font-size: 0.8rem;
-      color: #000;
-      border: 1px solid #000;
-      padding: 0.3rem 0.7rem;
+      background-color: transparent;
+      border: 1px solid #00bcd4;
+      color: #00bcd4;
+      padding: 0.35rem 0.8rem;
+      margin-right: 0.5rem;
       border-radius: 5px;
+      font-size: 0.8rem;
+      font-weight: 600;
       text-decoration: none;
       transition: all 0.3s ease;
     }
     .project-card a:hover {
-      background: #000;
-      color: #fff;
+      background-color: #00bcd4;
+      color: #000;
+    }
+    .skills, .certifications {
+      margin-top: 2rem;
     }
     .skills ul, .certifications ul {
       list-style: square;
       padding-left: 1.2rem;
       line-height: 1.8;
     }
+    .certifications a {
+      color: #00bcd4;
+      text-decoration: none;
+    }
+    .certifications a:hover {
+      text-decoration: underline;
+    }
+    .resume-section {
+      margin-top: 3rem;
+    }
     .resume-section a {
-      border: 1px solid #fff;
-      color: #fff;
+      display: inline-block;
+      background-color: transparent;
+      border: 1px solid #00bcd4;
+      color: #00bcd4;
       padding: 0.5rem 1rem;
       margin: 0.5rem 1rem 0.5rem 0;
       border-radius: 6px;
@@ -99,7 +125,7 @@
       transition: all 0.3s ease;
     }
     .resume-section a:hover {
-      background-color: #fff;
+      background-color: #00bcd4;
       color: #000;
     }
     footer {
@@ -107,13 +133,13 @@
       font-size: 0.9rem;
       margin-top: 4rem;
       padding-bottom: 2rem;
-      color: #888;
+      color: #aaa;
     }
     a {
-      color: #fff;
+      color: #00bcd4;
     }
     a:hover {
-      color: #ccc;
+      color: #26c6da;
     }
   </style>
 </head>
@@ -127,9 +153,13 @@
 
   <div class="container">
     <h2>About Me</h2>
-    <p>I'm a Data Analyst & Data Scientist with over 4 years of experience turning raw data into clear, actionable insights. I specialize in using Python, SQL, Power BI, and Excel to clean data, automate reporting, and build dashboards that empower smarter decisions.</p>
-    <p>I've contributed to impactful projects across the healthcare, NGO, and tech sectors, helping organizations solve real-world problems through data. I’m also skilled in data storytelling, stakeholder engagement, and remote team collaboration.</p>
-    <p>Currently, I’m deepening my expertise in machine learning, predictive analytics, and NLP through the Data Science Career Track on DataCamp.</p>
+    <p>
+      I'm a Data Analyst & Data Scientist with over 4 years of experience turning raw data into clear, actionable insights. I specialize in using Python, SQL, Power BI, and Excel to clean data, automate reporting, and build dashboards that empower smarter decisions.
+
+      I've contributed to impactful projects across the healthcare, NGO, and tech sectors, helping organizations solve real-world problems through data. I’m also skilled in data storytelling, stakeholder engagement, and remote team collaboration.
+
+      Currently, I’m deepening my expertise in machine learning, predictive analytics, and NLP through the Data Science Career Track on DataCamp.
+    </p>
 
     <div class="skills">
       <h2>Skills</h2>
@@ -152,15 +182,24 @@
         <li><a href="https://www.datacamp.com/certificate/DA0022509689479" target="_blank">✅ Data Analyst – DataCamp (April 2025)</a></li>
       </ul>
     </div>
+    
+ <h2>Projects</h2>
 
-    <h2>Projects</h2>
     <div class="projects-grid">
+    
       <div class="project-card">
         <img src="images/nova.png" alt="NovaTech Dashboard Preview">
         <div class="project-card-content">
           <h3>NovaTech Distributors – Sales Dashboard</h3>
           <p>NovaTech, a Canadian wholesaler, needed clear sales insights across four regions. This Excel dashboard revealed sales gaps, product performance, and customer segmentation.</p>
-          <a href="https://www.loom.com/share/19461c0fd60b408a80d9675aa1ff0de2" target="_blank">▶ Watch Demo</a>
+          <ul>
+            <li>📊 Highlights KPIs: <strong>total sales</strong>, <strong>variance</strong>, <strong>% target met</strong></li>
+            <li>📈 Monthly & regional <strong>sales trends</strong></li>
+            <li>🏆 Product ranking by <strong>revenue</strong></li>
+            <li>🛍 Segments: <strong>Retail, Online, Wholesale</strong></li>
+          </ul>
+          <p>⚠ Only <strong>47%</strong> of targets were met — prompting strategic changes.</p>
+          <a href="https://www.loom.com/share/19461c0fd60b408a80d9675aa1ff0de2?sid=417d9f22-4104-4c15-ad32-c6a63c0a2911" target="_blank">▶ Watch Demo</a>
         </div>
       </div>
 
@@ -169,8 +208,15 @@
         <div class="project-card-content">
           <h3>UV-Vis Spectrophotometer Trimmer – Streamlit App</h3>
           <p>Developed for a PhD researcher, this app processes messy CARY 50 spectrophotometry data and enables lab teams to clean and export datasets instantly.</p>
-          <a href="https://github.com/GabrielOyetunji/uvvis-spectrophotometer-app" target="_blank">📂 GitHub</a>
-          <a href="https://www.loom.com/share/e372774ab4f74a1db40446944c25fa72" target="_blank">▶ Watch Demo</a>
+          <ul>
+            <li>🧹 <strong>Data Cleaning:</strong> convert, trim, filter by wavelength</li>
+            <li>📁 <strong>Batch processing</strong> for 240+ samples</li>
+            <li>🌐 <strong>Streamlit Web App</strong> for no-code use</li>
+            <li>🧪 Reproducible workflows for researchers</li>
+          </ul>
+          <p>📌 <strong>Tools:</strong> Python, Pandas, Streamlit, Matplotlib</p>
+          <a href="https://github.com/GabrielOyetunji/uvvis-spectrophotometer-app" target="_blank">📂 GitHub Repo</a>
+          <a href="https://www.loom.com/share/e372774ab4f74a1db40446944c25fa72?sid=3b9c31a3-ab27-469c-ae60-fe394d46f401" target="_blank">▶ Watch Demo</a>
         </div>
       </div>
 
@@ -179,16 +225,25 @@
         <div class="project-card-content">
           <h3>StreamFlow – Churn & Engagement Dashboard</h3>
           <p>StreamFlow, a new streaming platform, needed to reduce churn and improve engagement. This Excel dashboard reveals behavioral patterns and churn drivers.</p>
+          <ul>
+            <li>📊 User segmentation by <strong>age, region, plan</strong></li>
+            <li>📉 <strong>Churn rate</strong> by subscription group</li>
+            <li>📺 Watch time by <strong>device, content, plan</strong></li>
+            <li>⚠ Behavioral churn indicators</li>
+          </ul>
+          <p>📌 <strong>Tools:</strong> Excel (Pivot, Charts, Slicers)</p>
           <a href="https://youtu.be/QoNffMFlTXg" target="_blank">▶ Watch Demo</a>
         </div>
       </div>
+
     </div>
 
-    <div class="resume-section">
-      <h2>Résumé</h2>
-      <a href="resume/Gabriel_Oyetunji_Resume.pdf" target="_blank">📄 View</a>
-      <a href="resume/Gabriel_Oyetunji_Resume.pdf" download>⬇ Download</a>
-    </div>
+   <div class="resume-section">
+  <h2>Résumé</h2>
+  <a href="resume/Gabriel_Oyetunji_Resume.pdf" target="_blank">📄 View</a>
+  <a href="resume/Gabriel_Oyetunji_Resume.pdf" download>⬇ Download</a>
+</div>
+
 
     <h2>Contact</h2>
     <p>
