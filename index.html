@@ -2,208 +2,153 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Data Analyst Portfolio of Gabriel Oyetunji - Projects in Excel, Power BI, and Python." />
-  <title>Gabriel Oyetunji | Data Analyst Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gabriel Oyetunji — Data Analyst Portfolio</title>
+  <meta name="description" content="Portfolio of Gabriel Oyetunji, Data Analyst — projects in Excel, Power BI, Python, and Streamlit." />
+
+  <!-- Performance: fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Sharing -->
+  <meta property="og:title" content="Gabriel Oyetunji — Data Analyst Portfolio">
+  <meta property="og:description" content="Projects in Excel, Power BI, Python, and Streamlit.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://gabriel-portfolio-orpin.vercel.app/">
+  <meta property="og:image" content="images/og-cover.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="canonical" href="https://gabriel-portfolio-orpin.vercel.app/">
+
   <style>
-    html {
-      scroll-behavior: smooth;
+    :root{
+      --bg:#0f0f0f; --surface:#121212; --surface-2:#1a1a1a;
+      --text:#f1f1f1; --muted:#bdbdbd; --subtle:#cccccc;
+      --brand:#00bcd4; --brand-2:#26c6da; --border:#222;
+      --radius:12px; --space:1rem; --shadow:0 8px 24px rgba(0,0,0,.5);
     }
 
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background-color: #0f0f0f;
-      color: #f1f1f1;
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:var(--bg); color:var(--text);
+      text-rendering:optimizeLegibility; -webkit-font-smoothing:antialiased;
     }
 
-    .navbar {
-      position: sticky;
-      top: 0;
-      background-color: #121212;
-      padding: 0.8rem 1rem;
-      z-index: 999;
-      border-bottom: 1px solid #222;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    /* Skip link */
+    .skip-link{
+      position:absolute; left:-999px; top:auto; width:1px; height:1px; overflow:hidden;
+    }
+    .skip-link:focus{
+      left:1rem; top:1rem; width:auto; height:auto; padding:.5rem .75rem;
+      background:#000; color:#fff; border-radius:.5rem; z-index:10000;
+      outline:2px solid var(--brand);
     }
 
-    .navbar-container {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      flex-wrap: wrap;
+    /* Navbar */
+    .navbar{
+      position:sticky; top:0; z-index:999;
+      background:var(--surface); border-bottom:1px solid var(--border);
+      box-shadow:0 2px 4px rgba(0,0,0,.5);
+      backdrop-filter:saturate(120%) blur(6px);
     }
-
-    .navbar a {
-      color: #00bcd4;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: color 0.3s;
+    .navbar-container{
+      max-width:1100px; margin:0 auto; padding:.8rem 1rem;
+      display:flex; justify-content:center; gap:2rem; flex-wrap:wrap;
     }
-
-    .navbar a:hover {
-      color: #26c6da;
+    .navbar a{
+      color:var(--brand); text-decoration:none; font-weight:600; font-size:.95rem;
+      line-height:2.2rem; position:relative;
     }
+    .navbar a:focus{outline:2px dashed var(--brand-2); outline-offset:3px}
+    .navbar a:hover{color:var(--brand-2)}
 
-    header {
-      text-align: center;
-      padding: 2rem 1rem;
+    header{
+      text-align:center; padding:2.5rem 1rem 1rem;
     }
-
-    header img {
-      width: 120px;
-      border-radius: 50%;
-      margin-bottom: 1rem;
+    .avatar{
+      width:120px; height:120px; border-radius:50%; object-fit:cover;
+      box-shadow:0 4px 16px rgba(0,0,0,.5);
     }
+    h1{font-size:2.25rem; margin:.8rem 0 .2rem}
+    .tagline{color:var(--subtle); margin:.25rem 0 .5rem}
 
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.3rem;
+    .container{max-width:1100px; margin:0 auto; padding:2rem 1rem}
+    h2{
+      font-size:1.6rem; margin:3rem 0 1rem; display:inline-block;
+      border-bottom:2px solid #444; padding-bottom:.25rem;
     }
+    p{line-height:1.7; color:var(--subtle)}
 
-    h2 {
-      font-size: 1.8rem;
-      margin: 3rem 0 1.2rem;
-      border-bottom: 2px solid #444;
-      display: inline-block;
+    /* Lists */
+    .list{padding-left:1.2rem; line-height:1.8}
+    .list li{margin:.2rem 0}
+
+    /* Projects */
+    .projects-grid{
+      display:grid; gap:2rem; grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
     }
-
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 2rem 1rem;
+    .project-card{
+      background:rgba(26,26,26,.7); border-radius:var(--radius); overflow:hidden;
+      box-shadow:var(--shadow); transition:transform .25s ease, box-shadow .25s ease;
+      border:1px solid rgba(255,255,255,.06);
     }
+    .project-card:hover{transform:translateY(-3px); box-shadow:0 0 20px rgba(0,188,212,.35)}
+    .project-media{display:block; width:100%; height:auto}
 
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
+    .project-card-content{padding:1rem 1.2rem 1.25rem}
+    .project-card h3{font-size:1.2rem; margin:.25rem 0 .5rem}
+    .project-card p{font-size:.95rem; color:var(--subtle); margin:.6rem 0 1rem}
+    .project-card ul{padding-left:1.2rem; margin:.5rem 0 1rem; color:var(--subtle)}
+    .btn{
+      display:inline-block; padding:.38rem .8rem; margin:.25rem .5rem .25rem 0;
+      border-radius:6px; font-weight:600; font-size:.85rem; text-decoration:none;
+      border:1px solid var(--brand); color:var(--brand); background:transparent;
+      transition:background .25s ease, color .25s ease, transform .1s ease;
     }
+    .btn:hover{background:var(--brand); color:#000}
+    .btn:active{transform:translateY(1px)}
+    .btn:focus{outline:2px dashed var(--brand-2); outline-offset:3px}
 
-    .project-card {
-      background: rgba(26, 26, 26, 0.7);
-      backdrop-filter: blur(8px);
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      animation: fadeIn 0.8s ease-in-out;
-    }
+    /* Resume */
+    .resume-actions{margin-top:.5rem}
 
-    .project-card:hover {
-      transform: scale(1.02);
-      box-shadow: 0 0 20px rgba(0, 188, 212, 0.5);
-    }
+    /* Footer */
+    footer{ text-align:center; font-size:.9rem; margin:3.5rem 0 2rem; color:#aaa }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    /* Links */
+    a{color:var(--brand)}
+    a:hover{color:var(--brand-2)}
 
-    .project-card img {
-      width: 100%;
-      display: block;
-    }
-
-    .project-card-content {
-      padding: 1rem 1.2rem 1.5rem;
-    }
-
-    .project-card h3 {
-      font-size: 1.25rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .project-card p {
-      font-size: 0.95rem;
-      line-height: 1.6;
-      margin-bottom: 1.2rem;
-      color: #ccc;
-    }
-
-    .project-card a {
-      display: inline-block;
-      background-color: transparent;
-      border: 1px solid #00bcd4;
-      color: #00bcd4;
-      padding: 0.35rem 0.8rem;
-      margin-right: 0.5rem;
-      border-radius: 5px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-
-    .project-card a:hover {
-      background-color: #00bcd4;
-      color: #000;
-    }
-
-    .skills, .certifications {
-      margin-top: 2rem;
-    }
-
-    .skills ul, .certifications ul {
-      list-style: square;
-      padding-left: 1.2rem;
-      line-height: 1.8;
-    }
-
-    .certifications a {
-      color: #00bcd4;
-      text-decoration: none;
-    }
-
-    .certifications a:hover {
-      text-decoration: underline;
-    }
-
-    .resume-section {
-      margin-top: 3rem;
-    }
-
-    .resume-section a {
-      display: inline-block;
-      background-color: transparent;
-      border: 1px solid #00bcd4;
-      color: #00bcd4;
-      padding: 0.5rem 1rem;
-      margin: 0.5rem 1rem 0.5rem 0;
-      border-radius: 6px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-
-    .resume-section a:hover {
-      background-color: #00bcd4;
-      color: #000;
-    }
-
-    footer {
-      text-align: center;
-      font-size: 0.9rem;
-      margin-top: 4rem;
-      padding-bottom: 2rem;
-      color: #aaa;
-    }
-
-    a {
-      color: #00bcd4;
-    }
-
-    a:hover {
-      color: #26c6da;
+    /* Motion preferences */
+    @media (prefers-reduced-motion: reduce){
+      html{scroll-behavior:auto}
+      .project-card, .navbar{transition:none}
     }
   </style>
-</head>
-<body>
 
-  <nav class="navbar">
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"Gabriel Oyetunji",
+    "jobTitle":"Data Analyst",
+    "url":"https://gabriel-portfolio-orpin.vercel.app/",
+    "image":"https://gabriel-portfolio-orpin.vercel.app/images/profile.jpg",
+    "sameAs":[
+      "https://github.com/gabrieloyetunji",
+      "https://www.linkedin.com/in/gabriel-oyetunji-a7aa9513b"
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <nav class="navbar" role="navigation" aria-label="Primary">
     <div class="navbar-container">
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
@@ -214,139 +159,169 @@
   </nav>
 
   <header>
-    <img src="images/profile.jpg" alt="Profile Picture">
+    <picture>
+      <source srcset="images/profile.avif" type="image/avif">
+      <source srcset="images/profile.webp" type="image/webp">
+      <img class="avatar" src="images/profile.jpg" alt="Portrait of Gabriel Oyetunji" width="120" height="120" loading="eager" decoding="async">
+    </picture>
     <h1>Gabriel Oyetunji</h1>
-    <p>Data Analyst | Data Scientist</p>
-    <p>📊 Turning raw data into sharp insights.</p>
+    <p class="tagline">Data Analyst • Data Scientist</p>
+    <p class="tagline">📊 Turning raw data into sharp insights.</p>
   </header>
 
-  <div class="container">
-    <h2 id="about">About Me</h2>
-    <p>
-      I'm a Data Analyst & Data Scientist with over 4 years of experience turning raw data into clear, actionable insights. I specialize in using Python, SQL, Power BI, and Excel to clean data, automate reporting, and build dashboards that empower smarter decisions.
+  <main id="main" class="container">
+    <section id="about" aria-labelledby="about-h">
+      <h2 id="about-h">About Me</h2>
+      <p>
+        I'm a Data Analyst &amp; Data Scientist with over 4 years of experience turning raw data into clear, actionable insights.
+        I specialize in Python, SQL, Power BI, and Excel to clean data, automate reporting, and build dashboards that empower smarter decisions.
+      </p>
+      <p>
+        I've contributed to projects across healthcare, NGOs, and tech—solving real-world problems with data. Skilled in data storytelling, stakeholder engagement, and remote collaboration.
+        Currently deepening expertise in machine learning, predictive analytics, and NLP (DataCamp Data Science Track).
+      </p>
+    </section>
 
-      I've contributed to impactful projects across the healthcare, NGO, and tech sectors, helping organizations solve real-world problems through data. I’m also skilled in data storytelling, stakeholder engagement, and remote team collaboration.
-
-      Currently, I’m deepening my expertise in machine learning, predictive analytics, and NLP through the Data Science Career Track on DataCamp.
-    </p>
-
-    <div class="skills" id="skills">
-      <h2>Skills</h2>
-      <ul>
-        <li>Data Cleaning & Wrangling (Pandas, Excel)</li>
+    <section id="skills" aria-labelledby="skills-h">
+      <h2 id="skills-h">Skills</h2>
+      <ul class="list">
+        <li>Data Cleaning &amp; Wrangling (Pandas, Excel)</li>
         <li>Dashboard Design (Power BI, Excel)</li>
-        <li>Data Visualization & Storytelling</li>
+        <li>Data Visualization &amp; Storytelling</li>
         <li>Automation (Python scripting, Streamlit)</li>
-        <li>SQL for querying & analysis</li>
-        <li>Statistical Analysis & Hypothesis Testing</li>
-        <li>Machine Learning (Scikit-learn, XGBoost)</li>
-        <li>Natural Language Processing (NLP basics)</li>
-        <li>Model Evaluation & Interpretability</li>
+        <li>SQL for querying &amp; analysis</li>
+        <li>Statistical Analysis &amp; Hypothesis Testing</li>
+        <li>Machine Learning (scikit-learn, XGBoost)</li>
+        <li>Natural Language Processing (basics)</li>
+        <li>Model Evaluation &amp; Interpretability</li>
       </ul>
-    </div>
+    </section>
 
-    <div class="certifications">
-  <h2>Certifications</h2>
-  <ul>
-    <li>
-      <a href="https://www.datacamp.com/certificate/DA0022509689479" target="_blank">
-        ✅ Data Analyst – DataCamp (April 2025)
-      </a>
-    </li>
-    <li>
-      <a href="images/tecup_certificate.png" target="_blank">
-        🏅 Certificate of Completion – TEC Up (Aug 2025)
-      </a>
-    </li>
-  </ul>
-</div>
+    <section aria-labelledby="certs-h">
+      <h2 id="certs-h">Certifications</h2>
+      <ul class="list">
+        <li>
+          <a href="https://www.datacamp.com/certificate/DA0022509689479" target="_blank" rel="noopener noreferrer">
+            ✅ Data Analyst — DataCamp (April 2025)
+          </a>
+        </li>
+        <li>
+          <a href="images/tecup_certificate.png" target="_blank" rel="noopener noreferrer">
+            🏅 Certificate of Completion — TEC Up (Aug 2025)
+          </a>
+        </li>
+      </ul>
+    </section>
 
+    <section id="projects" aria-labelledby="projects-h">
+      <h2 id="projects-h">Projects</h2>
 
-    <h2 id="projects">Projects</h2>
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <article class="project-card">
+          <picture>
+            <source srcset="images/Legoset-Dashboard.avif" type="image/avif">
+            <source srcset="images/Legoset-Dashboard.webp" type="image/webp">
+            <img class="project-media" src="images/Legoset Dashboard.png" alt="Power BI dashboard showing LEGO set trends and KPIs" width="1200" height="675" loading="lazy" decoding="async">
+          </picture>
+          <div class="project-card-content">
+            <h3>LEGO Dashboard — Power BI (1970–2022)</h3>
+            <p>Dynamic analysis of LEGO sets using DAX, slicers, and clean storytelling.</p>
+            <ul>
+              <li>🧱 Custom columns for <strong>Age</strong> &amp; <strong>Price Categories</strong></li>
+              <li>📊 KPI Cards: Total Sets, Avg. Price, Piece Count</li>
+              <li>🎛 Filters: Theme, Age, Price Range</li>
+              <li>🔍 <strong>Decomposition tree</strong> drill-downs</li>
+              <li>📌 Tooltips, bookmarks &amp; smooth UX</li>
+            </ul>
+            <p><strong>Tools:</strong> Power BI, DAX, Power Query</p>
+            <a class="btn" href="https://youtu.be/nTnIzfF0yGw" target="_blank" rel="noopener noreferrer">▶ Watch Demo</a>
+          </div>
+        </article>
 
-    <div class="projects-grid">
+        <!-- Project 2 -->
+        <article class="project-card">
+          <picture>
+            <source srcset="images/nova.avif" type="image/avif">
+            <source srcset="images/nova.webp" type="image/webp">
+            <img class="project-media" src="images/nova.png" alt="Excel dashboard for NovaTech Distributors highlighting sales KPIs" width="1200" height="675" loading="lazy" decoding="async">
+          </picture>
+          <div class="project-card-content">
+            <h3>NovaTech Distributors — Sales Dashboard</h3>
+            <p>Excel dashboard surfacing sales gaps, product performance, and segmentation.</p>
+            <ul>
+              <li>📊 KPIs: <strong>total sales</strong>, <strong>variance</strong>, <strong>% target met</strong></li>
+              <li>📈 Monthly &amp; regional trends</li>
+              <li>🏆 Product revenue ranking</li>
+              <li>🛍 Segments: <strong>Retail, Online, Wholesale</strong></li>
+            </ul>
+            <p>⚠ Only <strong>47%</strong> of targets met — triggered strategy changes.</p>
+            <a class="btn" href="https://www.loom.com/share/19461c0fd60b408a80d9675aa1ff0de2?sid=417d9f22-4104-4c15-ad32-c6a63c0a2911" target="_blank" rel="noopener noreferrer">▶ Watch Demo</a>
+          </div>
+        </article>
 
-      <div class="project-card">
-        <img src="images/Legoset Dashboard.png" alt="LEGO Dashboard Preview">
-        <div class="project-card-content">
-          <h3>LEGO Dashboard – Power BI (1970–2022)</h3>
-          <p>This dynamic Power BI dashboard analyzes LEGO set data from 1970 to 2022. It brings data storytelling to life using DAX, slicers, and clean visual design.</p>
-          <ul>
-            <li>🧱 Custom columns for <strong>Age</strong> and <strong>Price Categories</strong></li>
-            <li>📊 <strong>KPI Cards</strong>: Total Sets, Avg. Price, Piece Count</li>
-            <li>🎛 Interactive filters: Theme, Age, Price Range</li>
-            <li>🔍 <strong>Decomposition tree</strong> for deep drilldowns</li>
-            <li>📌 Tooltips, bookmarks & a smooth UX</li>
-          </ul>
-          <p>📌 <strong>Tools:</strong> Power BI, DAX, Power Query</p>
-          <a href="https://youtu.be/nTnIzfF0yGw" target="_blank">▶ Watch Demo</a>
-        </div>
+        <!-- Project 3 -->
+        <article class="project-card">
+          <picture>
+            <source srcset="images/uv.app.avif" type="image/avif">
+            <source srcset="images/uv.app.webp" type="image/webp">
+            <img class="project-media" src="images/uv.app.png" alt="Streamlit app UI for trimming UV-Vis spectrophotometer data" width="1200" height="675" loading="lazy" decoding="async">
+          </picture>
+          <div class="project-card-content">
+            <h3>UV-Vis Spectrophotometer Trimmer — Streamlit App</h3>
+            <p>End-to-end app for cleaning CARY 50 spectrophotometry data at scale.</p>
+            <ul>
+              <li>🧹 <strong>Data cleaning:</strong> convert, trim, wavelength filters</li>
+              <li>📁 <strong>Batch processing</strong> for 240+ samples</li>
+              <li>🌐 <strong>Streamlit</strong> for no-code usage</li>
+              <li>🧪 Reproducible lab workflows</li>
+            </ul>
+            <p><strong>Tools:</strong> Python, Pandas, Streamlit, Matplotlib</p>
+            <a class="btn" href="https://github.com/GabrielOyetunji/uvvis-spectrophotometer-app" target="_blank" rel="noopener noreferrer">📂 GitHub Repo</a>
+            <a class="btn" href="https://www.loom.com/share/e372774ab4f74a1db40446944c25fa72?sid=3b9c31a3-ab27-469c-ae60-fe394d46f401" target="_blank" rel="noopener noreferrer">▶ Watch Demo</a>
+          </div>
+        </article>
+
+        <!-- Project 4 -->
+        <article class="project-card">
+          <picture>
+            <source srcset="images/streamflow.avif" type="image/avif">
+            <source srcset="images/streamflow.webp" type="image/webp">
+            <img class="project-media" src="images/streamflow.png" alt="Excel churn & engagement dashboard for streaming platform StreamFlow" width="1200" height="675" loading="lazy" decoding="async">
+          </picture>
+          <div class="project-card-content">
+            <h3>StreamFlow — Churn &amp; Engagement Dashboard</h3>
+            <p>Excel dashboard to uncover behavioral churn drivers and engagement patterns.</p>
+            <ul>
+              <li>📊 Segmentation by <strong>age, region, plan</strong></li>
+              <li>📉 <strong>Churn rate</strong> by subscription group</li>
+              <li>📺 Watch time by <strong>device, content, plan</strong></li>
+              <li>⚠ Behavioral churn indicators</li>
+            </ul>
+            <p><strong>Tools:</strong> Excel (Pivots, Charts, Slicers)</p>
+            <a class="btn" href="https://youtu.be/QoNffMFlTXg" target="_blank" rel="noopener noreferrer">▶ Watch Demo</a>
+          </div>
+        </article>
       </div>
+    </section>
 
-      <div class="project-card">
-        <img src="images/nova.png" alt="NovaTech Dashboard Preview">
-        <div class="project-card-content">
-          <h3>NovaTech Distributors – Sales Dashboard</h3>
-          <p>NovaTech, a Canadian wholesaler, needed clear sales insights across four regions. This Excel dashboard revealed sales gaps, product performance, and customer segmentation.</p>
-          <ul>
-            <li>📊 Highlights KPIs: <strong>total sales</strong>, <strong>variance</strong>, <strong>% target met</strong></li>
-            <li>📈 Monthly & regional <strong>sales trends</strong></li>
-            <li>🏆 Product ranking by <strong>revenue</strong></li>
-            <li>🛍 Segments: <strong>Retail, Online, Wholesale</strong></li>
-          </ul>
-          <p>⚠ Only <strong>47%</strong> of targets were met — prompting strategic changes.</p>
-          <a href="https://www.loom.com/share/19461c0fd60b408a80d9675aa1ff0de2?sid=417d9f22-4104-4c15-ad32-c6a63c0a2911" target="_blank">▶ Watch Demo</a>
-        </div>
+    <section id="resume" aria-labelledby="resume-h">
+      <h2 id="resume-h">Résumé</h2>
+      <div class="resume-actions">
+        <a class="btn" href="resume/Gabriel_Oyetunji_Resume.pdf" target="_blank" rel="noopener noreferrer">📄 View</a>
+        <a class="btn" href="resume/Gabriel_Oyetunji_Resume.pdf" download>⬇ Download</a>
       </div>
+    </section>
 
-      <div class="project-card">
-        <img src="images/uv.app.png" alt="UV-Vis App Preview">
-        <div class="project-card-content">
-          <h3>UV-Vis Spectrophotometer Trimmer – Streamlit App</h3>
-          <p>Developed for a PhD researcher, this app processes messy CARY 50 spectrophotometry data and enables lab teams to clean and export datasets instantly.</p>
-          <ul>
-            <li>🧹 <strong>Data Cleaning:</strong> convert, trim, filter by wavelength</li>
-            <li>📁 <strong>Batch processing</strong> for 240+ samples</li>
-            <li>🌐 <strong>Streamlit Web App</strong> for no-code use</li>
-            <li>🧪 Reproducible workflows for researchers</li>
-          </ul>
-          <p>📌 <strong>Tools:</strong> Python, Pandas, Streamlit, Matplotlib</p>
-          <a href="https://github.com/GabrielOyetunji/uvvis-spectrophotometer-app" target="_blank">📂 GitHub Repo</a>
-          <a href="https://www.loom.com/share/e372774ab4f74a1db40446944c25fa72?sid=3b9c31a3-ab27-469c-ae60-fe394d46f401" target="_blank">▶ Watch Demo</a>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <img src="images/streamflow.png" alt="StreamFlow Dashboard Preview">
-        <div class="project-card-content">
-          <h3>StreamFlow – Churn & Engagement Dashboard</h3>
-          <p>StreamFlow, a new streaming platform, needed to reduce churn and improve engagement. This Excel dashboard reveals behavioral patterns and churn drivers.</p>
-          <ul>
-            <li>📊 User segmentation by <strong>age, region, plan</strong></li>
-            <li>📉 <strong>Churn rate</strong> by subscription group</li>
-            <li>📺 Watch time by <strong>device, content, plan</strong></li>
-            <li>⚠ Behavioral churn indicators</li>
-          </ul>
-          <p>📌 <strong>Tools:</strong> Excel (Pivot, Charts, Slicers)</p>
-          <a href="https://youtu.be/QoNffMFlTXg" target="_blank">▶ Watch Demo</a>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="resume-section" id="resume">
-      <h2>Résumé</h2>
-      <a href="resume/Gabriel_Oyetunji_Resume.pdf" target="_blank">📄 View</a>
-      <a href="resume/Gabriel_Oyetunji_Resume.pdf" download>⬇ Download</a>
-    </div>
-
-    <h2 id="contact">Contact</h2>
-    <p>
-      📧 <a href="mailto:gabrieloyetunji25@gmail.com">gabrieloyetunji25@gmail.com</a><br />
-      🔗 <a href="https://github.com/gabrieloyetunji" target="_blank">GitHub</a> |
-      <a href="https://linkedin.com/in/gabriel-oyetunji-a7aa9513b" target="_blank">LinkedIn</a>
-    </p>
-  </div>
+    <section id="contact" aria-labelledby="contact-h">
+      <h2 id="contact-h">Contact</h2>
+      <p>
+        📧 <a href="mailto:gabrieloyetunji25@gmail.com">gabrieloyetunji25@gmail.com</a><br>
+        🔗 <a href="https://github.com/gabrieloyetunji" target="_blank" rel="noopener noreferrer">GitHub</a> |
+        <a href="https://linkedin.com/in/gabriel-oyetunji-a7aa9513b" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </p>
+    </section>
+  </main>
 
   <footer>
     &copy; 2025 Gabriel Oyetunji. All rights reserved.
