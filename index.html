@@ -126,6 +126,29 @@
       html{scroll-behavior:auto}
       .project-card, .navbar{transition:none}
     }
+
+    /* --- Simple slider (inside project cards) --- */
+    .slider{
+      position:relative; overflow:hidden; border-radius:var(--radius);
+      border:1px solid rgba(255,255,255,.06); background:rgba(0,0,0,.25)
+    }
+    .slides{display:flex; transition:transform .35s ease; will-change:transform}
+    .slide{min-width:100%; user-select:none}
+    .slide picture, .slide img{display:block; width:100%; height:auto}
+    .slider-btn{
+      position:absolute; top:50%; transform:translateY(-50%);
+      background:rgba(0,0,0,.5); border:1px solid #444; color:#fff;
+      width:36px; height:36px; border-radius:999px; display:grid;
+      place-items:center; cursor:pointer; font-weight:700
+    }
+    .slider-btn:focus{outline:2px dashed var(--brand-2); outline-offset:3px}
+    .slider-btn:hover{background:rgba(0,0,0,.7)}
+    .slider-btn.prev{left:.5rem} .slider-btn.next{right:.5rem}
+    .slider-dots{display:flex; gap:.4rem; justify-content:center; padding:.5rem 0 .75rem}
+    .slider-dot{
+      width:8px; height:8px; border-radius:999px; background:#666; border:0; cursor:pointer
+    }
+    .slider-dot[aria-current="true"]{background:var(--brand)}
   </style>
 
   <!-- Structured data -->
@@ -302,6 +325,87 @@
             <a class="btn" href="https://youtu.be/QoNffMFlTXg" target="_blank" rel="noopener noreferrer">▶ Watch Demo</a>
           </div>
         </article>
+
+        <!-- Project 5: CNN Multi-Task Model with Gallery -->
+        <article class="project-card">
+          <!-- Slider -->
+          <div class="slider" data-slider id="cnn-slider" aria-label="CNN results gallery">
+            <div class="slides" role="group" aria-roledescription="slides">
+              <!-- Slide 1: Confusion Matrix -->
+              <div class="slide" aria-label="1 of 6">
+                <picture>
+                  <source srcset="images/confusion_matrix.avif" type="image/avif">
+                  <source srcset="images/confusion_matrix.webp" type="image/webp">
+                  <img class="project-media" src="images/confusion_matrix.png"
+                       alt="Confusion matrix for fruit and vegetable classification"
+                       width="1200" height="675" loading="lazy" decoding="async">
+                </picture>
+              </div>
+              <!-- Slide 2: Accuracy curve -->
+              <div class="slide" aria-label="2 of 6">
+                <img class="project-media" src="images/acc_curve.png"
+                     alt="Training and validation accuracy over epochs"
+                     width="1200" height="675" loading="lazy" decoding="async">
+              </div>
+              <!-- Slide 3: MAE curve -->
+              <div class="slide" aria-label="3 of 6">
+                <img class="project-media" src="images/mae_curve.png"
+                     alt="Price MAE over epochs"
+                     width="1200" height="675" loading="lazy" decoding="async">
+              </div>
+              <!-- Slide 4: RMSE curve -->
+              <div class="slide" aria-label="4 of 6">
+                <img class="project-media" src="images/rmse_curve.png"
+                     alt="Price RMSE over epochs"
+                     width="1200" height="675" loading="lazy" decoding="async">
+              </div>
+              <!-- Slide 5: Grad-CAM (classification) -->
+              <div class="slide" aria-label="5 of 6">
+                <img class="project-media" src="images/gradcam_class.png"
+                     alt="Grad-CAM heatmap highlighting image regions used for classification"
+                     width="1200" height="675" loading="lazy" decoding="async">
+              </div>
+              <!-- Slide 6: Grad-CAM (price) -->
+              <div class="slide" aria-label="6 of 6">
+                <img class="project-media" src="images/gradcam_price.png"
+                     alt="Grad-CAM heatmap highlighting regions related to price prediction"
+                     width="1200" height="675" loading="lazy" decoding="async">
+              </div>
+            </div>
+
+            <!-- Controls -->
+            <button class="slider-btn prev" aria-label="Previous slide" data-prev>&lt;</button>
+            <button class="slider-btn next" aria-label="Next slide" data-next>&gt;</button>
+
+            <!-- Dots -->
+            <div class="slider-dots" role="tablist" aria-label="Slide thumbnails">
+              <button class="slider-dot" role="tab" aria-controls="cnn-slider" aria-label="Go to slide 1" aria-current="true" data-dot="0"></button>
+              <button class="slider-dot" role="tab" aria-controls="cnn-slider" aria-label="Go to slide 2" data-dot="1"></button>
+              <button class="slider-dot" role="tab" aria-controls="cnn-slider" aria-label="Go to slide 3" data-dot="2"></button>
+              <button class="slider-dot" role="tab" aria-controls="cnn-slider" aria-label="Go to slide 4" data-dot="3"></button>
+              <button class="slider-dot" role="tab" aria-controls="cnn-slider" aria-label="Go to slide 5" data-dot="4"></button>
+              <button class="slider-dot" role="tab" aria-controls="cnn-slider" aria-label="Go to slide 6" data-dot="5"></button>
+            </div>
+          </div>
+
+          <!-- Text content -->
+          <div class="project-card-content">
+            <h3>Product Classification &amp; Price Prediction — CNN Model</h3>
+            <p>
+              Multi-task deep learning model that classifies fruits/vegetables, predicts retail price, 
+              and generates embeddings for image retrieval—all in one network.
+            </p>
+            <ul>
+              <li>🖼 <strong>Dataset:</strong> curated fruits/vegetables + price CSV (alias mapping + masking)</li>
+              <li>🤖 <strong>Architecture:</strong> shared CNN trunk + classification &amp; regression heads</li>
+              <li>📊 <strong>Results:</strong> 97.21% accuracy • MAE 0.243 • RMSE 0.303 • Retrieval@5 0.992</li>
+              <li>🔍 <strong>Explainability:</strong> Grad-CAM heatmaps</li>
+            </ul>
+            <p><strong>Tools:</strong> Python, TensorFlow/Keras, Google Colab</p>
+            <!-- Keep only Colab link -->
+            <a class="btn" href="YOUR_COLAB_LINK_HERE" target="_blank" rel="noopener noreferrer">▶ View Colab</a>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -326,5 +430,52 @@
   <footer>
     &copy; 2025 Gabriel Oyetunji. All rights reserved.
   </footer>
+
+  <!-- Minimal slider JS -->
+  <script>
+  (function(){
+    function initSlider(root){
+      const slidesWrap = root.querySelector('.slides');
+      const slides = Array.from(root.querySelectorAll('.slide'));
+      const prevBtn = root.querySelector('[data-prev]');
+      const nextBtn = root.querySelector('[data-next]');
+      const dots = Array.from(root.querySelectorAll('[data-dot]'));
+      let index = 0;
+
+      function update(){
+        slidesWrap.style.transform = 'translateX(' + (index * -100) + '%)';
+        dots.forEach((d,i)=> d.setAttribute('aria-current', i===index ? 'true':'false'));
+      }
+      function go(i){
+        index = Math.max(0, Math.min(i, slides.length-1));
+        update();
+      }
+
+      if (prevBtn) prevBtn.addEventListener('click', ()=> go(index-1));
+      if (nextBtn) nextBtn.addEventListener('click', ()=> go(index+1));
+      dots.forEach(d=> d.addEventListener('click', ()=> go(parseInt(d.dataset.dot,10))));
+      root.addEventListener('keydown', e=>{
+        if(e.key==='ArrowLeft'){go(index-1)}
+        if(e.key==='ArrowRight'){go(index+1)}
+      });
+
+      // Swipe (mobile)
+      let sx=0, dx=0;
+      slidesWrap.addEventListener('touchstart', e=> sx = e.touches[0].clientX, {passive:true});
+      slidesWrap.addEventListener('touchmove', e=> dx = e.touches[0].clientX, {passive:true});
+      slidesWrap.addEventListener('touchend', ()=>{
+        if (sx && dx){
+          const delta = dx - sx;
+          if (Math.abs(delta) > 40) delta>0 ? go(index-1) : go(index+1);
+        }
+        sx = dx = 0;
+      });
+
+      update();
+    }
+
+    document.querySelectorAll('[data-slider]').forEach(initSlider);
+  })();
+  </script>
 </body>
 </html>
