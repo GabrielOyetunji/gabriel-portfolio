@@ -96,7 +96,7 @@
     }
     .project-card:hover{transform:translateY(-3px); box-shadow:0 0 20px rgba(0,188,212,.35)}
     .project-media{display:block; width:100%; height:auto}
-    video.project-media{max-height:680px; object-fit:cover}
+    video.project-media{max-height:680px; object-fit:cover; cursor:pointer}
 
     .project-card-content{padding:1rem 1.2rem 1.25rem}
     .project-card h3{font-size:1.2rem; margin:.25rem 0 .5rem}
@@ -126,6 +126,31 @@
     @media (prefers-reduced-motion: reduce){
       html{scroll-behavior:auto}
       .project-card, .navbar{transition:none}
+    }
+
+    /* --- Lightbox modal for video --- */
+    .modal{
+      position:fixed; inset:0; display:none; z-index:9999;
+      background:rgba(0,0,0,.85); align-items:center; justify-content:center;
+      padding:1rem;
+    }
+    .modal.open{display:flex}
+    .modal-inner{
+      width:min(1100px, 95vw);
+      max-height:90vh; background:#000; border-radius:12px;
+      overflow:hidden; box-shadow:0 10px 40px rgba(0,0,0,.6);
+      position:relative;
+    }
+    .modal video{width:100%; height:auto; display:block; background:#000}
+    .modal-close{
+      position:absolute; top:.5rem; right:.5rem;
+      background:rgba(255,255,255,.1); color:#fff; border:1px solid #666;
+      width:36px; height:36px; border-radius:999px; display:grid; place-items:center;
+      cursor:pointer; font-size:18px; font-weight:700
+    }
+    .modal-close:hover{background:rgba(255,255,255,.2)}
+    .modal-caption{
+      color:#ddd; font-size:.9rem; padding:.6rem .9rem .8rem; background:#0a0a0a; border-top:1px solid #222
     }
   </style>
 
@@ -304,17 +329,20 @@
           </div>
         </article>
 
-        <!-- Project 5: CNN Multi-Task (Video preview) -->
+        <!-- Project 5: CNN Multi-Task (Video preview with lightbox) -->
         <article class="project-card">
-          <video class="project-media"
-                 src="images/CNN.mp4"
-                 type="video/mp4"
-                 autoplay
-                 muted
-                 loop
-                 playsinline
-                 preload="metadata"
-                 poster="images/cnn_poster.jpg">
+          <video
+            class="project-media"
+            id="cnn-thumb"
+            src="images/CNN.mp4"
+            type="video/mp4"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            poster="images/cnn_poster.jpg"
+            aria-label="Preview video of CNN project. Click to enlarge.">
             Your browser does not support the video tag.
           </video>
           <div class="project-card-content">
@@ -330,7 +358,8 @@
               <li>🔍 <strong>Explainability:</strong> Grad-CAM heatmaps</li>
             </ul>
             <p><strong>Tools:</strong> Python, TensorFlow/Keras, Google Colab</p>
-            <a class="btn" href="YOUR_COLAB_LINK_HERE" target="_blank" rel="noopener noreferrer">▶ View Colab</a>
+            <!-- View GitHub (as requested) -->
+            <a class="btn" href="https://github.com/GabrielOyetunji/cnn-fruits-price-app" target="_blank" rel="noopener noreferrer">📂 View GitHub</a>
           </div>
         </article>
       </div>
@@ -357,5 +386,58 @@
   <footer>
     &copy; 2025 Gabriel Oyetunji. All rights reserved.
   </footer>
+
+  <!-- Lightbox modal -->
+  <div class="modal" id="cnn-modal" aria-hidden="true" role="dialog" aria-labelledby="cnn-modal-title">
+    <div class="modal-inner">
+      <button class="modal-close" type="button" aria-label="Close video" id="cnn-close">✕</button>
+      <video id="cnn-full" src="images/CNN.mp4" controls playsinline preload="metadata" poster="images/cnn_poster.jpg"></video>
+      <div class="modal-caption" id="cnn-modal-title">Product Classification & Price Prediction — Full Preview</div>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const thumb = document.getElementById('cnn-thumb');
+      const modal = document.getElementById('cnn-modal');
+      const closeBtn = document.getElementById('cnn-close');
+      const fullVideo = document.getElementById('cnn-full');
+
+      function openModal(){
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+        // start from beginning (optional)
+        try { fullVideo.currentTime = 0; } catch(e){}
+        fullVideo.play().catch(()=>{ /* autoplay might be blocked; controls available */ });
+        // trap focus
+        closeBtn.focus();
+        document.body.style.overflow = 'hidden';
+      }
+      function closeModal(){
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden', 'true');
+        fullVideo.pause();
+        document.body.style.overflow = '';
+        // return focus to thumbnail
+        thumb.focus();
+      }
+
+      // Open on click / Enter
+      thumb.addEventListener('click', openModal);
+      thumb.setAttribute('tabindex','0');
+      thumb.addEventListener('keydown', (e)=>{
+        if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openModal(); }
+      });
+
+      // Close handlers
+      closeBtn.addEventListener('click', closeModal);
+      modal.addEventListener('click', (e)=>{
+        if(e.target === modal) closeModal();
+      });
+      document.addEventListener('keydown', (e)=>{
+        if(e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+      });
+    })();
+  </script>
 </body>
 </html>
