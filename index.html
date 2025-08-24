@@ -6,12 +6,12 @@
   <title>Gabriel Oyetunji — Data Analyst Portfolio</title>
   <meta name="description" content="Portfolio of Gabriel Oyetunji, Data Analyst — projects in Excel, Power BI, Python, and Streamlit." />
 
-  <!-- Performance: fonts -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
-  <!-- Sharing -->
+  <!-- Social Sharing -->
   <meta property="og:title" content="Gabriel Oyetunji — Data Analyst Portfolio">
   <meta property="og:description" content="Projects in Excel, Power BI, Python, and Streamlit.">
   <meta property="og:type" content="website">
@@ -95,7 +95,8 @@
       border:1px solid rgba(255,255,255,.06);
     }
     .project-card:hover{transform:translateY(-3px); box-shadow:0 0 20px rgba(0,188,212,.35)}
-    .project-media{display:block; width:100%; height:auto} /* applies to img OR video */
+    .project-media{display:block; width:100%; height:auto}
+    video.project-media{max-height:680px; object-fit:cover}
 
     .project-card-content{padding:1rem 1.2rem 1.25rem}
     .project-card h3{font-size:1.2rem; margin:.25rem 0 .5rem}
@@ -303,20 +304,24 @@
           </div>
         </article>
 
-        <!-- Project 5: CNN Multi-Task Model — Autoplay Video -->
+        <!-- Project 5: CNN Multi-Task (Video preview) -->
         <article class="project-card">
-          <!-- Autoplaying/looping, muted (required for autoplay), inline on mobile -->
-          <video class="project-media" src="videos/CNN.mp4" poster="images/cnn_poster.jpg"
-                 autoplay loop muted playsinline controls
-                 width="1200" height="675">
-            Sorry, your browser doesn’t support embedded videos.
+          <video class="project-media"
+                 src="images/CNN.mp4"
+                 type="video/mp4"
+                 autoplay
+                 muted
+                 loop
+                 playsinline
+                 preload="metadata"
+                 poster="images/cnn_poster.jpg">
+            Your browser does not support the video tag.
           </video>
-
           <div class="project-card-content">
             <h3>Product Classification &amp; Price Prediction — CNN Model</h3>
             <p>
               Multi-task deep learning model that classifies fruits/vegetables, predicts retail price,
-              and generates embeddings for image retrieval — all in one network.
+              and generates embeddings for image retrieval—all in one network.
             </p>
             <ul>
               <li>🖼 <strong>Dataset:</strong> curated fruits/vegetables + price CSV (alias mapping + masking)</li>
@@ -325,7 +330,6 @@
               <li>🔍 <strong>Explainability:</strong> Grad-CAM heatmaps</li>
             </ul>
             <p><strong>Tools:</strong> Python, TensorFlow/Keras, Google Colab</p>
-            <!-- Keep only Colab link -->
             <a class="btn" href="YOUR_COLAB_LINK_HERE" target="_blank" rel="noopener noreferrer">▶ View Colab</a>
           </div>
         </article>
