@@ -3,441 +3,1025 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Gabriel Oyetunji — Data Analyst Portfolio</title>
-  <meta name="description" content="Portfolio of Gabriel Oyetunji, Data Analyst — projects in Excel, Power BI, Python, and Streamlit." />
+  <title>Gabriel Oyetunji — Data Scientist</title>
+  <meta name="description" content="Data Scientist specializing in Machine Learning, Computer Vision, and Data Analytics. Building AI systems and delivering insights from data." />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-
-  <!-- Social Sharing -->
-  <meta property="og:title" content="Gabriel Oyetunji — Data Analyst Portfolio">
-  <meta property="og:description" content="Projects in Excel, Power BI, Python, and Streamlit.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://gabriel-portfolio-orpin.vercel.app/">
-  <meta property="og:image" content="images/og-cover.jpg">
-  <meta name="twitter:card" content="summary_large_image">
-
-  <link rel="canonical" href="https://gabriel-portfolio-orpin.vercel.app/">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
-    :root{
-      --bg:#0f0f0f; --surface:#121212; --surface-2:#1a1a1a;
-      --text:#f1f1f1; --muted:#bdbdbd; --subtle:#cccccc;
-      --brand:#00bcd4; --brand-2:#26c6da; --border:#222;
-      --radius:12px; --space:1rem; --shadow:0 8px 24px rgba(0,0,0,.5);
+    :root {
+      --bg: #0a0a0a;
+      --surface: #111111;
+      --surface-elevated: #1a1a1a;
+      --text-primary: #ffffff;
+      --text-secondary: #a0a0a0;
+      --text-muted: #707070;
+      --accent-primary: #3b82f6;
+      --accent-secondary: #60a5fa;
+      --accent-success: #10b981;
+      --border: rgba(255, 255, 255, 0.1);
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+      --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);
+      --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.6);
+      --radius: 12px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    html{scroll-behavior:smooth}
-    body{
-      margin:0; font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      background:var(--bg); color:var(--text);
-      text-rendering:optimizeLegibility; -webkit-font-smoothing:antialiased;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    /* Skip link */
-    .skip-link{
-      position:absolute; left:-999px; top:auto; width:1px; height:1px; overflow:hidden;
-    }
-    .skip-link:focus{
-      left:1rem; top:1rem; width:auto; height:auto; padding:.5rem .75rem;
-      background:#000; color:#fff; border-radius:.5rem; z-index:10000;
-      outline:2px solid var(--brand);
+    html {
+      scroll-behavior: smooth;
     }
 
-    /* Navbar */
-    .navbar{
-      position:sticky; top:0; z-index:999;
-      background:var(--surface); border-bottom:1px solid var(--border);
-      box-shadow:0 2px 4px rgba(0,0,0,.5);
-      backdrop-filter:saturate(120%) blur(6px);
-    }
-    .navbar-container{
-      max-width:1100px; margin:0 auto; padding:.8rem 1rem;
-      display:flex; justify-content:center; gap:2rem; flex-wrap:wrap;
-    }
-    .navbar a{
-      color:var(--brand); text-decoration:none; font-weight:600; font-size:.95rem;
-      line-height:2.2rem; position:relative;
-    }
-    .navbar a:focus{outline:2px dashed var(--brand-2); outline-offset:3px}
-    .navbar a:hover{color:var(--brand-2)}
-
-    header{
-      text-align:center; padding:2.5rem 1rem 1rem;
-    }
-    .avatar{
-      width:120px; height:120px; border-radius:50%; object-fit:cover;
-      box-shadow:0 4px 16px rgba(0,0,0,.5);
-    }
-    h1{font-size:2.25rem; margin:.8rem 0 .2rem}
-    .tagline{color:var(--subtle); margin:.25rem 0 .5rem}
-
-    .container{max-width:1100px; margin:0 auto; padding:2rem 1rem}
-    h2{
-      font-size:1.6rem; margin:3rem 0 1rem; display:inline-block;
-      border-bottom:2px solid #444; padding-bottom:.25rem;
-    }
-    p{line-height:1.7; color:var(--subtle)}
-
-    /* Lists */
-    .list{padding-left:1.2rem; line-height:1.8}
-    .list li{margin:.2rem 0}
-
-    /* Projects */
-    .projects-grid{
-      display:grid; gap:2rem; grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-    }
-    .project-card{
-      background:rgba(26,26,26,.7); border-radius:var(--radius); overflow:hidden;
-      box-shadow:var(--shadow); transition:transform .25s ease, box-shadow .25s ease;
-      border:1px solid rgba(255,255,255,.06);
-    }
-    .project-card:hover{transform:translateY(-3px); box-shadow:0 0 20px rgba(0,188,212,.35)}
-    .project-media{display:block; width:100%; height:auto}
-    video.project-media{max-height:680px; object-fit:cover; cursor:pointer}
-
-    .project-card-content{padding:1rem 1.2rem 1.25rem}
-    .project-card h3{font-size:1.2rem; margin:.25rem 0 .5rem}
-    .project-card p{font-size:.95rem; color:var(--subtle); margin:.6rem 0 1rem}
-    .project-card ul{padding-left:1.2rem; margin:.5rem 0 1rem; color:var(--subtle)}
-    .btn{
-      display:inline-block; padding:.38rem .8rem; margin:.25rem .5rem .25rem 0;
-      border-radius:6px; font-weight:600; font-size:.85rem; text-decoration:none;
-      border:1px solid var(--brand); color:var(--brand); background:transparent;
-      transition:background .25s ease, color .25s ease, transform .1s ease;
-    }
-    .btn:hover{background:var(--brand); color:#000}
-    .btn:active{transform:translateY(1px)}
-    .btn:focus{outline:2px dashed var(--brand-2); outline-offset:3px}
-
-    /* Resume */
-    .resume-actions{margin-top:.5rem}
-
-    /* Footer */
-    footer{ text-align:center; font-size:.9rem; margin:3.5rem 0 2rem; color:#aaa }
-
-    /* Links */
-    a{color:var(--brand)}
-    a:hover{color:var(--brand-2)}
-
-    /* Motion preferences */
-    @media (prefers-reduced-motion: reduce){
-      html{scroll-behavior:auto}
-      .project-card, .navbar{transition:none}
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* --- Lightbox modal for video --- */
-    .modal{
-      position:fixed; inset:0; display:none; z-index:9999;
-      background:rgba(0,0,0,.85); align-items:center; justify-content:center;
-      padding:1rem;
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 20px;
+      z-index: 10000;
     }
-    .modal.open{display:flex}
-    .modal-inner{
-      width:min(1100px, 95vw);
-      max-height:90vh; background:#000; border-radius:12px;
-      overflow:hidden; box-shadow:0 10px 40px rgba(0,0,0,.6);
-      position:relative;
+    .skip-link:focus {
+      left: 20px;
+      padding: 12px 20px;
+      background: var(--accent-primary);
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
     }
-    .modal video{width:100%; height:auto; display:block; background:#000}
-    .modal-close{
-      position:absolute; top:.5rem; right:.5rem;
-      background:rgba(255,255,255,.1); color:#fff; border:1px solid #666;
-      width:36px; height:36px; border-radius:999px; display:grid; place-items:center;
-      cursor:pointer; font-size:18px; font-weight:700
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(10, 10, 10, 0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
     }
-    .modal-close:hover{background:rgba(255,255,255,.2)}
-    .modal-caption{
-      color:#ddd; font-size:.9rem; padding:.6rem .9rem .8rem; background:#0a0a0a; border-top:1px solid #222
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-primary);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent-primary);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Hero */
+    .hero {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 6rem 2rem 4rem;
+      text-align: center;
+    }
+
+    .avatar {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--accent-primary);
+      box-shadow: 0 0 40px rgba(59, 130, 246, 0.3);
+      margin-bottom: 2rem;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero .subtitle {
+      font-size: 1.5rem;
+      color: var(--accent-primary);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .hero .tagline {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      line-height: 1.8;
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent-primary);
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .hero-cta {
+      margin-top: 2rem;
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--accent-primary);
+      color: white;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-secondary);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 2px solid var(--accent-primary);
+      color: var(--accent-primary);
+    }
+
+    .btn-secondary:hover {
+      background: var(--accent-primary);
+      color: white;
+    }
+
+    .btn-sm {
+      padding: 0.5rem 1rem;
+      font-size: 0.85rem;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    section {
+      margin-bottom: 5rem;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: var(--accent-primary);
+      border-radius: 2px;
+    }
+
+    .section-subtitle {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      margin-top: 1rem;
+    }
+
+    /* About */
+    .about-content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .about-content p {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      line-height: 1.9;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Certifications */
+    .certs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .cert-card {
+      background: var(--surface-elevated);
+      padding: 2rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    .cert-card:hover {
+      border-color: var(--accent-primary);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .cert-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .cert-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+    }
+
+    .cert-issuer {
+      color: var(--accent-primary);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .cert-date {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* Featured Projects */
+    .projects-featured {
+      display: grid;
+      gap: 3rem;
+      margin-bottom: 4rem;
+    }
+
+    .project-featured {
+      background: var(--surface-elevated);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border);
+      transition: var(--transition);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .project-featured:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--accent-primary);
+    }
+
+    .project-featured:nth-child(even) {
+      direction: rtl;
+    }
+
+    .project-featured:nth-child(even) .project-content {
+      direction: ltr;
+    }
+
+    .project-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      min-height: 400px;
+    }
+
+    .project-content {
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .project-tag {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      background: rgba(59, 130, 246, 0.1);
+      color: var(--accent-primary);
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 1rem;
+      align-self: flex-start;
+    }
+
+    .project-featured h3 {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .project-featured p {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+
+    .project-stats {
+      display: flex;
+      gap: 2rem;
+      margin: 1.5rem 0;
+      flex-wrap: wrap;
+    }
+
+    .project-stat-value {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent-success);
+    }
+
+    .project-stat-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .project-tech {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin: 1.5rem 0;
+    }
+
+    .tech-tag {
+      padding: 0.4rem 0.8rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+
+    .project-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    /* Regular Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: var(--surface-elevated);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+      transition: var(--transition);
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: rgba(59, 130, 246, 0.5);
+    }
+
+    .project-card-image {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .project-card-content {
+      padding: 1.5rem;
+    }
+
+    .project-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .project-card p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .skill-category {
+      background: var(--surface-elevated);
+      padding: 2rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+
+    .skill-category h3 {
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+      color: var(--accent-primary);
+    }
+
+    .skill-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .skill-list li {
+      color: var(--text-secondary);
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .skill-list li::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: var(--accent-primary);
+      font-weight: bold;
+    }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .contact-card {
+      background: var(--surface-elevated);
+      padding: 2rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    .contact-card:hover {
+      border-color: var(--accent-primary);
+      transform: translateY(-4px);
+    }
+
+    .contact-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .contact-card h3 {
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-card a {
+      color: var(--accent-primary);
+      text-decoration: none;
+      word-break: break-all;
+    }
+
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links {
+        gap: 1rem;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero .subtitle {
+        font-size: 1.2rem;
+      }
+
+      .hero-stats {
+        gap: 1.5rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .project-featured {
+        grid-template-columns: 1fr;
+      }
+
+      .project-featured:nth-child(even) {
+        direction: ltr;
+      }
+
+      .project-image {
+        min-height: 280px;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+      }
     }
   </style>
-
-  <!-- Structured data -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Person",
-    "name":"Gabriel Oyetunji",
-    "jobTitle":"Data Analyst",
-    "url":"https://gabriel-portfolio-orpin.vercel.app/",
-    "image":"https://gabriel-portfolio-orpin.vercel.app/images/profile.jpg",
-    "sameAs":[
-      "https://github.com/gabrieloyetunji",
-      "https://www.linkedin.com/in/gabriel-oyetunji-a7aa9513b"
-    ]
-  }
-  </script>
 </head>
 
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
 
-  <nav class="navbar" role="navigation" aria-label="Primary">
-    <div class="navbar-container">
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#resume">Résumé</a>
-      <a href="#contact">Contact</a>
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <a href="#" class="nav-logo">GO</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
     </div>
   </nav>
 
-  <header>
-    <picture>
-      <source srcset="images/profile.avif" type="image/avif">
-      <source srcset="images/profile.webp" type="image/webp">
-      <img class="avatar" src="images/profile.jpg" alt="Portrait of Gabriel Oyetunji" width="120" height="120" loading="eager" decoding="async">
-    </picture>
+  <!-- Hero -->
+  <section class="hero">
+    <img class="avatar" src="images/profile.jpg" alt="Gabriel Oyetunji" width="140" height="140" loading="eager">
     <h1>Gabriel Oyetunji</h1>
-    <p class="tagline">Data Analyst • Data Scientist</p>
-    <p class="tagline">📊 Turning raw data into sharp insights.</p>
-  </header>
+    <p class="subtitle">Data Scientist</p>
+    <p class="tagline">
+      Turning data into insights and building production ML systems. Specializing in Machine Learning, 
+      Computer Vision, and Data Analytics with 4+ years of experience.
+    </p>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-value">82.5%</span>
+        <span class="stat-label">Cancer Detection</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value">98.1%</span>
+        <span class="stat-label">Action Recognition</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value">5+</span>
+        <span class="stat-label">Projects Deployed</span>
+      </div>
+    </div>
+    <div class="hero-cta">
+      <a href="#projects" class="btn btn-primary">View Projects</a>
+      <a href="resume/Gabriel_Oyetunji_Resume.pdf" class="btn btn-secondary">Download Resume</a>
+    </div>
+  </section>
 
   <main id="main" class="container">
-    <section id="about" aria-labelledby="about-h">
-      <h2 id="about-h">About Me</h2>
-      <p>
-        I'm a Data Analyst &amp; Data Scientist with over 4 years of experience turning raw data into clear, actionable insights.
-        I specialize in Python, SQL, Power BI, and Excel to clean data, automate reporting, and build dashboards that empower smarter decisions.
-      </p>
-      <p>
-        I've contributed to projects across healthcare, NGOs, and tech—solving real-world problems with data. Skilled in data storytelling, stakeholder engagement, and remote collaboration.
-        Currently deepening expertise in machine learning, predictive analytics, and NLP (DataCamp Data Science Track).
-      </p>
+    <!-- About -->
+    <section id="about">
+      <div class="section-header">
+        <h2 class="section-title">About Me</h2>
+        <p class="section-subtitle">Data science • Machine learning • Analytics</p>
+      </div>
+      <div class="about-content">
+        <p>
+          I'm a Data Scientist with 4+ years of experience transforming raw data into actionable insights and 
+          building intelligent systems. My expertise spans <strong>machine learning</strong>, <strong>deep learning</strong>, 
+          <strong>data analytics</strong>, and <strong>business intelligence</strong>.
+        </p>
+        <p>
+          I specialize in <strong>Computer Vision</strong> and <strong>Medical AI</strong>, having deployed production systems 
+          for breast cancer detection (82.5% accuracy) and implemented cutting-edge Graph Neural Networks for human activity recognition. 
+          I bridge the gap between research and real-world applications.
+        </p>
+        <p>
+          My technical toolkit includes <strong>Python</strong> (TensorFlow, PyTorch, Pandas, Scikit-learn), <strong>SQL</strong>, 
+          <strong>Power BI</strong>, and cloud deployment platforms. I've contributed to projects in healthcare, NGOs, and tech—solving 
+          complex problems with data-driven solutions.
+        </p>
+      </div>
     </section>
 
-    <section id="skills" aria-labelledby="skills-h">
-      <h2 id="skills-h">Skills</h2>
-      <ul class="list">
-        <li>Data Cleaning &amp; Wrangling (Pandas, Excel)</li>
-        <li>Dashboard Design (Power BI, Excel)</li>
-        <li>Data Visualization &amp; Storytelling</li>
-        <li>Automation (Python scripting, Streamlit)</li>
-        <li>SQL for querying &amp; analysis</li>
-        <li>Statistical Analysis &amp; Hypothesis Testing</li>
-        <li>Machine Learning (scikit-learn, XGBoost)</li>
-        <li>Natural Language Processing (basics)</li>
-        <li>Model Evaluation &amp; Interpretability</li>
-      </ul>
+    <!-- Certifications -->
+    <section id="certifications">
+      <div class="section-header">
+        <h2 class="section-title">Certifications</h2>
+        <p class="section-subtitle">Continuous learning and professional development</p>
+      </div>
+      <div class="certs-grid">
+        <div class="cert-card">
+          <div class="cert-icon">🎓</div>
+          <h3>Data Scientist Professional</h3>
+          <p class="cert-issuer">DataCamp</p>
+          <p class="cert-date">2025</p>
+          <a href="#" class="btn btn-sm btn-secondary" style="margin-top: 1rem;">View Certificate</a>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon">📊</div>
+          <h3>Data Analyst Professional</h3>
+          <p class="cert-issuer">DataCamp</p>
+          <p class="cert-date">April 2025</p>
+          <a href="https://www.datacamp.com/certificate/DA0022509689479" target="_blank" class="btn btn-sm btn-secondary" style="margin-top: 1rem;">View Certificate</a>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon">🏅</div>
+          <h3>Certificate of Completion</h3>
+          <p class="cert-issuer">TEC Up</p>
+          <p class="cert-date">August 2025</p>
+          <a href="images/tecup_certificate.png" target="_blank" class="btn btn-sm btn-secondary" style="margin-top: 1rem;">View Certificate</a>
+        </div>
+      </div>
     </section>
 
-    <section aria-labelledby="certs-h">
-      <h2 id="certs-h">Certifications</h2>
-      <ul class="list">
-        <li>
-          <a href="https://www.datacamp.com/certificate/DA0022509689479" target="_blank" rel="noopener noreferrer">
-            ✅ Data Analyst — DataCamp (April 2025)
-          </a>
-        </li>
-        <li>
-          <a href="images/tecup_certificate.png" target="_blank" rel="noopener noreferrer">
-            🏅 Certificate of Completion — TEC Up (Aug 2025)
-          </a>
-        </li>
-      </ul>
-    </section>
+    <!-- Projects -->
+    <section id="projects">
+      <div class="section-header">
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-subtitle">Machine learning systems and data analytics solutions</p>
+      </div>
 
-    <section id="projects" aria-labelledby="projects-h">
-      <h2 id="projects-h">Projects</h2>
-
-      <div class="projects-grid">
-        <!-- Project 1 -->
-        <article class="project-card">
-          <picture>
-            <source srcset="images/Legoset Dashboard.avif" type="image/avif">
-            <source srcset="images/Legoset Dashboard.webp" type="image/webp">
-            <img class="project-media" src="images/Legoset Dashboard.png" alt="Power BI dashboard showing LEGO set trends and KPIs" width="1200" height="675" loading="lazy" decoding="async">
-          </picture>
-          <div class="project-card-content">
-            <h3>LEGO Dashboard — Power BI (1970–2022)</h3>
-            <p>Dynamic analysis of LEGO sets using DAX, slicers, and clean storytelling.</p>
-            <ul>
-              <li>🧱 Custom columns for <strong>Age</strong> &amp; <strong>Price Categories</strong></li>
-              <li>📊 KPI Cards: Total Sets, Avg. Price, Piece Count</li>
-              <li>🎛 Filters: Theme, Age, Price Range</li>
-              <li>🔍 <strong>Decomposition tree</strong> drill-downs</li>
-              <li>📌 Tooltips, bookmarks &amp; smooth UX</li>
-            </ul>
-            <p><strong>Tools:</strong> Power BI, DAX, Power Query</p>
-            <a class="btn" href="https://youtu.be/nTnIzfF0yGw" target="_blank" rel="noopener noreferrer">▶ Watch Demo</a>
-          </div>
-        </article>
-
-        <!-- Project 2 -->
-        <article class="project-card">
-          <picture>
-            <source srcset="images/nova.avif" type="image/avif">
-            <source srcset="images/nova.webp" type="image/webp">
-            <img class="project-media" src="images/nova.png" alt="Excel dashboard for NovaTech Distributors highlighting sales KPIs" width="1200" height="675" loading="lazy" decoding="async">
-          </picture>
-          <div class="project-card-content">
-            <h3>NovaTech Distributors — Sales Dashboard</h3>
-            <p>Excel dashboard surfacing sales gaps, product performance, and segmentation.</p>
-            <ul>
-              <li>📊 KPIs: <strong>total sales</strong>, <strong>variance</strong>, <strong>% target met</strong></li>
-              <li>📈 Monthly &amp; regional trends</li>
-              <li>🏆 Product revenue ranking</li>
-              <li>🛍 Segments: <strong>Retail, Online, Wholesale</strong></li>
-            </ul>
-            <p>⚠ Only <strong>47%</strong> of targets met — triggered strategy changes.</p>
-            <a class="btn" href="https://www.loom.com/share/19461c0fd60b408a80d9675aa1ff0de2?sid=417d9f22-4104-4c15-ad32-c6a63c0a2911" target="_blank" rel="noopener noreferrer">▶ Watch Demo</a>
-          </div>
-        </article>
-
-        <!-- Project 3 -->
-        <article class="project-card">
-          <picture>
-            <source srcset="images/uv.app.avif" type="image/avif">
-            <source srcset="images/uv.app.webp" type="image/webp">
-            <img class="project-media" src="images/uv.app.png" alt="Streamlit app UI for trimming UV-Vis spectrophotometer data" width="1200" height="675" loading="lazy" decoding="async">
-          </picture>
-          <div class="project-card-content">
-            <h3>UV-Vis Spectrophotometer Trimmer — Streamlit App</h3>
-            <p>End-to-end app for cleaning CARY 50 spectrophotometry data at scale.</p>
-            <ul>
-              <li>🧹 <strong>Data cleaning:</strong> convert, trim, wavelength filters</li>
-              <li>📁 <strong>Batch processing</strong> for 240+ samples</li>
-              <li>🌐 <strong>Streamlit</strong> for no-code usage</li>
-              <li>🧪 Reproducible lab workflows</li>
-            </ul>
-            <p><strong>Tools:</strong> Python, Pandas, Streamlit, Matplotlib</p>
-            <a class="btn" href="https://github.com/GabrielOyetunji/uvvis-spectrophotometer-app" target="_blank" rel="noopener noreferrer">📂 GitHub Repo</a>
-            <a class="btn" href="https://www.loom.com/share/e372774ab4f74a1db40446944c25fa72?sid=3b9c31a3-ab27-469c-ae60-fe394d46f401" target="_blank" rel="noopener noreferrer">▶ Watch Demo</a>
-          </div>
-        </article>
-
-        <!-- Project 4 -->
-        <article class="project-card">
-          <picture>
-            <source srcset="images/streamflow.avif" type="image/avif">
-            <source srcset="images/streamflow.webp" type="image/webp">
-            <img class="project-media" src="images/streamflow.png" alt="Excel churn & engagement dashboard for streaming platform StreamFlow" width="1200" height="675" loading="lazy" decoding="async">
-          </picture>
-          <div class="project-card-content">
-            <h3>StreamFlow — Churn &amp; Engagement Dashboard</h3>
-            <p>Excel dashboard to uncover behavioral churn drivers and engagement patterns.</p>
-            <ul>
-              <li>📊 Segmentation by <strong>age, region, plan</strong></li>
-              <li>📉 <strong>Churn rate</strong> by subscription group</li>
-              <li>📺 Watch time by <strong>device, content, plan</strong></li>
-              <li>⚠ Behavioral churn indicators</li>
-            </ul>
-            <p><strong>Tools:</strong> Excel (Pivots, Charts, Slicers)</p>
-            <a class="btn" href="https://youtu.be/QoNffMFlTXg" target="_blank" rel="noopener noreferrer">▶ Watch Demo</a>
-          </div>
-        </article>
-
-        <!-- Project 5: CNN Multi-Task (Video preview with lightbox) -->
-        <article class="project-card">
-          <video
-            class="project-media"
-            id="cnn-thumb"
-            src="images/CNN.mp4"
-            type="video/mp4"
-            autoplay
-            muted
-            loop
-            playsinline
-            preload="metadata"
-            poster="images/cnn_poster.jpg"
-            aria-label="Preview video of CNN project. Click to enlarge.">
-            Your browser does not support the video tag.
-          </video>
-          <div class="project-card-content">
-            <h3>Product Classification &amp; Price Prediction — CNN Model</h3>
+      <!-- Featured ML Projects -->
+      <div class="projects-featured">
+        <!-- Breast Cancer -->
+        <article class="project-featured">
+          <img src="images/breast-cancer-demo.png" alt="Breast Cancer Detection System" class="project-image" loading="lazy">
+          <div class="project-content">
+            <span class="project-tag">🔬 Medical AI • Deployed</span>
+            <h3>Breast Cancer Detection System</h3>
             <p>
-              Multi-task deep learning model that classifies fruits/vegetables, predicts retail price,
-              and generates embeddings for image retrieval—all in one network.
+              Production-ready deep learning system for detecting Invasive Ductal Carcinoma (IDC) in histopathology images. 
+              Deployed as interactive Streamlit application with Grad-CAM explainability for clinical transparency.
             </p>
-            <ul>
-              <li>🖼 <strong>Dataset:</strong> curated fruits/vegetables + price CSV (alias mapping + masking)</li>
-              <li>🤖 <strong>Architecture:</strong> shared CNN trunk + classification &amp; regression heads</li>
-              <li>📊 <strong>Results:</strong> 97.21% accuracy • MAE 0.243 • RMSE 0.303 • Retrieval@5 0.992</li>
-              <li>🔍 <strong>Explainability:</strong> Grad-CAM heatmaps</li>
-            </ul>
-            <p><strong>Tools:</strong> Python, TensorFlow/Keras, Google Colab</p>
-            <!-- View GitHub (as requested) -->
-            <a class="btn" href="https://github.com/GabrielOyetunji/cnn-fruits-price-app" target="_blank" rel="noopener noreferrer">📂 View GitHub</a>
+            <div class="project-stats">
+              <div class="project-stat">
+                <span class="project-stat-value">82.54%</span>
+                <span class="project-stat-label">Accuracy</span>
+              </div>
+              <div class="project-stat">
+                <span class="project-stat-value">84.49%</span>
+                <span class="project-stat-label">Sensitivity</span>
+              </div>
+              <div class="project-stat">
+                <span class="project-stat-value">277K</span>
+                <span class="project-stat-label">Images</span>
+              </div>
+            </div>
+            <div class="project-tech">
+              <span class="tech-tag">TensorFlow</span>
+              <span class="tech-tag">Keras</span>
+              <span class="tech-tag">Streamlit</span>
+              <span class="tech-tag">OpenCV</span>
+              <span class="tech-tag">Grad-CAM</span>
+            </div>
+            <div class="project-links">
+              <a href="https://breast-cancer-classifier-demo.streamlit.app" class="btn btn-primary btn-sm" target="_blank">🚀 Live Demo</a>
+              <a href="https://github.com/GabrielOyetunji/breast-cancer-classifier" class="btn btn-secondary btn-sm" target="_blank">📂 GitHub</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- ST-GCN -->
+        <article class="project-featured">
+          <img src="images/stgcn-confusion-matrices.png" alt="ST-GCN Confusion Matrices" class="project-image" loading="lazy">
+          <div class="project-content">
+            <span class="project-tag">🤸 Graph Neural Networks</span>
+            <h3>ST-GCN Human Interaction Recognition</h3>
+            <p>
+              Implemented Spatial-Temporal Graph Convolutional Networks for skeleton-based action recognition. 
+              Built and evaluated 9 model variants exploring multi-stream fusion, attention mechanisms, and transformers. 
+              Quantified 53% performance drop on unconstrained data.
+            </p>
+            <div class="project-stats">
+              <div class="project-stat">
+                <span class="project-stat-value">98.1%</span>
+                <span class="project-stat-label">Structured Data</span>
+              </div>
+              <div class="project-stat">
+                <span class="project-stat-value">45.9%</span>
+                <span class="project-stat-label">Unconstrained</span>
+              </div>
+              <div class="project-stat">
+                <span class="project-stat-value">9</span>
+                <span class="project-stat-label">Model Variants</span>
+              </div>
+            </div>
+            <div class="project-tech">
+              <span class="tech-tag">PyTorch</span>
+              <span class="tech-tag">PyTorch Geometric</span>
+              <span class="tech-tag">GNNs</span>
+              <span class="tech-tag">Transformers</span>
+            </div>
+            <div class="project-links">
+              <a href="https://colab.research.google.com/github/GabrielOyetunji/spatio-temporal-interaction-recognition/blob/main/Final__SBU_dataset.ipynb" class="btn btn-primary btn-sm" target="_blank">📓 Colab Demo</a>
+              <a href="https://github.com/GabrielOyetunji/spatio-temporal-interaction-recognition" class="btn btn-secondary btn-sm" target="_blank">📂 GitHub</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Other Projects -->
+      <h3 style="margin: 3rem 0 2rem; font-size: 1.75rem; text-align: center;">Other Projects</h3>
+      <div class="projects-grid">
+        <!-- CNN Multi-Task -->
+        <article class="project-card">
+          <img src="images/cnn-project.png" alt="CNN Multi-Task Model" class="project-card-image" loading="lazy">
+          <div class="project-card-content">
+            <span class="project-tag">🍎 Computer Vision</span>
+            <h3>Multi-Task CNN: Classification & Pricing</h3>
+            <p>
+              Deep learning model combining fruit/vegetable classification with price prediction and embedding generation for image retrieval.
+            </p>
+            <div class="project-stats" style="margin: 1rem 0;">
+              <div class="project-stat">
+                <span class="project-stat-value" style="font-size: 1.2rem;">97.21%</span>
+                <span class="project-stat-label">Accuracy</span>
+              </div>
+            </div>
+            <div class="project-tech" style="margin-bottom: 1rem;">
+              <span class="tech-tag">TensorFlow</span>
+              <span class="tech-tag">Keras</span>
+            </div>
+            <a href="https://github.com/GabrielOyetunji/cnn-fruits-price-app" class="btn btn-secondary btn-sm">📂 GitHub</a>
+          </div>
+        </article>
+
+        <!-- Power BI -->
+        <article class="project-card">
+          <img src="images/Legoset Dashboard.png" alt="LEGO Dashboard" class="project-card-image" loading="lazy">
+          <div class="project-card-content">
+            <span class="project-tag">📊 Business Intelligence</span>
+            <h3>LEGO Analytics Dashboard</h3>
+            <p>
+              Interactive Power BI dashboard analyzing 50+ years of LEGO data with DAX, custom visuals, and decomposition trees.
+            </p>
+            <div class="project-tech" style="margin: 1rem 0;">
+              <span class="tech-tag">Power BI</span>
+              <span class="tech-tag">DAX</span>
+            </div>
+            <a href="https://youtu.be/nTnIzfF0yGw" class="btn btn-secondary btn-sm" target="_blank">▶ Watch Demo</a>
+          </div>
+        </article>
+
+        <!-- Streamlit App -->
+        <article class="project-card">
+          <img src="images/uv.app.png" alt="UV-Vis Spectrophotometer App" class="project-card-image" loading="lazy">
+          <div class="project-card-content">
+            <span class="project-tag">🧪 Data Processing</span>
+            <h3>UV-Vis Spectrophotometer Trimmer</h3>
+            <p>
+              Streamlit app for batch processing spectrophotometry data. Handles 240+ samples with automated trimming and filtering.
+            </p>
+            <div class="project-tech" style="margin: 1rem 0;">
+              <span class="tech-tag">Streamlit</span>
+              <span class="tech-tag">Pandas</span>
+            </div>
+            <a href="https://github.com/GabrielOyetunji/uvvis-spectrophotometer-app" class="btn btn-secondary btn-sm">📂 GitHub</a>
+          </div>
+        </article>
+
+        <!-- Excel Dashboard -->
+        <article class="project-card">
+          <img src="images/nova.png" alt="NovaTech Dashboard" class="project-card-image" loading="lazy">
+          <div class="project-card-content">
+            <span class="project-tag">📈 Analytics</span>
+            <h3>NovaTech Sales Dashboard</h3>
+            <p>
+              Excel dashboard revealing sales gaps and product performance. Triggered strategy changes after identifying 47% target achievement.
+            </p>
+            <div class="project-tech" style="margin: 1rem 0;">
+              <span class="tech-tag">Excel</span>
+              <span class="tech-tag">Pivot Tables</span>
+            </div>
+            <a href="https://www.loom.com/share/19461c0fd60b408a80d9675aa1ff0de2" class="btn btn-secondary btn-sm" target="_blank">▶ Watch Demo</a>
+          </div>
+        </article>
+
+        <!-- StreamFlow -->
+        <article class="project-card">
+          <img src="images/streamflow.png" alt="StreamFlow Dashboard" class="project-card-image" loading="lazy">
+          <div class="project-card-content">
+            <span class="project-tag">📉 Churn Analysis</span>
+            <h3>StreamFlow Engagement Dashboard</h3>
+            <p>
+              Excel dashboard uncovering behavioral churn drivers and engagement patterns across user segments and content types.
+            </p>
+            <div class="project-tech" style="margin: 1rem 0;">
+              <span class="tech-tag">Excel</span>
+              <span class="tech-tag">Data Analysis</span>
+            </div>
+            <a href="https://youtu.be/QoNffMFlTXg" class="btn btn-secondary btn-sm" target="_blank">▶ Watch Demo</a>
           </div>
         </article>
       </div>
     </section>
 
-    <section id="resume" aria-labelledby="resume-h">
-      <h2 id="resume-h">Résumé</h2>
-      <div class="resume-actions">
-        <a class="btn" href="resume/Gabriel_Oyetunji_Resume.pdf" target="_blank" rel="noopener noreferrer">📄 View</a>
-        <a class="btn" href="resume/Gabriel_Oyetunji_Resume.pdf" download>⬇ Download</a>
+    <!-- Skills -->
+    <section id="skills">
+      <div class="section-header">
+        <h2 class="section-title">Technical Skills</h2>
+        <p class="section-subtitle">Tools and technologies I work with</p>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h3>🤖 Machine Learning</h3>
+          <ul class="skill-list">
+            <li>TensorFlow / Keras</li>
+            <li>PyTorch</li>
+            <li>Scikit-learn</li>
+            <li>Model Evaluation & Tuning</li>
+            <li>Feature Engineering</li>
+          </ul>
+        </div>
+
+        <div class="skill-category">
+          <h3>👁️ Computer Vision</h3>
+          <ul class="skill-list">
+            <li>Image Classification (CNNs)</li>
+            <li>Medical Image Analysis</li>
+            <li>Transfer Learning</li>
+            <li>OpenCV</li>
+            <li>Explainable AI (Grad-CAM)</li>
+          </ul>
+        </div>
+
+        <div class="skill-category">
+          <h3>📊 Data Analytics</h3>
+          <ul class="skill-list">
+            <li>Pandas & NumPy</li>
+            <li>Data Cleaning & Wrangling</li>
+            <li>Statistical Analysis</li>
+            <li>Hypothesis Testing</li>
+            <li>A/B Testing</li>
+          </ul>
+        </div>
+
+        <div class="skill-category">
+          <h3>📈 Business Intelligence</h3>
+          <ul class="skill-list">
+            <li>Power BI (DAX, Power Query)</li>
+            <li>Excel (Advanced, VBA)</li>
+            <li>Dashboard Design</li>
+            <li>Data Storytelling</li>
+            <li>KPI Development</li>
+          </ul>
+        </div>
+
+        <div class="skill-category">
+          <h3>💻 Programming & Tools</h3>
+          <ul class="skill-list">
+            <li>Python (Expert)</li>
+            <li>SQL</li>
+            <li>Git & GitHub</li>
+            <li>Jupyter Notebooks</li>
+            <li>Google Colab</li>
+          </ul>
+        </div>
+
+        <div class="skill-category">
+          <h3>🚀 Deployment</h3>
+          <ul class="skill-list">
+            <li>Streamlit</li>
+            <li>Streamlit Cloud</li>
+            <li>Model Deployment</li>
+            <li>REST APIs (basics)</li>
+            <li>CI/CD Basics</li>
+          </ul>
+        </div>
       </div>
     </section>
 
-    <section id="contact" aria-labelledby="contact-h">
-      <h2 id="contact-h">Contact</h2>
-      <p>
-        📧 <a href="mailto:gabrieloyetunji25@gmail.com">gabrieloyetunji25@gmail.com</a><br>
-        🔗 <a href="https://github.com/gabrieloyetunji" target="_blank" rel="noopener noreferrer">GitHub</a> |
-        <a href="https://linkedin.com/in/gabriel-oyetunji-a7aa9513b" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      </p>
+    <!-- Contact -->
+    <section id="contact">
+      <div class="section-header">
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="section-subtitle">Let's work together on data-driven solutions</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-icon">📧</div>
+          <h3>Email</h3>
+          <a href="mailto:gabrieloyetunji25@gmail.com">gabrieloyetunji25@gmail.com</a>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">💼</div>
+          <h3>LinkedIn</h3>
+          <a href="https://linkedin.com/in/gabriel-oyetunji-a7aa9513b" target="_blank">gabriel-oyetunji</a>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">🐙</div>
+          <h3>GitHub</h3>
+          <a href="https://github.com/gabrieloyetunji" target="_blank">gabrieloyetunji</a>
+        </div>
+      </div>
     </section>
   </main>
 
   <footer>
-    &copy; 2025 Gabriel Oyetunji. All rights reserved.
+    <p>&copy; 2025 Gabriel Oyetunji. Building intelligent systems with data.</p>
   </footer>
-
-  <!-- Lightbox modal -->
-  <div class="modal" id="cnn-modal" aria-hidden="true" role="dialog" aria-labelledby="cnn-modal-title">
-    <div class="modal-inner">
-      <button class="modal-close" type="button" aria-label="Close video" id="cnn-close">✕</button>
-      <video id="cnn-full" src="images/CNN.mp4" controls playsinline preload="metadata" poster="images/cnn_poster.jpg"></video>
-      <div class="modal-caption" id="cnn-modal-title">Product Classification & Price Prediction — Full Preview</div>
-    </div>
-  </div>
-
-  <script>
-    (function(){
-      const thumb = document.getElementById('cnn-thumb');
-      const modal = document.getElementById('cnn-modal');
-      const closeBtn = document.getElementById('cnn-close');
-      const fullVideo = document.getElementById('cnn-full');
-
-      function openModal(){
-        modal.classList.add('open');
-        modal.setAttribute('aria-hidden', 'false');
-        // start from beginning (optional)
-        try { fullVideo.currentTime = 0; } catch(e){}
-        fullVideo.play().catch(()=>{ /* autoplay might be blocked; controls available */ });
-        // trap focus
-        closeBtn.focus();
-        document.body.style.overflow = 'hidden';
-      }
-      function closeModal(){
-        modal.classList.remove('open');
-        modal.setAttribute('aria-hidden', 'true');
-        fullVideo.pause();
-        document.body.style.overflow = '';
-        // return focus to thumbnail
-        thumb.focus();
-      }
-
-      // Open on click / Enter
-      thumb.addEventListener('click', openModal);
-      thumb.setAttribute('tabindex','0');
-      thumb.addEventListener('keydown', (e)=>{
-        if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openModal(); }
-      });
-
-      // Close handlers
-      closeBtn.addEventListener('click', closeModal);
-      modal.addEventListener('click', (e)=>{
-        if(e.target === modal) closeModal();
-      });
-      document.addEventListener('keydown', (e)=>{
-        if(e.key === 'Escape' && modal.classList.contains('open')) closeModal();
-      });
-    })();
-  </script>
 </body>
 </html>
