@@ -340,7 +340,7 @@
       font-size: 0.9rem;
     }
 
-    /* Featured Projects */
+    /* Featured Projects - FIXED */
     .projects-featured {
       display: grid;
       gap: 3rem;
@@ -373,11 +373,20 @@
       direction: ltr;
     }
 
+    /* FIXED: Show full images without cropping */
     .project-image {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      min-height: 400px;
+      max-height: 450px;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+    }
+
+    .project-featured:nth-child(even) .project-image {
+      border-right: none;
+      border-left: 1px solid var(--border);
     }
 
     .project-content {
@@ -454,7 +463,7 @@
       flex-wrap: wrap;
     }
 
-    /* Regular Projects */
+    /* Regular Projects - FIXED */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -468,6 +477,8 @@
       box-shadow: var(--shadow-sm);
       border: 1px solid var(--border);
       transition: var(--transition);
+      display: flex;
+      flex-direction: column;
     }
 
     .project-card:hover {
@@ -476,14 +487,28 @@
       border-color: rgba(59, 130, 246, 0.5);
     }
 
-    .project-card-image {
+    /* FIXED: Show full images/videos without cropping */
+    .project-card-image,
+    .project-card-video {
       width: 100%;
-      height: 220px;
-      object-fit: cover;
+      max-height: 280px;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .project-card-video {
+      cursor: pointer;
+      min-height: 220px;
     }
 
     .project-card-content {
       padding: 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
     }
 
     .project-card h3 {
@@ -617,7 +642,13 @@
       }
 
       .project-image {
-        min-height: 280px;
+        max-height: 300px;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .project-featured:nth-child(even) .project-image {
+        border-left: none;
       }
 
       .projects-grid {
@@ -826,9 +857,19 @@
       <!-- Other Projects -->
       <h3 style="margin: 3rem 0 2rem; font-size: 1.75rem; text-align: center;">Other Projects</h3>
       <div class="projects-grid">
-        <!-- CNN Multi-Task -->
+        <!-- CNN Multi-Task - FIXED: Changed to video -->
         <article class="project-card">
-          <img src="images/cnn-project.png" alt="CNN Multi-Task Model" class="project-card-image" loading="lazy">
+          <video 
+            class="project-card-video" 
+            autoplay 
+            muted 
+            loop 
+            playsinline 
+            preload="metadata"
+            poster="images/cnn_poster.jpg">
+            <source src="images/CNN.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
           <div class="project-card-content">
             <span class="project-tag">🍎 Computer Vision</span>
             <h3>Multi-Task CNN: Classification & Pricing</h3>
