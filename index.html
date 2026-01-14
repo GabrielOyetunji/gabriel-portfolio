@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Gabriel Oyetunji — Data Scientist</title>
-  <meta name="description" content="Data Scientist specializing in Machine Learning, Computer Vision, and Data Analytics. Building AI systems and delivering insights from data." />
+  <title>Gabriel Oyetunji — Backend Python Developer</title>
+  <meta name="description" content="Backend Python Developer specializing in REST APIs, microservices, DevOps, and ML integration. Building scalable systems with FastAPI, Flask, PostgreSQL, and Docker." />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -294,53 +294,7 @@
       margin-bottom: 1.5rem;
     }
 
-    /* Certifications */
-    .certs-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .cert-card {
-      background: var(--surface-elevated);
-      padding: 2rem;
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-      text-align: center;
-      transition: var(--transition);
-    }
-
-    .cert-card:hover {
-      border-color: var(--accent-primary);
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-md);
-    }
-
-    .cert-icon {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
-
-    .cert-card h3 {
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
-      color: var(--text-primary);
-    }
-
-    .cert-issuer {
-      color: var(--accent-primary);
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-
-    .cert-date {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-
-    /* Featured Projects - FIXED */
+    /* Featured Projects */
     .projects-featured {
       display: grid;
       gap: 3rem;
@@ -373,8 +327,8 @@
       direction: ltr;
     }
 
-    /* FIXED: Show full images without cropping */
-    .project-image {
+    .project-image,
+    .project-video {
       width: 100%;
       max-height: 450px;
       height: auto;
@@ -384,7 +338,12 @@
       border-right: 1px solid var(--border);
     }
 
-    .project-featured:nth-child(even) .project-image {
+    .project-video {
+      min-height: 350px;
+    }
+
+    .project-featured:nth-child(even) .project-image,
+    .project-featured:nth-child(even) .project-video {
       border-right: none;
       border-left: 1px solid var(--border);
     }
@@ -463,7 +422,7 @@
       flex-wrap: wrap;
     }
 
-    /* Regular Projects - FIXED */
+    /* Regular Projects */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -487,7 +446,6 @@
       border-color: rgba(59, 130, 246, 0.5);
     }
 
-    /* FIXED: Show full images/videos without cropping */
     .project-card-image,
     .project-card-video {
       width: 100%;
@@ -615,6 +573,7 @@
     @media (max-width: 768px) {
       .nav-links {
         gap: 1rem;
+        font-size: 0.85rem;
       }
 
       .hero h1 {
@@ -641,13 +600,15 @@
         direction: ltr;
       }
 
-      .project-image {
+      .project-image,
+      .project-video {
         max-height: 300px;
         border-right: none;
         border-bottom: 1px solid var(--border);
       }
 
-      .project-featured:nth-child(even) .project-image {
+      .project-featured:nth-child(even) .project-image,
+      .project-featured:nth-child(even) .project-video {
         border-left: none;
       }
 
@@ -676,7 +637,6 @@
         <li><a href="#about">About</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#skills">Skills</a></li>
-        <li><a href="#certifications">Certifications</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
@@ -686,23 +646,23 @@
   <section class="hero">
     <img class="avatar" src="images/profile.jpg" alt="Gabriel Oyetunji" width="140" height="140" loading="eager">
     <h1>Gabriel Oyetunji</h1>
-    <p class="subtitle">Data Scientist</p>
+    <p class="subtitle">Backend Python Developer | DevOps | ML Engineer</p>
     <p class="tagline">
-      Turning data into insights and building production ML systems. Specializing in Machine Learning, 
-      Computer Vision, and Data Analytics with 4+ years of experience.
+      Building scalable REST APIs and production systems. Specialized in FastAPI, Flask, PostgreSQL, Docker, 
+      and ML integration with 4+ years of experience delivering end-to-end solutions.
     </p>
     <div class="hero-stats">
       <div class="stat">
-        <span class="stat-value">82.5%</span>
-        <span class="stat-label">Cancer Detection</span>
+        <span class="stat-value">3</span>
+        <span class="stat-label">Production APIs</span>
       </div>
       <div class="stat">
-        <span class="stat-value">98.1%</span>
-        <span class="stat-label">Action Recognition</span>
+        <span class="stat-value">2000+</span>
+        <span class="stat-label">Flights Managed</span>
       </div>
       <div class="stat">
-        <span class="stat-value">5+</span>
-        <span class="stat-label">Projects Deployed</span>
+        <span class="stat-value">400K+</span>
+        <span class="stat-label">Products Indexed</span>
       </div>
     </div>
     <div class="hero-cta">
@@ -716,55 +676,25 @@
     <section id="about">
       <div class="section-header">
         <h2 class="section-title">About Me</h2>
-        <p class="section-subtitle">Data science • Machine learning • Analytics</p>
+        <p class="section-subtitle">Backend development • DevOps • ML integration</p>
       </div>
       <div class="about-content">
         <p>
-          I'm a Data Scientist with 4+ years of experience transforming raw data into actionable insights and 
-          building intelligent systems. My expertise spans <strong>machine learning</strong>, <strong>deep learning</strong>, 
-          <strong>data analytics</strong>, and <strong>business intelligence</strong>.
+          I'm a <strong>Backend Python Developer</strong> with 4+ years of experience building scalable REST APIs, 
+          microservices, and production systems. I specialize in <strong>FastAPI</strong>, <strong>Flask</strong>, 
+          <strong>PostgreSQL</strong>, and <strong>Docker</strong> with a strong focus on clean architecture and best practices.
         </p>
         <p>
-          I specialize in <strong>Computer Vision</strong> and <strong>Medical AI</strong>, having deployed production systems 
-          for breast cancer detection (82.5% accuracy) and implemented cutting-edge Graph Neural Networks for human activity recognition. 
-          I bridge the gap between research and real-world applications.
+          My expertise spans the full backend stack—from <strong>database design</strong> and <strong>API development</strong> 
+          to <strong>Docker deployment</strong> and <strong>CI/CD pipelines</strong>. I've built production systems including 
+          a Nigerian flight booking API (2000+ flights), an AI-powered e-commerce platform (400k+ products), and enterprise 
+          task management systems with JWT authentication.
         </p>
         <p>
-          My technical toolkit includes <strong>Python</strong> (TensorFlow, PyTorch, Pandas, Scikit-learn), <strong>SQL</strong>, 
-          <strong>Power BI</strong>, and cloud deployment platforms. I've contributed to projects in healthcare, NGOs, and tech—solving 
-          complex problems with data-driven solutions.
+          Beyond backend development, I bring <strong>machine learning integration</strong> capabilities, having deployed 
+          Computer Vision and NLP systems in production. I bridge the gap between traditional backend engineering and 
+          modern AI-powered applications—building intelligent, scalable systems from end to end.
         </p>
-      </div>
-    </section>
-
-    <!-- Certifications -->
-    <section id="certifications">
-      <div class="section-header">
-        <h2 class="section-title">Certifications</h2>
-        <p class="section-subtitle">Continuous learning and professional development</p>
-      </div>
-      <div class="certs-grid">
-        <div class="cert-card">
-          <div class="cert-icon">🎓</div>
-          <h3>Data Scientist Professional</h3>
-          <p class="cert-issuer">DataCamp</p>
-          <p class="cert-date">2025</p>
-          <a href="#" class="btn btn-sm btn-secondary" style="margin-top: 1rem;">View Certificate</a>
-        </div>
-        <div class="cert-card">
-          <div class="cert-icon">📊</div>
-          <h3>Data Analyst Professional</h3>
-          <p class="cert-issuer">DataCamp</p>
-          <p class="cert-date">April 2025</p>
-          <a href="https://www.datacamp.com/certificate/DA0022509689479" target="_blank" class="btn btn-sm btn-secondary" style="margin-top: 1rem;">View Certificate</a>
-        </div>
-        <div class="cert-card">
-          <div class="cert-icon">🏅</div>
-          <h3>Certificate of Completion</h3>
-          <p class="cert-issuer">TEC Up</p>
-          <p class="cert-date">August 2025</p>
-          <a href="images/tecup_certificate.png" target="_blank" class="btn btn-sm btn-secondary" style="margin-top: 1rem;">View Certificate</a>
-        </div>
       </div>
     </section>
 
@@ -772,40 +702,159 @@
     <section id="projects">
       <div class="section-header">
         <h2 class="section-title">Featured Projects</h2>
-        <p class="section-subtitle">Machine learning systems and data analytics solutions</p>
+        <p class="section-subtitle">Production REST APIs and scalable backend systems</p>
       </div>
 
-      <!-- Featured ML Projects -->
+      <!-- Featured Backend Projects -->
       <div class="projects-featured">
-        <!-- Breast Cancer -->
+        <!-- Flight Booking API - #1 -->
         <article class="project-featured">
-          <img src="images/breast-cancer-demo.png" alt="Breast Cancer Detection System" class="project-image" loading="lazy">
+          <img src="images/api-homepage.png" alt="Flight Booking API Swagger Documentation" class="project-image" loading="lazy">
           <div class="project-content">
-            <span class="project-tag">🔬 Medical AI • Deployed</span>
-            <h3>Breast Cancer Detection System</h3>
+            <span class="project-tag">✈️ Backend API • Production</span>
+            <h3>Flight Booking API</h3>
             <p>
-              Production-ready deep learning system for detecting Invasive Ductal Carcinoma (IDC) in histopathology images. 
-              Deployed as interactive Streamlit application with Grad-CAM explainability for clinical transparency.
+              Complete RESTful API for Nigerian domestic flight reservations with real-time seat management, 
+              multi-passenger booking, and payment processing. Built with FastAPI, PostgreSQL, Docker, and JWT authentication.
             </p>
             <div class="project-stats">
               <div class="project-stat">
-                <span class="project-stat-value">82.54%</span>
-                <span class="project-stat-label">Accuracy</span>
+                <span class="project-stat-value">20+</span>
+                <span class="project-stat-label">API Endpoints</span>
               </div>
               <div class="project-stat">
-                <span class="project-stat-value">84.49%</span>
-                <span class="project-stat-label">Sensitivity</span>
+                <span class="project-stat-value">2000+</span>
+                <span class="project-stat-label">Flights Seeded</span>
               </div>
               <div class="project-stat">
-                <span class="project-stat-value">277K</span>
-                <span class="project-stat-label">Images</span>
+                <span class="project-stat-value">10</span>
+                <span class="project-stat-label">NG Airports</span>
               </div>
             </div>
             <div class="project-tech">
+              <span class="tech-tag">FastAPI</span>
+              <span class="tech-tag">PostgreSQL</span>
+              <span class="tech-tag">Docker</span>
+              <span class="tech-tag">JWT</span>
+              <span class="tech-tag">SQLAlchemy</span>
+              <span class="tech-tag">Pydantic</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/GabrielOyetunji/flight-booking-api" class="btn btn-primary btn-sm" target="_blank">📂 GitHub</a>
+              <a href="http://localhost:8001/api/docs" class="btn btn-secondary btn-sm">📖 API Docs</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- E-commerce AI System - #2 -->
+        <article class="project-featured">
+          <video 
+            class="project-video" 
+            autoplay 
+            muted 
+            loop 
+            playsinline 
+            preload="metadata"
+            poster="images/ecommerce-poster.jpg">
+            <source src="images/demo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <div class="project-content">
+            <span class="project-tag">🤖 Backend + AI • Flask</span>
+            <h3>E-commerce AI Product Recommendation System</h3>
+            <p>
+              AI-powered e-commerce backend with intelligent product search using vector databases (Pinecone), 
+              OCR-based query processing, and CNN-based product detection. Flask REST API with PyTorch integration.
+            </p>
+            <div class="project-stats">
+              <div class="project-stat">
+                <span class="project-stat-value">401K</span>
+                <span class="project-stat-label">Products</span>
+              </div>
+              <div class="project-stat">
+                <span class="project-stat-value">3</span>
+                <span class="project-stat-label">AI Models</span>
+              </div>
+              <div class="project-stat">
+                <span class="project-stat-value">80%+</span>
+                <span class="project-stat-label">Accuracy</span>
+              </div>
+            </div>
+            <div class="project-tech">
+              <span class="tech-tag">Flask</span>
+              <span class="tech-tag">PyTorch</span>
+              <span class="tech-tag">Pinecone</span>
+              <span class="tech-tag">OCR</span>
+              <span class="tech-tag">CNN</span>
+              <span class="tech-tag">Pandas</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/GabrielOyetunji/ds_task_1ab" class="btn btn-primary btn-sm" target="_blank">📂 GitHub</a>
+              <a href="https://github.com/GabrielOyetunji/ds_task_1ab/blob/main/demo.mp4" class="btn btn-secondary btn-sm" target="_blank">🎥 Demo</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Task Management API - #3 -->
+        <article class="project-featured">
+          <img src="images/task-api-swagger.png" alt="Task Management API" class="project-image" loading="lazy">
+          <div class="project-content">
+            <span class="project-tag">📋 REST API • CRUD</span>
+            <h3>Task Management API</h3>
+            <p>
+              RESTful task management system with user authentication, role-based access control, and complete CRUD operations. 
+              Built with FastAPI, PostgreSQL, and Docker for containerized deployment.
+            </p>
+            <div class="project-stats">
+              <div class="project-stat">
+                <span class="project-stat-value">15+</span>
+                <span class="project-stat-label">Endpoints</span>
+              </div>
+              <div class="project-stat">
+                <span class="project-stat-value">JWT</span>
+                <span class="project-stat-label">Auth</span>
+              </div>
+              <div class="project-stat">
+                <span class="project-stat-value">Docker</span>
+                <span class="project-stat-label">Deployed</span>
+              </div>
+            </div>
+            <div class="project-tech">
+              <span class="tech-tag">FastAPI</span>
+              <span class="tech-tag">PostgreSQL</span>
+              <span class="tech-tag">Docker</span>
+              <span class="tech-tag">SQLAlchemy</span>
+              <span class="tech-tag">JWT</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/GabrielOyetunji/task-management-api" class="btn btn-primary btn-sm" target="_blank">📂 GitHub</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Other ML Projects -->
+      <h3 style="margin: 3rem 0 2rem; font-size: 1.75rem; text-align: center;">Machine Learning Projects</h3>
+      <div class="projects-grid">
+        <!-- Breast Cancer -->
+        <article class="project-card">
+          <img src="images/breast-cancer-demo.png" alt="Breast Cancer Detection" class="project-card-image" loading="lazy">
+          <div class="project-card-content">
+            <span class="project-tag">🔬 Medical AI</span>
+            <h3>Breast Cancer Detection System</h3>
+            <p>
+              Deep learning system for detecting Invasive Ductal Carcinoma in histopathology images. 
+              Deployed as Streamlit app with explainable AI.
+            </p>
+            <div class="project-stats" style="margin: 1rem 0;">
+              <div class="project-stat">
+                <span class="project-stat-value" style="font-size: 1.2rem;">82.5%</span>
+                <span class="project-stat-label">Accuracy</span>
+              </div>
+            </div>
+            <div class="project-tech" style="margin-bottom: 1rem;">
               <span class="tech-tag">TensorFlow</span>
-              <span class="tech-tag">Keras</span>
               <span class="tech-tag">Streamlit</span>
-              <span class="tech-tag">OpenCV</span>
               <span class="tech-tag">Grad-CAM</span>
             </div>
             <div class="project-links">
@@ -816,48 +865,34 @@
         </article>
 
         <!-- ST-GCN -->
-        <article class="project-featured">
-          <img src="images/stgcn-confusion-matrices.png" alt="ST-GCN Confusion Matrices" class="project-image" loading="lazy">
-          <div class="project-content">
-            <span class="project-tag">🤸 Graph Neural Networks</span>
-            <h3>ST-GCN Human Interaction Recognition</h3>
+        <article class="project-card">
+          <img src="images/stgcn-confusion-matrices.png" alt="ST-GCN Action Recognition" class="project-card-image" loading="lazy">
+          <div class="project-card-content">
+            <span class="project-tag">🤸 Graph NNs</span>
+            <h3>ST-GCN Human Action Recognition</h3>
             <p>
-              Implemented Spatial-Temporal Graph Convolutional Networks for skeleton-based action recognition. 
-              Built and evaluated 9 model variants exploring multi-stream fusion, attention mechanisms, and transformers. 
-              Quantified 53% performance drop on unconstrained data.
+              Spatial-Temporal Graph Convolutional Networks for skeleton-based action recognition. 
+              9 model variants with attention and transformers.
             </p>
-            <div class="project-stats">
+            <div class="project-stats" style="margin: 1rem 0;">
               <div class="project-stat">
-                <span class="project-stat-value">98.1%</span>
-                <span class="project-stat-label">Structured Data</span>
-              </div>
-              <div class="project-stat">
-                <span class="project-stat-value">45.9%</span>
-                <span class="project-stat-label">Unconstrained</span>
-              </div>
-              <div class="project-stat">
-                <span class="project-stat-value">9</span>
-                <span class="project-stat-label">Model Variants</span>
+                <span class="project-stat-value" style="font-size: 1.2rem;">98.1%</span>
+                <span class="project-stat-label">Accuracy</span>
               </div>
             </div>
-            <div class="project-tech">
+            <div class="project-tech" style="margin-bottom: 1rem;">
               <span class="tech-tag">PyTorch</span>
-              <span class="tech-tag">PyTorch Geometric</span>
               <span class="tech-tag">GNNs</span>
               <span class="tech-tag">Transformers</span>
             </div>
             <div class="project-links">
-              <a href="https://colab.research.google.com/github/GabrielOyetunji/spatio-temporal-interaction-recognition/blob/main/Final__SBU_dataset.ipynb" class="btn btn-primary btn-sm" target="_blank">📓 Colab Demo</a>
+              <a href="https://colab.research.google.com/github/GabrielOyetunji/spatio-temporal-interaction-recognition/blob/main/Final__SBU_dataset.ipynb" class="btn btn-primary btn-sm" target="_blank">📓 Colab</a>
               <a href="https://github.com/GabrielOyetunji/spatio-temporal-interaction-recognition" class="btn btn-secondary btn-sm" target="_blank">📂 GitHub</a>
             </div>
           </div>
         </article>
-      </div>
 
-      <!-- Other Projects -->
-      <h3 style="margin: 3rem 0 2rem; font-size: 1.75rem; text-align: center;">Other Projects</h3>
-      <div class="projects-grid">
-        <!-- CNN Multi-Task - FIXED: Changed to video -->
+        <!-- CNN Multi-Task -->
         <article class="project-card">
           <video 
             class="project-card-video" 
@@ -865,8 +900,7 @@
             muted 
             loop 
             playsinline 
-            preload="metadata"
-            poster="images/cnn_poster.jpg">
+            preload="metadata">
             <source src="images/CNN.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
@@ -874,11 +908,11 @@
             <span class="project-tag">🍎 Computer Vision</span>
             <h3>Multi-Task CNN: Classification & Pricing</h3>
             <p>
-              Deep learning model combining fruit/vegetable classification with price prediction and embedding generation for image retrieval.
+              Deep learning model for fruit/vegetable classification with price prediction and image retrieval embeddings.
             </p>
             <div class="project-stats" style="margin: 1rem 0;">
               <div class="project-stat">
-                <span class="project-stat-value" style="font-size: 1.2rem;">97.21%</span>
+                <span class="project-stat-value" style="font-size: 1.2rem;">97.2%</span>
                 <span class="project-stat-label">Accuracy</span>
               </div>
             </div>
@@ -889,74 +923,6 @@
             <a href="https://github.com/GabrielOyetunji/cnn-fruits-price-app" class="btn btn-secondary btn-sm">📂 GitHub</a>
           </div>
         </article>
-
-        <!-- Power BI -->
-        <article class="project-card">
-          <img src="images/Legoset Dashboard.png" alt="LEGO Dashboard" class="project-card-image" loading="lazy">
-          <div class="project-card-content">
-            <span class="project-tag">📊 Business Intelligence</span>
-            <h3>LEGO Analytics Dashboard</h3>
-            <p>
-              Interactive Power BI dashboard analyzing 50+ years of LEGO data with DAX, custom visuals, and decomposition trees.
-            </p>
-            <div class="project-tech" style="margin: 1rem 0;">
-              <span class="tech-tag">Power BI</span>
-              <span class="tech-tag">DAX</span>
-            </div>
-            <a href="https://youtu.be/nTnIzfF0yGw" class="btn btn-secondary btn-sm" target="_blank">▶ Watch Demo</a>
-          </div>
-        </article>
-
-        <!-- Streamlit App -->
-        <article class="project-card">
-          <img src="images/uv.app.png" alt="UV-Vis Spectrophotometer App" class="project-card-image" loading="lazy">
-          <div class="project-card-content">
-            <span class="project-tag">🧪 Data Processing</span>
-            <h3>UV-Vis Spectrophotometer Trimmer</h3>
-            <p>
-              Streamlit app for batch processing spectrophotometry data. Handles 240+ samples with automated trimming and filtering.
-            </p>
-            <div class="project-tech" style="margin: 1rem 0;">
-              <span class="tech-tag">Streamlit</span>
-              <span class="tech-tag">Pandas</span>
-            </div>
-            <a href="https://github.com/GabrielOyetunji/uvvis-spectrophotometer-app" class="btn btn-secondary btn-sm">📂 GitHub</a>
-          </div>
-        </article>
-
-        <!-- Excel Dashboard -->
-        <article class="project-card">
-          <img src="images/nova.png" alt="NovaTech Dashboard" class="project-card-image" loading="lazy">
-          <div class="project-card-content">
-            <span class="project-tag">📈 Analytics</span>
-            <h3>NovaTech Sales Dashboard</h3>
-            <p>
-              Excel dashboard revealing sales gaps and product performance. Triggered strategy changes after identifying 47% target achievement.
-            </p>
-            <div class="project-tech" style="margin: 1rem 0;">
-              <span class="tech-tag">Excel</span>
-              <span class="tech-tag">Pivot Tables</span>
-            </div>
-            <a href="https://www.loom.com/share/19461c0fd60b408a80d9675aa1ff0de2" class="btn btn-secondary btn-sm" target="_blank">▶ Watch Demo</a>
-          </div>
-        </article>
-
-        <!-- StreamFlow -->
-        <article class="project-card">
-          <img src="images/streamflow.png" alt="StreamFlow Dashboard" class="project-card-image" loading="lazy">
-          <div class="project-card-content">
-            <span class="project-tag">📉 Churn Analysis</span>
-            <h3>StreamFlow Engagement Dashboard</h3>
-            <p>
-              Excel dashboard uncovering behavioral churn drivers and engagement patterns across user segments and content types.
-            </p>
-            <div class="project-tech" style="margin: 1rem 0;">
-              <span class="tech-tag">Excel</span>
-              <span class="tech-tag">Data Analysis</span>
-            </div>
-            <a href="https://youtu.be/QoNffMFlTXg" class="btn btn-secondary btn-sm" target="_blank">▶ Watch Demo</a>
-          </div>
-        </article>
       </div>
     </section>
 
@@ -964,72 +930,84 @@
     <section id="skills">
       <div class="section-header">
         <h2 class="section-title">Technical Skills</h2>
-        <p class="section-subtitle">Tools and technologies I work with</p>
+        <p class="section-subtitle">Backend, DevOps, and ML technologies</p>
       </div>
       <div class="skills-grid">
+        <!-- Backend Development - FIRST -->
         <div class="skill-category">
-          <h3>🤖 Machine Learning</h3>
+          <h3>🔧 Backend Development</h3>
           <ul class="skill-list">
-            <li>TensorFlow / Keras</li>
-            <li>PyTorch</li>
-            <li>Scikit-learn</li>
-            <li>Model Evaluation & Tuning</li>
-            <li>Feature Engineering</li>
+            <li>FastAPI / Flask</li>
+            <li>RESTful API Design</li>
+            <li>PostgreSQL / SQLAlchemy</li>
+            <li>JWT Authentication</li>
+            <li>Microservices Architecture</li>
+            <li>API Documentation (Swagger)</li>
           </ul>
         </div>
 
+        <!-- DevOps & Deployment - SECOND -->
         <div class="skill-category">
-          <h3>👁️ Computer Vision</h3>
+          <h3>🚀 DevOps & Deployment</h3>
           <ul class="skill-list">
-            <li>Image Classification (CNNs)</li>
-            <li>Medical Image Analysis</li>
-            <li>Transfer Learning</li>
-            <li>OpenCV</li>
-            <li>Explainable AI (Grad-CAM)</li>
+            <li>Docker / docker-compose</li>
+            <li>CI/CD Pipelines</li>
+            <li>Git & GitHub</li>
+            <li>Linux/Unix Systems</li>
+            <li>Cloud Deployment</li>
+            <li>Database Migrations</li>
           </ul>
         </div>
 
-        <div class="skill-category">
-          <h3>📊 Data Analytics</h3>
-          <ul class="skill-list">
-            <li>Pandas & NumPy</li>
-            <li>Data Cleaning & Wrangling</li>
-            <li>Statistical Analysis</li>
-            <li>Hypothesis Testing</li>
-            <li>A/B Testing</li>
-          </ul>
-        </div>
-
-        <div class="skill-category">
-          <h3>📈 Business Intelligence</h3>
-          <ul class="skill-list">
-            <li>Power BI (DAX, Power Query)</li>
-            <li>Excel (Advanced, VBA)</li>
-            <li>Dashboard Design</li>
-            <li>Data Storytelling</li>
-            <li>KPI Development</li>
-          </ul>
-        </div>
-
+        <!-- Programming - THIRD -->
         <div class="skill-category">
           <h3>💻 Programming & Tools</h3>
           <ul class="skill-list">
             <li>Python (Expert)</li>
-            <li>SQL</li>
-            <li>Git & GitHub</li>
-            <li>Jupyter Notebooks</li>
-            <li>Google Colab</li>
+            <li>SQL (PostgreSQL, MySQL)</li>
+            <li>Pandas & NumPy</li>
+            <li>Data Validation (Pydantic)</li>
+            <li>Testing (pytest, unittest)</li>
+            <li>Version Control (Git)</li>
           </ul>
         </div>
 
+        <!-- Machine Learning - FOURTH -->
         <div class="skill-category">
-          <h3>🚀 Deployment</h3>
+          <h3>🤖 Machine Learning</h3>
           <ul class="skill-list">
-            <li>Streamlit</li>
-            <li>Streamlit Cloud</li>
+            <li>TensorFlow / PyTorch</li>
             <li>Model Deployment</li>
-            <li>REST APIs (basics)</li>
-            <li>CI/CD Basics</li>
+            <li>ML API Integration</li>
+            <li>Vector Databases (Pinecone)</li>
+            <li>Computer Vision (CNNs)</li>
+            <li>NLP (Transformers)</li>
+          </ul>
+        </div>
+
+        <!-- Data & Analytics -->
+        <div class="skill-category">
+          <h3>📊 Data & Analytics</h3>
+          <ul class="skill-list">
+            <li>Data Cleaning & ETL</li>
+            <li>SQL Query Optimization</li>
+            <li>Power BI / Excel</li>
+            <li>Statistical Analysis</li>
+            <li>Data Modeling</li>
+            <li>Business Intelligence</li>
+          </ul>
+        </div>
+
+        <!-- Best Practices -->
+        <div class="skill-category">
+          <h3>✨ Best Practices</h3>
+          <ul class="skill-list">
+            <li>Clean Code Architecture</li>
+            <li>Type Hints & Documentation</li>
+            <li>Error Handling & Logging</li>
+            <li>Security Best Practices</li>
+            <li>Code Reviews</li>
+            <li>Agile Development</li>
           </ul>
         </div>
       </div>
@@ -1039,7 +1017,7 @@
     <section id="contact">
       <div class="section-header">
         <h2 class="section-title">Get In Touch</h2>
-        <p class="section-subtitle">Let's work together on data-driven solutions</p>
+        <p class="section-subtitle">Let's build something great together</p>
       </div>
       <div class="contact-grid">
         <div class="contact-card">
@@ -1062,7 +1040,7 @@
   </main>
 
   <footer>
-    <p>&copy; 2025 Gabriel Oyetunji. Building intelligent systems with data.</p>
+    <p>&copy; 2025 Gabriel Oyetunji. Building scalable backend systems and intelligent applications.</p>
   </footer>
 </body>
 </html>
