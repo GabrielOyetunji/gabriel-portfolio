@@ -1,6 +1,6 @@
-# Gabriel Oyetunji Portfolio
+# Gabriel Oyetunji Developer Workbench
 
-Static portfolio site for backend Python, data, and AI integration work.
+Static dark-mode portfolio for backend systems, AI tools, data-heavy apps, civic technology, and product experiments.
 
 Live site: https://gabriel-portfolio-orpin.vercel.app
 
@@ -16,6 +16,7 @@ Then open `http://localhost:4173`.
 
 - `index.html` - semantic page content and metadata
 - `styles.css` - responsive layout and visual system
+- `script.js` - theme switching, terminal commands, and project filtering
 - `images/` - project and profile media
 - `resume/` - downloadable resume
 - `robots.txt`, `sitemap.xml`, `site.webmanifest`, `favicon.svg` - SEO and browser metadata

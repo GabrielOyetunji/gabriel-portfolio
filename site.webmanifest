@@ -1,9 +1,9 @@
 {
-  "name": "Gabriel Oyetunji Portfolio",
+  "name": "Gabriel Oyetunji Developer Workbench",
   "short_name": "Gabriel Oyetunji",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#f7f8fa",
-  "theme_color": "#0b1220",
-  "description": "Backend Python developer portfolio for APIs, data systems, and AI-enabled applications."
+  "background_color": "#05070d",
+  "theme_color": "#05070d",
+  "description": "Dark-mode developer workbench for backend systems, AI tools, civic data, scientific apps, and product experiments."
 }

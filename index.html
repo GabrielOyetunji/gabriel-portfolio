@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Gabriel Oyetunji | Backend Python Developer</title>
-  <meta name="description" content="Backend Python developer building REST APIs, data platforms, and AI-enabled systems with FastAPI, Django, Flask, PostgreSQL, Docker, and React." />
-  <meta name="theme-color" content="#0b1220" />
+  <title>Gabriel Oyetunji | Developer Workbench</title>
+  <meta name="description" content="Gabriel Oyetunji builds backend systems, AI tools, data-heavy apps, civic technology, and product experiments with Python, React, PostgreSQL, and Docker." />
+  <meta name="theme-color" content="#05070d" />
   <link rel="canonical" href="https://gabriel-portfolio-orpin.vercel.app/" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="manifest" href="site.webmanifest" />
@@ -13,13 +13,13 @@
   <link rel="stylesheet" href="styles.css" />
 
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Gabriel Oyetunji | Backend Python Developer" />
-  <meta property="og:description" content="Portfolio of backend APIs, civic data systems, and AI-enabled applications built with Python, PostgreSQL, Docker, and modern frontend tools." />
+  <meta property="og:title" content="Gabriel Oyetunji | Developer Workbench" />
+  <meta property="og:description" content="Backend systems, AI tools, civic data, scientific apps, and product experiments." />
   <meta property="og:url" content="https://gabriel-portfolio-orpin.vercel.app/" />
   <meta property="og:image" content="https://gabriel-portfolio-orpin.vercel.app/images/profile.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Gabriel Oyetunji | Backend Python Developer" />
-  <meta name="twitter:description" content="Backend APIs, civic data systems, and AI-enabled applications built with Python, PostgreSQL, Docker, and React." />
+  <meta name="twitter:title" content="Gabriel Oyetunji | Developer Workbench" />
+  <meta name="twitter:description" content="Backend systems, AI tools, civic data, scientific apps, and product experiments." />
   <meta name="twitter:image" content="https://gabriel-portfolio-orpin.vercel.app/images/profile.jpg" />
 
   <script type="application/ld+json">
@@ -35,13 +35,14 @@
         "https://linkedin.com/in/gabriel-oyetunji-a7aa9513b"
       ],
       "knowsAbout": [
+        "Python",
         "FastAPI",
         "Django REST Framework",
         "Flask",
+        "React",
         "PostgreSQL",
         "Docker",
-        "Machine Learning APIs",
-        "React"
+        "Machine Learning APIs"
       ]
     }
   </script>
@@ -53,224 +54,260 @@
     <nav class="nav" aria-label="Main navigation">
       <a class="brand" href="#top" aria-label="Gabriel Oyetunji home">
         <span class="brand-mark" aria-hidden="true">GO</span>
-        <span class="brand-text">Gabriel Oyetunji</span>
+        <span class="brand-copy">
+          <strong>Gabriel Oyetunji</strong>
+          <span>~/developer-workbench</span>
+        </span>
       </a>
-      <ul class="nav-links">
-        <li><a href="#work">Work</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+
+      <div class="nav-right">
+        <ul class="nav-links">
+          <li><a href="#now">Now</a></li>
+          <li><a href="#systems">Systems</a></li>
+          <li><a href="#lab">Lab</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="theme-switch" aria-label="Theme">
+          <button type="button" data-theme-value="dark" aria-pressed="true">dark</button>
+          <button type="button" data-theme-value="dim" aria-pressed="false">dim</button>
+          <button type="button" data-theme-value="light" aria-pressed="false">light</button>
+        </div>
+      </div>
     </nav>
   </header>
 
   <main id="main">
-    <section id="top" class="hero section-shell">
+    <section id="top" class="hero shell">
       <div class="hero-copy">
-        <p class="eyebrow">Backend Python Developer</p>
-        <h1>Reliable APIs, data systems, and AI integrations for real products.</h1>
-        <p class="hero-summary">
-          I build backend services with FastAPI, Django, Flask, PostgreSQL, Docker, and React-backed interfaces. My work spans booking systems, civic technology, recommendation engines, and applied machine learning apps.
+        <p class="kicker">Python backend developer · AI tools · product systems</p>
+        <h1>I build serious backend systems and weird useful tools.</h1>
+        <p class="hero-text">
+          My work sits around APIs, data models, ML-powered features, civic tech, scientific workflows, and product experiments. Some projects are public. Some are private. The common thread is that I like building things that actually run.
         </p>
-        <div class="hero-actions" aria-label="Primary actions">
-          <a class="button button-primary" href="#work">View selected work</a>
-          <a class="button button-secondary" href="resume/Gabriel_Oyetunji_Resume.pdf">Download resume</a>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#systems">Open the workbench</a>
+          <a class="button button-ghost" href="resume/Gabriel_Oyetunji_Resume.pdf">Resume.pdf</a>
         </div>
       </div>
 
-      <aside class="hero-panel" aria-label="Profile summary">
-        <picture>
-          <source srcset="images/profile.avif" type="image/avif" />
-          <img class="profile-image" src="images/profile.jpg" width="800" height="800" alt="Gabriel Oyetunji" />
-        </picture>
-        <div class="availability-card">
-          <span class="status-dot" aria-hidden="true"></span>
-          <span>Open to backend, data, and AI engineering roles</span>
+      <aside class="terminal-card" aria-label="Interactive terminal">
+        <div class="terminal-bar">
+          <span></span>
+          <span></span>
+          <span></span>
+          <strong>gabrielctl</strong>
         </div>
-        <dl class="proof-grid">
-          <div>
-            <dt>Production APIs</dt>
-            <dd>3+</dd>
-          </div>
-          <div>
-            <dt>Flights seeded</dt>
-            <dd>2000+</dd>
-          </div>
-          <div>
-            <dt>Products indexed</dt>
-            <dd>401K</dd>
-          </div>
-          <div>
-            <dt>Legislators modeled</dt>
-            <dd>466</dd>
-          </div>
-        </dl>
+        <div class="terminal-output" id="terminal-output" aria-live="polite">
+          <p><span>$</span> gabrielctl status</p>
+          <p class="terminal-line">tracking backend systems, AI tools, civic data, scientific apps, and unreleased builds</p>
+          <p class="terminal-line muted">try: whoami, projects, stack, now, contact</p>
+        </div>
+        <form class="terminal-form" id="terminal-form">
+          <label for="terminal-input">$</label>
+          <input id="terminal-input" name="command" type="text" autocomplete="off" spellcheck="false" placeholder="type a command" />
+          <button type="submit">run</button>
+        </form>
+        <div class="terminal-shortcuts" aria-label="Terminal shortcuts">
+          <button type="button" data-command="whoami">whoami</button>
+          <button type="button" data-command="projects">projects</button>
+          <button type="button" data-command="stack">stack</button>
+          <button type="button" data-command="now">now</button>
+        </div>
       </aside>
     </section>
 
-    <section class="intro section-shell" aria-labelledby="intro-title">
+    <section class="identity-strip shell" aria-label="Profile snapshot">
+      <picture>
+        <source srcset="images/profile.avif" type="image/avif" />
+        <img src="images/profile.jpg" width="800" height="800" alt="Gabriel Oyetunji" />
+      </picture>
+      <dl>
+        <div>
+          <dt>Public systems</dt>
+          <dd>7</dd>
+        </div>
+        <div>
+          <dt>Products indexed</dt>
+          <dd>401K</dd>
+        </div>
+        <div>
+          <dt>Legislators modeled</dt>
+          <dd>466</dd>
+        </div>
+        <div>
+          <dt>Current direction</dt>
+          <dd>Backend + AI + product</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section id="now" class="shell section-block" aria-labelledby="now-title">
       <div class="section-heading">
-        <p class="eyebrow">What I bring</p>
-        <h2 id="intro-title">Backend work with product context.</h2>
+        <p class="kicker">/now</p>
+        <h2 id="now-title">The workbench is bigger than GitHub.</h2>
+        <p>
+          I am actively building beyond the public repos: websites, product ideas, backend platforms, and private systems. This section is intentionally honest about what is public, private, and still in progress.
+        </p>
       </div>
-      <div class="intro-grid">
-        <article>
-          <h3>API design</h3>
-          <p>REST services with authentication, validation, structured errors, pagination, and Swagger documentation.</p>
+
+      <div class="now-grid">
+        <article class="now-card">
+          <span class="status in-progress">in progress</span>
+          <h3>Private website builds</h3>
+          <p>Several product-style sites are being designed and assembled. They are not all ready for public links yet.</p>
         </article>
-        <article>
-          <h3>Data foundations</h3>
-          <p>Relational models, migrations, seed data, ETL workflows, and PostgreSQL-backed analytics features.</p>
+        <article class="now-card">
+          <span class="status private">private</span>
+          <h3>Backend product systems</h3>
+          <p>API work around authentication, dashboards, data ingestion, and admin flows. I will publish case notes when each one is ready.</p>
         </article>
-        <article>
-          <h3>AI integration</h3>
-          <p>ML models exposed through usable apps and services, including vector search, OCR, CNNs, and explainability flows.</p>
+        <article class="now-card">
+          <span class="status public">public</span>
+          <h3>Portfolio as a product</h3>
+          <p>This site is now part of the work: dark mode, project filtering, command interface, and a structure that can keep expanding.</p>
         </article>
       </div>
     </section>
 
-    <section id="work" class="section-shell" aria-labelledby="work-title">
-      <div class="section-heading split-heading">
+    <section id="systems" class="shell section-block" aria-labelledby="systems-title">
+      <div class="section-heading split">
         <div>
-          <p class="eyebrow">Selected work</p>
-          <h2 id="work-title">Projects that show the backend story clearly.</h2>
+          <p class="kicker">/systems</p>
+          <h2 id="systems-title">Systems I have built.</h2>
         </div>
         <p>
-          These are the strongest case studies for a recruiter or client: real domain logic, databases, authentication, deployment thinking, and measurable scope.
+          Public projects, private builds, and applied ML work. The goal is not to list every tool I have touched. It is to show the kind of problems I keep taking on.
         </p>
       </div>
 
-      <div class="case-studies">
-        <article class="case-study case-featured">
-          <div class="case-media image-media">
-            <img src="images/api-homepage.png" width="1280" height="800" alt="Swagger documentation for the Flight Booking API" loading="lazy" />
+      <div class="filter-row" aria-label="Project filters">
+        <button type="button" class="filter-button active" data-filter="all">all</button>
+        <button type="button" class="filter-button" data-filter="backend">backend</button>
+        <button type="button" class="filter-button" data-filter="ai">ai</button>
+        <button type="button" class="filter-button" data-filter="data">data</button>
+        <button type="button" class="filter-button" data-filter="private">private</button>
+      </div>
+
+      <div class="project-stack">
+        <article class="project-row" data-tags="backend public">
+          <div class="project-media">
+            <img src="images/api-homepage.png" width="1280" height="800" alt="Flight Booking API Swagger documentation" loading="lazy" />
           </div>
-          <div class="case-copy">
-            <span class="pill">FastAPI production API</span>
+          <div class="project-body">
+            <div class="project-meta">
+              <span>public</span>
+              <span>FastAPI</span>
+            </div>
             <h3>Flight Booking API</h3>
-            <p>
-              A Nigerian domestic flight reservation API with flight search, seat availability, multi-passenger bookings, JWT authentication, payments, and booking analytics.
-            </p>
-            <dl class="metric-list">
-              <div><dt>Endpoints</dt><dd>20+</dd></div>
-              <div><dt>Seed data</dt><dd>2000+ flights</dd></div>
-              <div><dt>Coverage</dt><dd>10 airports</dd></div>
+            <p>A Nigerian domestic flight booking API with flight search, seat tracking, multi-passenger bookings, payments, JWT auth, and Swagger docs.</p>
+            <dl class="project-facts">
+              <div><dt>endpoints</dt><dd>20+</dd></div>
+              <div><dt>seeded flights</dt><dd>2000+</dd></div>
+              <div><dt>airports</dt><dd>10</dd></div>
             </dl>
-            <ul class="tag-list" aria-label="Flight Booking API technologies">
+            <ul class="tags" aria-label="Flight Booking API stack">
               <li>FastAPI</li>
               <li>PostgreSQL</li>
               <li>Docker</li>
               <li>JWT</li>
               <li>SQLAlchemy</li>
-              <li>Pydantic</li>
             </ul>
             <div class="link-row">
-              <a class="button button-primary" href="https://github.com/GabrielOyetunji/flight-booking-api" target="_blank" rel="noopener noreferrer">View GitHub</a>
-              <a class="button button-secondary" href="https://github.com/GabrielOyetunji/flight-booking-api#readme" target="_blank" rel="noopener noreferrer">Read case notes</a>
+              <a href="https://github.com/GabrielOyetunji/flight-booking-api" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a href="https://github.com/GabrielOyetunji/flight-booking-api#readme" target="_blank" rel="noopener noreferrer">README</a>
             </div>
           </div>
         </article>
 
-        <article class="case-study">
-          <div class="case-media civic-visual" aria-label="MandateCheck civic data dashboard preview">
-            <div class="mock-window">
-              <div class="mock-toolbar"><span></span><span></span><span></span></div>
-              <div class="mock-search">Search representatives, parties, states...</div>
-              <div class="score-row"><span>Senate</span><strong>109</strong></div>
-              <div class="score-row"><span>House</span><strong>357</strong></div>
-              <div class="score-row strong"><span>Tracked officials</span><strong>466</strong></div>
-              <div class="mini-bars" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+        <article class="project-row" data-tags="backend data private">
+          <div class="project-media generated-media civic-panel" aria-label="MandateCheck dashboard concept">
+            <div class="panel-window">
+              <div class="panel-line"><span>GET</span><strong>/api/v1/politicians</strong></div>
+              <div class="panel-line"><span>filter</span><strong>state=Lagos</strong></div>
+              <div class="panel-line"><span>score</span><strong>objective * .7 + citizen * .3</strong></div>
+              <div class="panel-stat"><span>tracked officials</span><strong>466</strong></div>
             </div>
           </div>
-          <div class="case-copy">
-            <span class="pill">Django + React platform</span>
+          <div class="project-body">
+            <div class="project-meta">
+              <span>private</span>
+              <span>Django + React</span>
+            </div>
             <h3>MandateCheck</h3>
-            <p>
-              A civic technology platform for tracking and scoring all 466 members of Nigeria's 10th National Assembly using attendance, legislative activity, and citizen feedback.
-            </p>
-            <dl class="metric-list">
-              <div><dt>Legislators</dt><dd>466</dd></div>
-              <div><dt>Stack</dt><dd>Django + React</dd></div>
-              <div><dt>Data layer</dt><dd>PostgreSQL + Redis</dd></div>
+            <p>A civic-tech platform for tracking Nigeria's National Assembly members with search, scoring, JWT auth, PostgreSQL, Redis, and data enrichment workflows.</p>
+            <dl class="project-facts">
+              <div><dt>legislators</dt><dd>466</dd></div>
+              <div><dt>backend</dt><dd>DRF</dd></div>
+              <div><dt>frontend</dt><dd>React</dd></div>
             </dl>
-            <ul class="tag-list" aria-label="MandateCheck technologies">
+            <ul class="tags" aria-label="MandateCheck stack">
               <li>Django REST Framework</li>
-              <li>React 19</li>
+              <li>React</li>
               <li>PostgreSQL</li>
               <li>Redis</li>
               <li>JWT</li>
-              <li>Data enrichment</li>
             </ul>
             <div class="link-row">
-              <span class="button button-muted">Private case study</span>
+              <span class="muted-link">case notes not public yet</span>
             </div>
           </div>
         </article>
 
-        <article class="case-study">
-          <div class="case-media commerce-visual" aria-label="AI e-commerce recommendation system preview">
-            <div class="product-search">
-              <span>semantic search</span>
-              <strong>red heart decoration</strong>
-            </div>
-            <div class="product-stack">
-              <div><span>Vector DB</span><strong>401K products</strong></div>
-              <div><span>OCR</span><strong>handwriting to query</strong></div>
-              <div><span>CNN</span><strong>image detection</strong></div>
+        <article class="project-row" data-tags="backend ai data public">
+          <div class="project-media generated-media commerce-panel" aria-label="AI recommendation system concept">
+            <div class="pipeline">
+              <span>text query</span>
+              <strong>embedding</strong>
+              <strong>vector search</strong>
+              <strong>ranked products</strong>
             </div>
           </div>
-          <div class="case-copy">
-            <span class="pill">Flask + multimodal AI</span>
+          <div class="project-body">
+            <div class="project-meta">
+              <span>public</span>
+              <span>Flask + AI</span>
+            </div>
             <h3>E-commerce AI Recommendation System</h3>
-            <p>
-              A recommendation backend combining semantic product search, OCR-based query extraction, and image classification over a production-scale product dataset.
-            </p>
-            <dl class="metric-list">
-              <div><dt>Records</dt><dd>401K</dd></div>
-              <div><dt>AI flows</dt><dd>3</dd></div>
-              <div><dt>Search</dt><dd>Vector similarity</dd></div>
+            <p>Product search and recommendation system using vector search, OCR input, CNN product detection, and a production-scale transaction dataset.</p>
+            <dl class="project-facts">
+              <div><dt>products</dt><dd>401K</dd></div>
+              <div><dt>AI paths</dt><dd>3</dd></div>
+              <div><dt>search</dt><dd>semantic</dd></div>
             </dl>
-            <ul class="tag-list" aria-label="E-commerce AI system technologies">
+            <ul class="tags" aria-label="E-commerce AI stack">
               <li>Flask</li>
               <li>PyTorch</li>
               <li>Pinecone</li>
-              <li>Transformers</li>
+              <li>OCR</li>
               <li>MobileNetV2</li>
-              <li>Pandas</li>
             </ul>
             <div class="link-row">
-              <a class="button button-primary" href="https://github.com/GabrielOyetunji/ds_task_1ab" target="_blank" rel="noopener noreferrer">View GitHub</a>
-              <a class="button button-secondary" href="https://github.com/GabrielOyetunji/ds_task_1ab/blob/main/demo.mp4" target="_blank" rel="noopener noreferrer">Watch demo</a>
+              <a href="https://github.com/GabrielOyetunji/ds_task_1ab" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a href="https://github.com/GabrielOyetunji/ds_task_1ab/blob/main/demo.mp4" target="_blank" rel="noopener noreferrer">Demo video</a>
             </div>
           </div>
         </article>
       </div>
     </section>
 
-    <section id="projects" class="section-shell" aria-labelledby="projects-title">
-      <div class="section-heading split-heading">
+    <section id="lab" class="shell section-block" aria-labelledby="lab-title">
+      <div class="section-heading split">
         <div>
-          <p class="eyebrow">Project library</p>
-          <h2 id="projects-title">Additional work worth keeping visible.</h2>
+          <p class="kicker">/lab</p>
+          <h2 id="lab-title">Lab notes and smaller builds.</h2>
         </div>
         <p>
-          These projects round out the portfolio with scientific data apps, computer vision, and graph-based modeling work.
+          Smaller does not mean less serious. These projects show the range: scientific tooling, medical imaging, graph neural networks, and computer vision apps.
         </p>
       </div>
 
-      <div class="project-grid">
-        <article class="project-card">
-          <img src="images/uv.app.avif" width="1359" height="723" alt="UV-Vis spectrophotometer Streamlit application" loading="lazy" />
-          <div class="project-card-body">
-            <span class="pill">Scientific data app</span>
+      <div class="lab-grid">
+        <article class="lab-card" data-tags="data public">
+          <img src="images/uv.app.avif" width="1359" height="723" alt="UV-Vis spectrophotometer processing app" loading="lazy" />
+          <div>
+            <span class="status public">public</span>
             <h3>UV-Vis Spectrophotometer Processor</h3>
-            <p>Streamlit workflow for uploading CARY 50 CSV exports, trimming wavelength ranges, previewing spectra, and exporting clean datasets.</p>
-            <ul class="tag-list compact" aria-label="UV-Vis technologies">
-              <li>Python</li>
-              <li>Streamlit</li>
-              <li>Pandas</li>
-              <li>Matplotlib</li>
-            </ul>
+            <p>Streamlit workflow for cleaning CARY 50 CSV exports, trimming wavelengths, previewing spectra, and exporting usable datasets.</p>
             <div class="link-row">
               <a href="https://github.com/GabrielOyetunji/uvvis-spectrophotometer-app" target="_blank" rel="noopener noreferrer">GitHub</a>
               <a href="https://uvvis-app-nsglt4gukbq3vntcwwpknb.streamlit.app/" target="_blank" rel="noopener noreferrer">Live app</a>
@@ -278,17 +315,12 @@
           </div>
         </article>
 
-        <article class="project-card">
-          <img src="images/breast-cancer-demo.png" width="1906" height="923" alt="Breast cancer classifier Streamlit interface" loading="lazy" />
-          <div class="project-card-body">
-            <span class="pill">Medical AI research</span>
+        <article class="lab-card" data-tags="ai public">
+          <img src="images/breast-cancer-demo.png" width="1906" height="923" alt="Breast cancer classifier application" loading="lazy" />
+          <div>
+            <span class="status public">public</span>
             <h3>Breast Cancer Histopathology Classifier</h3>
-            <p>CNN-based classifier with confidence scoring, threshold controls, and Grad-CAM explainability for IDC image patches.</p>
-            <ul class="tag-list compact" aria-label="Breast cancer classifier technologies">
-              <li>TensorFlow</li>
-              <li>Streamlit</li>
-              <li>Grad-CAM</li>
-            </ul>
+            <p>CNN classifier with confidence scores, threshold controls, and Grad-CAM explainability for IDC image patches.</p>
             <div class="link-row">
               <a href="https://github.com/GabrielOyetunji/breast-cancer-classifier" target="_blank" rel="noopener noreferrer">GitHub</a>
               <a href="https://breast-cancer-classifier-demo.streamlit.app" target="_blank" rel="noopener noreferrer">Live app</a>
@@ -296,17 +328,12 @@
           </div>
         </article>
 
-        <article class="project-card">
-          <img src="images/stgcn-confusion-matrices.png" width="1302" height="633" alt="ST-GCN confusion matrices for human interaction recognition" loading="lazy" />
-          <div class="project-card-body">
-            <span class="pill">Graph neural networks</span>
-            <h3>ST-GCN Human Interaction Recognition</h3>
-            <p>Nine ST-GCN variants for skeleton-based two-person interaction recognition, including attention, dilated TCN, and transformer heads.</p>
-            <ul class="tag-list compact" aria-label="ST-GCN technologies">
-              <li>PyTorch</li>
-              <li>ST-GCN</li>
-              <li>Transformers</li>
-            </ul>
+        <article class="lab-card" data-tags="ai data public">
+          <img src="images/stgcn-confusion-matrices.png" width="1302" height="633" alt="ST-GCN confusion matrix results" loading="lazy" />
+          <div>
+            <span class="status public">public</span>
+            <h3>ST-GCN Interaction Recognition</h3>
+            <p>Nine graph-convolution model variants for skeleton-based two-person interaction recognition.</p>
             <div class="link-row">
               <a href="https://github.com/GabrielOyetunji/spatio-temporal-interaction-recognition" target="_blank" rel="noopener noreferrer">GitHub</a>
               <a href="https://colab.research.google.com/github/GabrielOyetunji/spatio-temporal-interaction-recognition/blob/main/Final__SBU_dataset.ipynb" target="_blank" rel="noopener noreferrer">Notebook</a>
@@ -314,22 +341,15 @@
           </div>
         </article>
 
-        <article class="project-card code-card">
-          <div class="code-preview" aria-label="CNN multi-task model summary">
+        <article class="lab-card text-lab" data-tags="ai public">
+          <div class="code-card">
             <span>model.predict(image)</span>
-            <strong>class: orange</strong>
-            <strong>price: $0.23</strong>
-            <small>top-5 probabilities returned with confidence</small>
+            <strong>{ class: "orange", price: 0.23 }</strong>
           </div>
-          <div class="project-card-body">
-            <span class="pill">Computer vision</span>
+          <div>
+            <span class="status public">public</span>
             <h3>Multi-Task CNN Classification and Pricing</h3>
-            <p>Streamlit app that classifies produce images, predicts retail price, and returns ranked class probabilities from one model pipeline.</p>
-            <ul class="tag-list compact" aria-label="CNN app technologies">
-              <li>TensorFlow</li>
-              <li>Keras</li>
-              <li>Streamlit</li>
-            </ul>
+            <p>Streamlit app that classifies produce images, estimates retail price, and returns top class probabilities.</p>
             <div class="link-row">
               <a href="https://github.com/GabrielOyetunji/cnn-fruits-price-app" target="_blank" rel="noopener noreferrer">GitHub</a>
             </div>
@@ -338,49 +358,57 @@
       </div>
     </section>
 
-    <section id="skills" class="section-shell" aria-labelledby="skills-title">
+    <section id="skills" class="shell section-block" aria-labelledby="skills-title">
       <div class="section-heading">
-        <p class="eyebrow">Technical toolkit</p>
-        <h2 id="skills-title">Built around Python backends and practical deployment.</h2>
+        <p class="kicker">/stack</p>
+        <h2 id="skills-title">The stack I keep reaching for.</h2>
       </div>
-      <div class="skills-grid">
+      <div class="stack-grid">
         <article>
           <h3>Backend</h3>
-          <p>FastAPI, Django REST Framework, Flask, REST API design, JWT auth, Swagger/OpenAPI, Pydantic, SQLAlchemy.</p>
+          <p>FastAPI, Django REST Framework, Flask, REST design, JWT, OpenAPI, Pydantic, SQLAlchemy.</p>
         </article>
         <article>
-          <h3>Data and storage</h3>
-          <p>PostgreSQL, Redis, data modeling, migrations, seed scripts, ETL, pandas, SQL query design.</p>
+          <h3>Data</h3>
+          <p>PostgreSQL, Redis, migrations, seed scripts, pandas, ETL, data modeling, query design.</p>
         </article>
         <article>
-          <h3>Delivery</h3>
-          <p>Docker, docker-compose, GitHub workflows, Linux environments, environment configuration, deployment handoff.</p>
+          <h3>Frontend</h3>
+          <p>React, Vite, Streamlit, responsive UI systems, dark interfaces, dashboards, product pages.</p>
         </article>
         <article>
-          <h3>AI systems</h3>
-          <p>PyTorch, TensorFlow, computer vision, Grad-CAM, vector search, Pinecone, transformers, ML API integration.</p>
+          <h3>AI</h3>
+          <p>PyTorch, TensorFlow, vector search, OCR, CNNs, Grad-CAM, model-backed APIs.</p>
+        </article>
+        <article>
+          <h3>Shipping</h3>
+          <p>Docker, Linux, GitHub, Vercel, environment config, local-first development workflows.</p>
+        </article>
+        <article>
+          <h3>Currently adding</h3>
+          <p>More production UI work, deeper frontend systems, and stronger written case notes for private builds.</p>
         </article>
       </div>
     </section>
 
-    <section id="contact" class="contact section-shell" aria-labelledby="contact-title">
+    <section id="contact" class="contact shell" aria-labelledby="contact-title">
       <div>
-        <p class="eyebrow">Contact</p>
-        <h2 id="contact-title">Need a backend developer who can ship product-grade systems?</h2>
-        <p>
-          I am interested in backend engineering, data platform, and AI integration roles where the work needs clean APIs, reliable data models, and practical deployment.
-        </p>
+        <p class="kicker">/contact</p>
+        <h2 id="contact-title">If the work needs a backend, data, or AI layer, I want to hear about it.</h2>
+        <p>Send the problem, the constraints, and what already exists. I can usually tell quickly where I can help.</p>
       </div>
       <div class="contact-actions">
-        <a class="button button-primary" href="mailto:gabrieloyetunji25@gmail.com">Email Gabriel</a>
-        <a class="button button-secondary" href="https://linkedin.com/in/gabriel-oyetunji-a7aa9513b" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a class="button button-secondary" href="https://github.com/GabrielOyetunji" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a class="button button-primary" href="mailto:gabrieloyetunji25@gmail.com">Email</a>
+        <a class="button button-ghost" href="https://github.com/GabrielOyetunji" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a class="button button-ghost" href="https://linkedin.com/in/gabriel-oyetunji-a7aa9513b" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <p>&copy; 2026 Gabriel Oyetunji. Backend systems, data products, and AI-enabled applications.</p>
+    <p>built and maintained by Gabriel Oyetunji · last major rebuild: 2026</p>
   </footer>
+
+  <script src="script.js" defer></script>
 </body>
 </html>
