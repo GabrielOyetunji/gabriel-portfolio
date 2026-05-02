@@ -1,9 +1,9 @@
 {
-  "name": "Gabriel Oyetunji Developer Workbench",
+  "name": "Gabriel Oyetunji Product Engineering Portfolio",
   "short_name": "Gabriel Oyetunji",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#05070d",
   "theme_color": "#05070d",
-  "description": "Dark-mode developer workbench for backend systems, AI tools, civic data, scientific apps, and product experiments."
+  "description": "Futuristic portfolio for backend platforms, AI-enabled products, data systems, scientific apps, and polished web interfaces."
 }

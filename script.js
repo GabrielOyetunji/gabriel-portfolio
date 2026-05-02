@@ -1,84 +1,20 @@
 const root = document.documentElement;
-const savedTheme = localStorage.getItem("theme");
-const themeButtons = document.querySelectorAll("[data-theme-value]");
+const modeToggle = document.querySelector(".mode-toggle");
+const savedTheme = localStorage.getItem("theme") || "dark";
 
 function setTheme(theme) {
   root.dataset.theme = theme;
   localStorage.setItem("theme", theme);
-  themeButtons.forEach((button) => {
-    button.setAttribute("aria-pressed", String(button.dataset.themeValue === theme));
-  });
-}
-
-setTheme(savedTheme || "dark");
-
-themeButtons.forEach((button) => {
-  button.addEventListener("click", () => setTheme(button.dataset.themeValue));
-});
-
-const terminalOutput = document.querySelector("#terminal-output");
-const terminalForm = document.querySelector("#terminal-form");
-const terminalInput = document.querySelector("#terminal-input");
-const shortcutButtons = document.querySelectorAll("[data-command]");
-
-const commandResponses = {
-  whoami: [
-    "Gabriel Oyetunji",
-    "backend python developer working across APIs, data systems, AI tooling, and product builds",
-  ],
-  projects: [
-    "public: flight-booking-api, ds_task_1ab, uvvis-spectrophotometer-app, breast-cancer-classifier, stgcn-recognition",
-    "private/in-progress: mandatecheck, website builds, backend product systems",
-  ],
-  stack: [
-    "backend: FastAPI, Django REST Framework, Flask, PostgreSQL, Redis, Docker",
-    "ai/data: PyTorch, TensorFlow, Pinecone, OCR, pandas, Streamlit",
-    "frontend/product: React, Vite, responsive UI, dashboards, dark interfaces",
-  ],
-  now: [
-    "building: private websites, product dashboards, backend platforms, better case notes",
-    "direction: less template portfolio, more living developer workbench",
-  ],
-  contact: ["email: gabrieloyetunji25@gmail.com", "github: github.com/GabrielOyetunji"],
-  help: ["commands: whoami, projects, stack, now, contact, clear"],
-};
-
-function writeTerminal(command) {
-  const normalized = command.trim().toLowerCase();
-  if (!normalized) return;
-
-  if (normalized === "clear") {
-    terminalOutput.innerHTML = "";
-    return;
+  if (modeToggle) {
+    modeToggle.setAttribute("aria-pressed", String(theme === "dark"));
+    modeToggle.querySelector("strong").textContent = theme;
   }
-
-  const response = commandResponses[normalized] || [
-    `command not found: ${normalized}`,
-    "try: help",
-  ];
-
-  const commandLine = document.createElement("p");
-  commandLine.innerHTML = `<span>$</span> ${normalized}`;
-  terminalOutput.appendChild(commandLine);
-
-  response.forEach((line) => {
-    const outputLine = document.createElement("p");
-    outputLine.className = "terminal-line";
-    outputLine.textContent = line;
-    terminalOutput.appendChild(outputLine);
-  });
-
-  terminalOutput.scrollTop = terminalOutput.scrollHeight;
 }
 
-terminalForm?.addEventListener("submit", (event) => {
-  event.preventDefault();
-  writeTerminal(terminalInput.value);
-  terminalInput.value = "";
-});
+setTheme(savedTheme);
 
-shortcutButtons.forEach((button) => {
-  button.addEventListener("click", () => writeTerminal(button.dataset.command));
+modeToggle?.addEventListener("click", () => {
+  setTheme(root.dataset.theme === "dark" ? "light" : "dark");
 });
 
 const filterButtons = document.querySelectorAll("[data-filter]");
@@ -95,3 +31,83 @@ filterButtons.forEach((button) => {
     });
   });
 });
+
+const canvas = document.querySelector("#signal-canvas");
+const context = canvas?.getContext("2d");
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+let particles = [];
+let width = 0;
+let height = 0;
+let animationFrame = 0;
+
+function resizeCanvas() {
+  if (!canvas || !context) return;
+  const ratio = Math.min(window.devicePixelRatio || 1, 2);
+  width = canvas.offsetWidth;
+  height = canvas.offsetHeight;
+  canvas.width = Math.floor(width * ratio);
+  canvas.height = Math.floor(height * ratio);
+  context.setTransform(ratio, 0, 0, ratio, 0, 0);
+
+  const count = Math.max(42, Math.min(92, Math.floor(width / 18)));
+  particles = Array.from({ length: count }, () => ({
+    x: Math.random() * width,
+    y: Math.random() * height,
+    vx: (Math.random() - 0.5) * 0.32,
+    vy: (Math.random() - 0.5) * 0.32,
+    r: Math.random() * 1.8 + 0.8,
+  }));
+}
+
+function drawSignalField() {
+  if (!canvas || !context) return;
+  context.clearRect(0, 0, width, height);
+
+  const isLight = root.dataset.theme === "light";
+  context.fillStyle = isLight ? "rgba(15, 118, 110, 0.72)" : "rgba(52, 231, 209, 0.84)";
+  context.strokeStyle = isLight ? "rgba(15, 118, 110, 0.15)" : "rgba(52, 231, 209, 0.14)";
+
+  particles.forEach((particle, index) => {
+    if (!prefersReducedMotion) {
+      particle.x += particle.vx;
+      particle.y += particle.vy;
+    }
+
+    if (particle.x < 0 || particle.x > width) particle.vx *= -1;
+    if (particle.y < 0 || particle.y > height) particle.vy *= -1;
+
+    context.beginPath();
+    context.arc(particle.x, particle.y, particle.r, 0, Math.PI * 2);
+    context.fill();
+
+    for (let j = index + 1; j < particles.length; j += 1) {
+      const other = particles[j];
+      const dx = particle.x - other.x;
+      const dy = particle.y - other.y;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+      if (distance < 125) {
+        context.globalAlpha = 1 - distance / 125;
+        context.beginPath();
+        context.moveTo(particle.x, particle.y);
+        context.lineTo(other.x, other.y);
+        context.stroke();
+        context.globalAlpha = 1;
+      }
+    }
+  });
+
+  animationFrame = requestAnimationFrame(drawSignalField);
+}
+
+if (canvas && context) {
+  resizeCanvas();
+  drawSignalField();
+  window.addEventListener("resize", resizeCanvas);
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      cancelAnimationFrame(animationFrame);
+    } else {
+      drawSignalField();
+    }
+  });
+}

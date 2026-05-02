@@ -1,6 +1,6 @@
-# Gabriel Oyetunji Developer Workbench
+# Gabriel Oyetunji Product Engineering Portfolio
 
-Static dark-mode portfolio for backend systems, AI tools, data-heavy apps, civic technology, and product experiments.
+Static futuristic portfolio for backend platforms, AI-enabled products, data-heavy systems, scientific apps, and polished web interfaces.
 
 Live site: https://gabriel-portfolio-orpin.vercel.app
 
