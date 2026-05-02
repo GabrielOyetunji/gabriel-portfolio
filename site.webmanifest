@@ -1,0 +1,9 @@
+{
+  "name": "Gabriel Oyetunji Portfolio",
+  "short_name": "Gabriel Oyetunji",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7f8fa",
+  "theme_color": "#0b1220",
+  "description": "Backend Python developer portfolio for APIs, data systems, and AI-enabled applications."
+}

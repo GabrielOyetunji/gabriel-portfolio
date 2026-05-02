@@ -3,1044 +3,384 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Gabriel Oyetunji — Backend Python Developer</title>
-  <meta name="description" content="Backend Python Developer specializing in REST APIs, microservices, DevOps, and ML integration. Building scalable systems with FastAPI, Flask, PostgreSQL, and Docker." />
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --bg: #0a0a0a;
-      --surface: #111111;
-      --surface-elevated: #1a1a1a;
-      --text-primary: #ffffff;
-      --text-secondary: #a0a0a0;
-      --text-muted: #707070;
-      --accent-primary: #3b82f6;
-      --accent-secondary: #60a5fa;
-      --accent-success: #10b981;
-      --border: rgba(255, 255, 255, 0.1);
-      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
-      --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);
-      --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.6);
-      --radius: 12px;
-      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--text-primary);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    .skip-link {
-      position: absolute;
-      left: -9999px;
-      top: 20px;
-      z-index: 10000;
-    }
-    .skip-link:focus {
-      left: 20px;
-      padding: 12px 20px;
-      background: var(--accent-primary);
-      color: white;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    /* Navigation */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(10, 10, 10, 0.9);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .nav-logo {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      text-decoration: none;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: var(--text-secondary);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 0.95rem;
-      transition: var(--transition);
-      position: relative;
-    }
-
-    .nav-links a:hover {
-      color: var(--accent-primary);
-    }
-
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--accent-primary);
-      transition: width 0.3s ease;
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-
-    /* Hero */
-    .hero {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 6rem 2rem 4rem;
-      text-align: center;
-    }
-
-    .avatar {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid var(--accent-primary);
-      box-shadow: 0 0 40px rgba(59, 130, 246, 0.3);
-      margin-bottom: 2rem;
-    }
-
-    .hero h1 {
-      font-size: 3rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-
-    .hero .subtitle {
-      font-size: 1.5rem;
-      color: var(--accent-primary);
-      font-weight: 600;
-      margin-bottom: 1rem;
-    }
-
-    .hero .tagline {
-      font-size: 1.1rem;
-      color: var(--text-secondary);
-      max-width: 700px;
-      margin: 0 auto 2rem;
-      line-height: 1.8;
-    }
-
-    .hero-stats {
-      display: flex;
-      justify-content: center;
-      gap: 3rem;
-      margin: 2rem 0;
-      flex-wrap: wrap;
-    }
-
-    .stat {
-      text-align: center;
-    }
-
-    .stat-value {
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--accent-primary);
-      display: block;
-    }
-
-    .stat-label {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .hero-cta {
-      margin-top: 2rem;
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    /* Buttons */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1.5rem;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      text-decoration: none;
-      transition: var(--transition);
-      cursor: pointer;
-    }
-
-    .btn-primary {
-      background: var(--accent-primary);
-      color: white;
-      border: none;
-    }
-
-    .btn-primary:hover {
-      background: var(--accent-secondary);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
-    }
-
-    .btn-secondary {
-      background: transparent;
-      border: 2px solid var(--accent-primary);
-      color: var(--accent-primary);
-    }
-
-    .btn-secondary:hover {
-      background: var(--accent-primary);
-      color: white;
-    }
-
-    .btn-sm {
-      padding: 0.5rem 1rem;
-      font-size: 0.85rem;
-    }
-
-    /* Container */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 4rem 2rem;
-    }
-
-    section {
-      margin-bottom: 5rem;
-    }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-
-    .section-title {
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      position: relative;
-      display: inline-block;
-    }
-
-    .section-title::after {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 60px;
-      height: 4px;
-      background: var(--accent-primary);
-      border-radius: 2px;
-    }
-
-    .section-subtitle {
-      color: var(--text-secondary);
-      font-size: 1.1rem;
-      margin-top: 1rem;
-    }
-
-    /* About */
-    .about-content {
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .about-content p {
-      color: var(--text-secondary);
-      font-size: 1.1rem;
-      line-height: 1.9;
-      margin-bottom: 1.5rem;
-    }
-
-    /* Featured Projects */
-    .projects-featured {
-      display: grid;
-      gap: 3rem;
-      margin-bottom: 4rem;
-    }
-
-    .project-featured {
-      background: var(--surface-elevated);
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow-md);
-      border: 1px solid var(--border);
-      transition: var(--transition);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-    }
-
-    .project-featured:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-lg);
-      border-color: var(--accent-primary);
-    }
-
-    .project-featured:nth-child(even) {
-      direction: rtl;
-    }
-
-    .project-featured:nth-child(even) .project-content {
-      direction: ltr;
-    }
-
-    .project-image,
-    .project-video {
-      width: 100%;
-      max-height: 450px;
-      height: auto;
-      object-fit: contain;
-      display: block;
-      background: var(--surface);
-      border-right: 1px solid var(--border);
-    }
-
-    .project-video {
-      min-height: 350px;
-    }
-
-    .project-featured:nth-child(even) .project-image,
-    .project-featured:nth-child(even) .project-video {
-      border-right: none;
-      border-left: 1px solid var(--border);
-    }
-
-    .project-content {
-      padding: 2.5rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .project-tag {
-      display: inline-block;
-      padding: 0.25rem 0.75rem;
-      background: rgba(59, 130, 246, 0.1);
-      color: var(--accent-primary);
-      border-radius: 20px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 1rem;
-      align-self: flex-start;
-    }
-
-    .project-featured h3 {
-      font-size: 1.75rem;
-      margin-bottom: 1rem;
-    }
-
-    .project-featured p {
-      color: var(--text-secondary);
-      margin-bottom: 1.5rem;
-      line-height: 1.8;
-    }
-
-    .project-stats {
-      display: flex;
-      gap: 2rem;
-      margin: 1.5rem 0;
-      flex-wrap: wrap;
-    }
-
-    .project-stat-value {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--accent-success);
-    }
-
-    .project-stat-label {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-    }
-
-    .project-tech {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-      margin: 1.5rem 0;
-    }
-
-    .tech-tag {
-      padding: 0.4rem 0.8rem;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      font-size: 0.8rem;
-      color: var(--text-secondary);
-    }
-
-    .project-links {
-      display: flex;
-      gap: 1rem;
-      margin-top: 1.5rem;
-      flex-wrap: wrap;
-    }
-
-    /* Regular Projects */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2rem;
-    }
-
-    .project-card {
-      background: var(--surface-elevated);
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow-sm);
-      border: 1px solid var(--border);
-      transition: var(--transition);
-      display: flex;
-      flex-direction: column;
-    }
-
-    .project-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-md);
-      border-color: rgba(59, 130, 246, 0.5);
-    }
-
-    .project-card-image,
-    .project-card-video {
-      width: 100%;
-      max-height: 280px;
-      height: auto;
-      object-fit: contain;
-      display: block;
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .project-card-video {
-      cursor: pointer;
-      min-height: 220px;
-    }
-
-    .project-card-content {
-      padding: 1.5rem;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .project-card h3 {
-      font-size: 1.25rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .project-card p {
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-      margin-bottom: 1rem;
-      line-height: 1.6;
-    }
-
-    /* Skills */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-    }
-
-    .skill-category {
-      background: var(--surface-elevated);
-      padding: 2rem;
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-    }
-
-    .skill-category h3 {
-      font-size: 1.25rem;
-      margin-bottom: 1.5rem;
-      color: var(--accent-primary);
-    }
-
-    .skill-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-
-    .skill-list li {
-      color: var(--text-secondary);
-      padding-left: 1.5rem;
-      position: relative;
-    }
-
-    .skill-list li::before {
-      content: '▹';
-      position: absolute;
-      left: 0;
-      color: var(--accent-primary);
-      font-weight: bold;
-    }
-
-    /* Contact */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .contact-card {
-      background: var(--surface-elevated);
-      padding: 2rem;
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-      text-align: center;
-      transition: var(--transition);
-    }
-
-    .contact-card:hover {
-      border-color: var(--accent-primary);
-      transform: translateY(-4px);
-    }
-
-    .contact-icon {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    .contact-card h3 {
-      margin-bottom: 0.5rem;
-    }
-
-    .contact-card a {
-      color: var(--accent-primary);
-      text-decoration: none;
-      word-break: break-all;
-    }
-
-    footer {
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-      padding: 2rem;
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .nav-links {
-        gap: 1rem;
-        font-size: 0.85rem;
-      }
-
-      .hero h1 {
-        font-size: 2rem;
-      }
-
-      .hero .subtitle {
-        font-size: 1.2rem;
-      }
-
-      .hero-stats {
-        gap: 1.5rem;
-      }
-
-      .section-title {
-        font-size: 2rem;
-      }
-
-      .project-featured {
-        grid-template-columns: 1fr;
-      }
-
-      .project-featured:nth-child(even) {
-        direction: ltr;
-      }
-
-      .project-image,
-      .project-video {
-        max-height: 300px;
-        border-right: none;
-        border-bottom: 1px solid var(--border);
-      }
-
-      .project-featured:nth-child(even) .project-image,
-      .project-featured:nth-child(even) .project-video {
-        border-left: none;
-      }
-
-      .projects-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      * {
-        animation: none !important;
-        transition: none !important;
-      }
-    }
-  </style>
+  <title>Gabriel Oyetunji | Backend Python Developer</title>
+  <meta name="description" content="Backend Python developer building REST APIs, data platforms, and AI-enabled systems with FastAPI, Django, Flask, PostgreSQL, Docker, and React." />
+  <meta name="theme-color" content="#0b1220" />
+  <link rel="canonical" href="https://gabriel-portfolio-orpin.vercel.app/" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="site.webmanifest" />
+  <link rel="preload" href="images/profile.avif" as="image" type="image/avif" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Gabriel Oyetunji | Backend Python Developer" />
+  <meta property="og:description" content="Portfolio of backend APIs, civic data systems, and AI-enabled applications built with Python, PostgreSQL, Docker, and modern frontend tools." />
+  <meta property="og:url" content="https://gabriel-portfolio-orpin.vercel.app/" />
+  <meta property="og:image" content="https://gabriel-portfolio-orpin.vercel.app/images/profile.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Gabriel Oyetunji | Backend Python Developer" />
+  <meta name="twitter:description" content="Backend APIs, civic data systems, and AI-enabled applications built with Python, PostgreSQL, Docker, and React." />
+  <meta name="twitter:image" content="https://gabriel-portfolio-orpin.vercel.app/images/profile.jpg" />
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Gabriel Oyetunji",
+      "jobTitle": "Backend Python Developer",
+      "url": "https://gabriel-portfolio-orpin.vercel.app/",
+      "email": "mailto:gabrieloyetunji25@gmail.com",
+      "sameAs": [
+        "https://github.com/GabrielOyetunji",
+        "https://linkedin.com/in/gabriel-oyetunji-a7aa9513b"
+      ],
+      "knowsAbout": [
+        "FastAPI",
+        "Django REST Framework",
+        "Flask",
+        "PostgreSQL",
+        "Docker",
+        "Machine Learning APIs",
+        "React"
+      ]
+    }
+  </script>
 </head>
-
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
 
-  <!-- Navigation -->
-  <nav>
-    <div class="nav-container">
-      <a href="#" class="nav-logo">GO</a>
+  <header class="site-header">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="#top" aria-label="Gabriel Oyetunji home">
+        <span class="brand-mark" aria-hidden="true">GO</span>
+        <span class="brand-text">Gabriel Oyetunji</span>
+      </a>
       <ul class="nav-links">
-        <li><a href="#about">About</a></li>
+        <li><a href="#work">Work</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-    </div>
-  </nav>
+    </nav>
+  </header>
 
-  <!-- Hero -->
-  <section class="hero">
-    <img class="avatar" src="images/profile.jpg" alt="Gabriel Oyetunji" width="140" height="140" loading="eager">
-    <h1>Gabriel Oyetunji</h1>
-    <p class="subtitle">Backend Python Developer | DevOps | ML Engineer</p>
-    <p class="tagline">
-      Building scalable REST APIs and production systems. Specialized in FastAPI, Flask, PostgreSQL, Docker, 
-      and ML integration with 4+ years of experience delivering end-to-end solutions.
-    </p>
-    <div class="hero-stats">
-      <div class="stat">
-        <span class="stat-value">3</span>
-        <span class="stat-label">Production APIs</span>
+  <main id="main">
+    <section id="top" class="hero section-shell">
+      <div class="hero-copy">
+        <p class="eyebrow">Backend Python Developer</p>
+        <h1>Reliable APIs, data systems, and AI integrations for real products.</h1>
+        <p class="hero-summary">
+          I build backend services with FastAPI, Django, Flask, PostgreSQL, Docker, and React-backed interfaces. My work spans booking systems, civic technology, recommendation engines, and applied machine learning apps.
+        </p>
+        <div class="hero-actions" aria-label="Primary actions">
+          <a class="button button-primary" href="#work">View selected work</a>
+          <a class="button button-secondary" href="resume/Gabriel_Oyetunji_Resume.pdf">Download resume</a>
+        </div>
       </div>
-      <div class="stat">
-        <span class="stat-value">2000+</span>
-        <span class="stat-label">Flights Managed</span>
-      </div>
-      <div class="stat">
-        <span class="stat-value">400K+</span>
-        <span class="stat-label">Products Indexed</span>
-      </div>
-    </div>
-    <div class="hero-cta">
-      <a href="#projects" class="btn btn-primary">View Projects</a>
-      <a href="resume/Gabriel_Oyetunji_Resume.pdf" class="btn btn-secondary">Download Resume</a>
-    </div>
-  </section>
 
-  <main id="main" class="container">
-    <!-- About -->
-    <section id="about">
-      <div class="section-header">
-        <h2 class="section-title">About Me</h2>
-        <p class="section-subtitle">Backend development • DevOps • ML integration</p>
+      <aside class="hero-panel" aria-label="Profile summary">
+        <picture>
+          <source srcset="images/profile.avif" type="image/avif" />
+          <img class="profile-image" src="images/profile.jpg" width="800" height="800" alt="Gabriel Oyetunji" />
+        </picture>
+        <div class="availability-card">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span>Open to backend, data, and AI engineering roles</span>
+        </div>
+        <dl class="proof-grid">
+          <div>
+            <dt>Production APIs</dt>
+            <dd>3+</dd>
+          </div>
+          <div>
+            <dt>Flights seeded</dt>
+            <dd>2000+</dd>
+          </div>
+          <div>
+            <dt>Products indexed</dt>
+            <dd>401K</dd>
+          </div>
+          <div>
+            <dt>Legislators modeled</dt>
+            <dd>466</dd>
+          </div>
+        </dl>
+      </aside>
+    </section>
+
+    <section class="intro section-shell" aria-labelledby="intro-title">
+      <div class="section-heading">
+        <p class="eyebrow">What I bring</p>
+        <h2 id="intro-title">Backend work with product context.</h2>
       </div>
-      <div class="about-content">
-        <p>
-          I'm a <strong>Backend Python Developer</strong> with 4+ years of experience building scalable REST APIs, 
-          microservices, and production systems. I specialize in <strong>FastAPI</strong>, <strong>Flask</strong>, 
-          <strong>PostgreSQL</strong>, and <strong>Docker</strong> with a strong focus on clean architecture and best practices.
-        </p>
-        <p>
-          My expertise spans the full backend stack—from <strong>database design</strong> and <strong>API development</strong> 
-          to <strong>Docker deployment</strong> and <strong>CI/CD pipelines</strong>. I've built production systems including 
-          a Nigerian flight booking API (2000+ flights), an AI-powered e-commerce platform (400k+ products), and enterprise 
-          task management systems with JWT authentication.
-        </p>
-        <p>
-          Beyond backend development, I bring <strong>machine learning integration</strong> capabilities, having deployed 
-          Computer Vision and NLP systems in production. I bridge the gap between traditional backend engineering and 
-          modern AI-powered applications—building intelligent, scalable systems from end to end.
-        </p>
+      <div class="intro-grid">
+        <article>
+          <h3>API design</h3>
+          <p>REST services with authentication, validation, structured errors, pagination, and Swagger documentation.</p>
+        </article>
+        <article>
+          <h3>Data foundations</h3>
+          <p>Relational models, migrations, seed data, ETL workflows, and PostgreSQL-backed analytics features.</p>
+        </article>
+        <article>
+          <h3>AI integration</h3>
+          <p>ML models exposed through usable apps and services, including vector search, OCR, CNNs, and explainability flows.</p>
+        </article>
       </div>
     </section>
 
-    <!-- Projects -->
-    <section id="projects">
-      <div class="section-header">
-        <h2 class="section-title">Featured Projects</h2>
-        <p class="section-subtitle">Production REST APIs and scalable backend systems</p>
+    <section id="work" class="section-shell" aria-labelledby="work-title">
+      <div class="section-heading split-heading">
+        <div>
+          <p class="eyebrow">Selected work</p>
+          <h2 id="work-title">Projects that show the backend story clearly.</h2>
+        </div>
+        <p>
+          These are the strongest case studies for a recruiter or client: real domain logic, databases, authentication, deployment thinking, and measurable scope.
+        </p>
       </div>
 
-      <!-- Featured Backend Projects -->
-      <div class="projects-featured">
-        <!-- Flight Booking API - #1 -->
-        <article class="project-featured">
-          <img src="images/api-homepage.png" alt="Flight Booking API Swagger Documentation" class="project-image" loading="lazy">
-          <div class="project-content">
-            <span class="project-tag">✈️ Backend API • Production</span>
+      <div class="case-studies">
+        <article class="case-study case-featured">
+          <div class="case-media image-media">
+            <img src="images/api-homepage.png" width="1280" height="800" alt="Swagger documentation for the Flight Booking API" loading="lazy" />
+          </div>
+          <div class="case-copy">
+            <span class="pill">FastAPI production API</span>
             <h3>Flight Booking API</h3>
             <p>
-              Complete RESTful API for Nigerian domestic flight reservations with real-time seat management, 
-              multi-passenger booking, and payment processing. Built with FastAPI, PostgreSQL, Docker, and JWT authentication.
+              A Nigerian domestic flight reservation API with flight search, seat availability, multi-passenger bookings, JWT authentication, payments, and booking analytics.
             </p>
-            <div class="project-stats">
-              <div class="project-stat">
-                <span class="project-stat-value">20+</span>
-                <span class="project-stat-label">API Endpoints</span>
-              </div>
-              <div class="project-stat">
-                <span class="project-stat-value">2000+</span>
-                <span class="project-stat-label">Flights Seeded</span>
-              </div>
-              <div class="project-stat">
-                <span class="project-stat-value">10</span>
-                <span class="project-stat-label">NG Airports</span>
-              </div>
-            </div>
-            <div class="project-tech">
-              <span class="tech-tag">FastAPI</span>
-              <span class="tech-tag">PostgreSQL</span>
-              <span class="tech-tag">Docker</span>
-              <span class="tech-tag">JWT</span>
-              <span class="tech-tag">SQLAlchemy</span>
-              <span class="tech-tag">Pydantic</span>
-            </div>
-            <div class="project-links">
-              <a href="https://github.com/GabrielOyetunji/flight-booking-api" class="btn btn-primary btn-sm" target="_blank">📂 GitHub</a>
-              <a href="http://localhost:8001/api/docs" class="btn btn-secondary btn-sm">📖 API Docs</a>
+            <dl class="metric-list">
+              <div><dt>Endpoints</dt><dd>20+</dd></div>
+              <div><dt>Seed data</dt><dd>2000+ flights</dd></div>
+              <div><dt>Coverage</dt><dd>10 airports</dd></div>
+            </dl>
+            <ul class="tag-list" aria-label="Flight Booking API technologies">
+              <li>FastAPI</li>
+              <li>PostgreSQL</li>
+              <li>Docker</li>
+              <li>JWT</li>
+              <li>SQLAlchemy</li>
+              <li>Pydantic</li>
+            </ul>
+            <div class="link-row">
+              <a class="button button-primary" href="https://github.com/GabrielOyetunji/flight-booking-api" target="_blank" rel="noopener noreferrer">View GitHub</a>
+              <a class="button button-secondary" href="https://github.com/GabrielOyetunji/flight-booking-api#readme" target="_blank" rel="noopener noreferrer">Read case notes</a>
             </div>
           </div>
         </article>
 
-        <!-- E-commerce AI System - #2 -->
-        <article class="project-featured">
-          <video 
-            class="project-video" 
-            autoplay 
-            muted 
-            loop 
-            playsinline 
-            preload="metadata"
-            poster="images/ecommerce-poster.jpg">
-            <source src="images/demo.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-          <div class="project-content">
-            <span class="project-tag">🤖 Backend + AI • Flask</span>
-            <h3>E-commerce AI Product Recommendation System</h3>
+        <article class="case-study">
+          <div class="case-media civic-visual" aria-label="MandateCheck civic data dashboard preview">
+            <div class="mock-window">
+              <div class="mock-toolbar"><span></span><span></span><span></span></div>
+              <div class="mock-search">Search representatives, parties, states...</div>
+              <div class="score-row"><span>Senate</span><strong>109</strong></div>
+              <div class="score-row"><span>House</span><strong>357</strong></div>
+              <div class="score-row strong"><span>Tracked officials</span><strong>466</strong></div>
+              <div class="mini-bars" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+            </div>
+          </div>
+          <div class="case-copy">
+            <span class="pill">Django + React platform</span>
+            <h3>MandateCheck</h3>
             <p>
-              AI-powered e-commerce backend with intelligent product search using vector databases (Pinecone), 
-              OCR-based query processing, and CNN-based product detection. Flask REST API with PyTorch integration.
+              A civic technology platform for tracking and scoring all 466 members of Nigeria's 10th National Assembly using attendance, legislative activity, and citizen feedback.
             </p>
-            <div class="project-stats">
-              <div class="project-stat">
-                <span class="project-stat-value">401K</span>
-                <span class="project-stat-label">Products</span>
-              </div>
-              <div class="project-stat">
-                <span class="project-stat-value">3</span>
-                <span class="project-stat-label">AI Models</span>
-              </div>
-              <div class="project-stat">
-                <span class="project-stat-value">80%+</span>
-                <span class="project-stat-label">Accuracy</span>
-              </div>
-            </div>
-            <div class="project-tech">
-              <span class="tech-tag">Flask</span>
-              <span class="tech-tag">PyTorch</span>
-              <span class="tech-tag">Pinecone</span>
-              <span class="tech-tag">OCR</span>
-              <span class="tech-tag">CNN</span>
-              <span class="tech-tag">Pandas</span>
-            </div>
-            <div class="project-links">
-              <a href="https://github.com/GabrielOyetunji/ds_task_1ab" class="btn btn-primary btn-sm" target="_blank">📂 GitHub</a>
-              <a href="https://github.com/GabrielOyetunji/ds_task_1ab/blob/main/demo.mp4" class="btn btn-secondary btn-sm" target="_blank">🎥 Demo</a>
+            <dl class="metric-list">
+              <div><dt>Legislators</dt><dd>466</dd></div>
+              <div><dt>Stack</dt><dd>Django + React</dd></div>
+              <div><dt>Data layer</dt><dd>PostgreSQL + Redis</dd></div>
+            </dl>
+            <ul class="tag-list" aria-label="MandateCheck technologies">
+              <li>Django REST Framework</li>
+              <li>React 19</li>
+              <li>PostgreSQL</li>
+              <li>Redis</li>
+              <li>JWT</li>
+              <li>Data enrichment</li>
+            </ul>
+            <div class="link-row">
+              <span class="button button-muted">Private case study</span>
             </div>
           </div>
         </article>
 
-        <!-- Task Management API - #3 -->
-        <article class="project-featured">
-          <img src="images/task-api-swagger.png" alt="Task Management API" class="project-image" loading="lazy">
-          <div class="project-content">
-            <span class="project-tag">📋 REST API • CRUD</span>
-            <h3>Task Management API</h3>
-            <p>
-              RESTful task management system with user authentication, role-based access control, and complete CRUD operations. 
-              Built with FastAPI, PostgreSQL, and Docker for containerized deployment.
-            </p>
-            <div class="project-stats">
-              <div class="project-stat">
-                <span class="project-stat-value">15+</span>
-                <span class="project-stat-label">Endpoints</span>
-              </div>
-              <div class="project-stat">
-                <span class="project-stat-value">JWT</span>
-                <span class="project-stat-label">Auth</span>
-              </div>
-              <div class="project-stat">
-                <span class="project-stat-value">Docker</span>
-                <span class="project-stat-label">Deployed</span>
-              </div>
+        <article class="case-study">
+          <div class="case-media commerce-visual" aria-label="AI e-commerce recommendation system preview">
+            <div class="product-search">
+              <span>semantic search</span>
+              <strong>red heart decoration</strong>
             </div>
-            <div class="project-tech">
-              <span class="tech-tag">FastAPI</span>
-              <span class="tech-tag">PostgreSQL</span>
-              <span class="tech-tag">Docker</span>
-              <span class="tech-tag">SQLAlchemy</span>
-              <span class="tech-tag">JWT</span>
-            </div>
-            <div class="project-links">
-              <a href="https://github.com/GabrielOyetunji/task-management-api" class="btn btn-primary btn-sm" target="_blank">📂 GitHub</a>
+            <div class="product-stack">
+              <div><span>Vector DB</span><strong>401K products</strong></div>
+              <div><span>OCR</span><strong>handwriting to query</strong></div>
+              <div><span>CNN</span><strong>image detection</strong></div>
             </div>
           </div>
-        </article>
-      </div>
-
-      <!-- Other ML Projects -->
-      <h3 style="margin: 3rem 0 2rem; font-size: 1.75rem; text-align: center;">Machine Learning Projects</h3>
-      <div class="projects-grid">
-        <!-- Breast Cancer -->
-        <article class="project-card">
-          <img src="images/breast-cancer-demo.png" alt="Breast Cancer Detection" class="project-card-image" loading="lazy">
-          <div class="project-card-content">
-            <span class="project-tag">🔬 Medical AI</span>
-            <h3>Breast Cancer Detection System</h3>
+          <div class="case-copy">
+            <span class="pill">Flask + multimodal AI</span>
+            <h3>E-commerce AI Recommendation System</h3>
             <p>
-              Deep learning system for detecting Invasive Ductal Carcinoma in histopathology images. 
-              Deployed as Streamlit app with explainable AI.
+              A recommendation backend combining semantic product search, OCR-based query extraction, and image classification over a production-scale product dataset.
             </p>
-            <div class="project-stats" style="margin: 1rem 0;">
-              <div class="project-stat">
-                <span class="project-stat-value" style="font-size: 1.2rem;">82.5%</span>
-                <span class="project-stat-label">Accuracy</span>
-              </div>
+            <dl class="metric-list">
+              <div><dt>Records</dt><dd>401K</dd></div>
+              <div><dt>AI flows</dt><dd>3</dd></div>
+              <div><dt>Search</dt><dd>Vector similarity</dd></div>
+            </dl>
+            <ul class="tag-list" aria-label="E-commerce AI system technologies">
+              <li>Flask</li>
+              <li>PyTorch</li>
+              <li>Pinecone</li>
+              <li>Transformers</li>
+              <li>MobileNetV2</li>
+              <li>Pandas</li>
+            </ul>
+            <div class="link-row">
+              <a class="button button-primary" href="https://github.com/GabrielOyetunji/ds_task_1ab" target="_blank" rel="noopener noreferrer">View GitHub</a>
+              <a class="button button-secondary" href="https://github.com/GabrielOyetunji/ds_task_1ab/blob/main/demo.mp4" target="_blank" rel="noopener noreferrer">Watch demo</a>
             </div>
-            <div class="project-tech" style="margin-bottom: 1rem;">
-              <span class="tech-tag">TensorFlow</span>
-              <span class="tech-tag">Streamlit</span>
-              <span class="tech-tag">Grad-CAM</span>
-            </div>
-            <div class="project-links">
-              <a href="https://breast-cancer-classifier-demo.streamlit.app" class="btn btn-primary btn-sm" target="_blank">🚀 Live Demo</a>
-              <a href="https://github.com/GabrielOyetunji/breast-cancer-classifier" class="btn btn-secondary btn-sm" target="_blank">📂 GitHub</a>
-            </div>
-          </div>
-        </article>
-
-        <!-- ST-GCN -->
-        <article class="project-card">
-          <img src="images/stgcn-confusion-matrices.png" alt="ST-GCN Action Recognition" class="project-card-image" loading="lazy">
-          <div class="project-card-content">
-            <span class="project-tag">🤸 Graph NNs</span>
-            <h3>ST-GCN Human Action Recognition</h3>
-            <p>
-              Spatial-Temporal Graph Convolutional Networks for skeleton-based action recognition. 
-              9 model variants with attention and transformers.
-            </p>
-            <div class="project-stats" style="margin: 1rem 0;">
-              <div class="project-stat">
-                <span class="project-stat-value" style="font-size: 1.2rem;">98.1%</span>
-                <span class="project-stat-label">Accuracy</span>
-              </div>
-            </div>
-            <div class="project-tech" style="margin-bottom: 1rem;">
-              <span class="tech-tag">PyTorch</span>
-              <span class="tech-tag">GNNs</span>
-              <span class="tech-tag">Transformers</span>
-            </div>
-            <div class="project-links">
-              <a href="https://colab.research.google.com/github/GabrielOyetunji/spatio-temporal-interaction-recognition/blob/main/Final__SBU_dataset.ipynb" class="btn btn-primary btn-sm" target="_blank">📓 Colab</a>
-              <a href="https://github.com/GabrielOyetunji/spatio-temporal-interaction-recognition" class="btn btn-secondary btn-sm" target="_blank">📂 GitHub</a>
-            </div>
-          </div>
-        </article>
-
-        <!-- CNN Multi-Task -->
-        <article class="project-card">
-          <video 
-            class="project-card-video" 
-            autoplay 
-            muted 
-            loop 
-            playsinline 
-            preload="metadata">
-            <source src="images/CNN.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-          <div class="project-card-content">
-            <span class="project-tag">🍎 Computer Vision</span>
-            <h3>Multi-Task CNN: Classification & Pricing</h3>
-            <p>
-              Deep learning model for fruit/vegetable classification with price prediction and image retrieval embeddings.
-            </p>
-            <div class="project-stats" style="margin: 1rem 0;">
-              <div class="project-stat">
-                <span class="project-stat-value" style="font-size: 1.2rem;">97.2%</span>
-                <span class="project-stat-label">Accuracy</span>
-              </div>
-            </div>
-            <div class="project-tech" style="margin-bottom: 1rem;">
-              <span class="tech-tag">TensorFlow</span>
-              <span class="tech-tag">Keras</span>
-            </div>
-            <a href="https://github.com/GabrielOyetunji/cnn-fruits-price-app" class="btn btn-secondary btn-sm">📂 GitHub</a>
           </div>
         </article>
       </div>
     </section>
 
-    <!-- Skills -->
-    <section id="skills">
-      <div class="section-header">
-        <h2 class="section-title">Technical Skills</h2>
-        <p class="section-subtitle">Backend, DevOps, and ML technologies</p>
+    <section id="projects" class="section-shell" aria-labelledby="projects-title">
+      <div class="section-heading split-heading">
+        <div>
+          <p class="eyebrow">Project library</p>
+          <h2 id="projects-title">Additional work worth keeping visible.</h2>
+        </div>
+        <p>
+          These projects round out the portfolio with scientific data apps, computer vision, and graph-based modeling work.
+        </p>
+      </div>
+
+      <div class="project-grid">
+        <article class="project-card">
+          <img src="images/uv.app.avif" width="1359" height="723" alt="UV-Vis spectrophotometer Streamlit application" loading="lazy" />
+          <div class="project-card-body">
+            <span class="pill">Scientific data app</span>
+            <h3>UV-Vis Spectrophotometer Processor</h3>
+            <p>Streamlit workflow for uploading CARY 50 CSV exports, trimming wavelength ranges, previewing spectra, and exporting clean datasets.</p>
+            <ul class="tag-list compact" aria-label="UV-Vis technologies">
+              <li>Python</li>
+              <li>Streamlit</li>
+              <li>Pandas</li>
+              <li>Matplotlib</li>
+            </ul>
+            <div class="link-row">
+              <a href="https://github.com/GabrielOyetunji/uvvis-spectrophotometer-app" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a href="https://uvvis-app-nsglt4gukbq3vntcwwpknb.streamlit.app/" target="_blank" rel="noopener noreferrer">Live app</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <img src="images/breast-cancer-demo.png" width="1906" height="923" alt="Breast cancer classifier Streamlit interface" loading="lazy" />
+          <div class="project-card-body">
+            <span class="pill">Medical AI research</span>
+            <h3>Breast Cancer Histopathology Classifier</h3>
+            <p>CNN-based classifier with confidence scoring, threshold controls, and Grad-CAM explainability for IDC image patches.</p>
+            <ul class="tag-list compact" aria-label="Breast cancer classifier technologies">
+              <li>TensorFlow</li>
+              <li>Streamlit</li>
+              <li>Grad-CAM</li>
+            </ul>
+            <div class="link-row">
+              <a href="https://github.com/GabrielOyetunji/breast-cancer-classifier" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a href="https://breast-cancer-classifier-demo.streamlit.app" target="_blank" rel="noopener noreferrer">Live app</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <img src="images/stgcn-confusion-matrices.png" width="1302" height="633" alt="ST-GCN confusion matrices for human interaction recognition" loading="lazy" />
+          <div class="project-card-body">
+            <span class="pill">Graph neural networks</span>
+            <h3>ST-GCN Human Interaction Recognition</h3>
+            <p>Nine ST-GCN variants for skeleton-based two-person interaction recognition, including attention, dilated TCN, and transformer heads.</p>
+            <ul class="tag-list compact" aria-label="ST-GCN technologies">
+              <li>PyTorch</li>
+              <li>ST-GCN</li>
+              <li>Transformers</li>
+            </ul>
+            <div class="link-row">
+              <a href="https://github.com/GabrielOyetunji/spatio-temporal-interaction-recognition" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a href="https://colab.research.google.com/github/GabrielOyetunji/spatio-temporal-interaction-recognition/blob/main/Final__SBU_dataset.ipynb" target="_blank" rel="noopener noreferrer">Notebook</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card code-card">
+          <div class="code-preview" aria-label="CNN multi-task model summary">
+            <span>model.predict(image)</span>
+            <strong>class: orange</strong>
+            <strong>price: $0.23</strong>
+            <small>top-5 probabilities returned with confidence</small>
+          </div>
+          <div class="project-card-body">
+            <span class="pill">Computer vision</span>
+            <h3>Multi-Task CNN Classification and Pricing</h3>
+            <p>Streamlit app that classifies produce images, predicts retail price, and returns ranked class probabilities from one model pipeline.</p>
+            <ul class="tag-list compact" aria-label="CNN app technologies">
+              <li>TensorFlow</li>
+              <li>Keras</li>
+              <li>Streamlit</li>
+            </ul>
+            <div class="link-row">
+              <a href="https://github.com/GabrielOyetunji/cnn-fruits-price-app" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills" class="section-shell" aria-labelledby="skills-title">
+      <div class="section-heading">
+        <p class="eyebrow">Technical toolkit</p>
+        <h2 id="skills-title">Built around Python backends and practical deployment.</h2>
       </div>
       <div class="skills-grid">
-        <!-- Backend Development - FIRST -->
-        <div class="skill-category">
-          <h3>🔧 Backend Development</h3>
-          <ul class="skill-list">
-            <li>FastAPI / Flask</li>
-            <li>RESTful API Design</li>
-            <li>PostgreSQL / SQLAlchemy</li>
-            <li>JWT Authentication</li>
-            <li>Microservices Architecture</li>
-            <li>API Documentation (Swagger)</li>
-          </ul>
-        </div>
-
-        <!-- DevOps & Deployment - SECOND -->
-        <div class="skill-category">
-          <h3>🚀 DevOps & Deployment</h3>
-          <ul class="skill-list">
-            <li>Docker / docker-compose</li>
-            <li>CI/CD Pipelines</li>
-            <li>Git & GitHub</li>
-            <li>Linux/Unix Systems</li>
-            <li>Cloud Deployment</li>
-            <li>Database Migrations</li>
-          </ul>
-        </div>
-
-        <!-- Programming - THIRD -->
-        <div class="skill-category">
-          <h3>💻 Programming & Tools</h3>
-          <ul class="skill-list">
-            <li>Python (Expert)</li>
-            <li>SQL (PostgreSQL, MySQL)</li>
-            <li>Pandas & NumPy</li>
-            <li>Data Validation (Pydantic)</li>
-            <li>Testing (pytest, unittest)</li>
-            <li>Version Control (Git)</li>
-          </ul>
-        </div>
-
-        <!-- Machine Learning - FOURTH -->
-        <div class="skill-category">
-          <h3>🤖 Machine Learning</h3>
-          <ul class="skill-list">
-            <li>TensorFlow / PyTorch</li>
-            <li>Model Deployment</li>
-            <li>ML API Integration</li>
-            <li>Vector Databases (Pinecone)</li>
-            <li>Computer Vision (CNNs)</li>
-            <li>NLP (Transformers)</li>
-          </ul>
-        </div>
-
-        <!-- Data & Analytics -->
-        <div class="skill-category">
-          <h3>📊 Data & Analytics</h3>
-          <ul class="skill-list">
-            <li>Data Cleaning & ETL</li>
-            <li>SQL Query Optimization</li>
-            <li>Power BI / Excel</li>
-            <li>Statistical Analysis</li>
-            <li>Data Modeling</li>
-            <li>Business Intelligence</li>
-          </ul>
-        </div>
-
-        <!-- Best Practices -->
-        <div class="skill-category">
-          <h3>✨ Best Practices</h3>
-          <ul class="skill-list">
-            <li>Clean Code Architecture</li>
-            <li>Type Hints & Documentation</li>
-            <li>Error Handling & Logging</li>
-            <li>Security Best Practices</li>
-            <li>Code Reviews</li>
-            <li>Agile Development</li>
-          </ul>
-        </div>
+        <article>
+          <h3>Backend</h3>
+          <p>FastAPI, Django REST Framework, Flask, REST API design, JWT auth, Swagger/OpenAPI, Pydantic, SQLAlchemy.</p>
+        </article>
+        <article>
+          <h3>Data and storage</h3>
+          <p>PostgreSQL, Redis, data modeling, migrations, seed scripts, ETL, pandas, SQL query design.</p>
+        </article>
+        <article>
+          <h3>Delivery</h3>
+          <p>Docker, docker-compose, GitHub workflows, Linux environments, environment configuration, deployment handoff.</p>
+        </article>
+        <article>
+          <h3>AI systems</h3>
+          <p>PyTorch, TensorFlow, computer vision, Grad-CAM, vector search, Pinecone, transformers, ML API integration.</p>
+        </article>
       </div>
     </section>
 
-    <!-- Contact -->
-    <section id="contact">
-      <div class="section-header">
-        <h2 class="section-title">Get In Touch</h2>
-        <p class="section-subtitle">Let's build something great together</p>
+    <section id="contact" class="contact section-shell" aria-labelledby="contact-title">
+      <div>
+        <p class="eyebrow">Contact</p>
+        <h2 id="contact-title">Need a backend developer who can ship product-grade systems?</h2>
+        <p>
+          I am interested in backend engineering, data platform, and AI integration roles where the work needs clean APIs, reliable data models, and practical deployment.
+        </p>
       </div>
-      <div class="contact-grid">
-        <div class="contact-card">
-          <div class="contact-icon">📧</div>
-          <h3>Email</h3>
-          <a href="mailto:gabrieloyetunji25@gmail.com">gabrieloyetunji25@gmail.com</a>
-        </div>
-        <div class="contact-card">
-          <div class="contact-icon">💼</div>
-          <h3>LinkedIn</h3>
-          <a href="https://linkedin.com/in/gabriel-oyetunji-a7aa9513b" target="_blank">gabriel-oyetunji</a>
-        </div>
-        <div class="contact-card">
-          <div class="contact-icon">🐙</div>
-          <h3>GitHub</h3>
-          <a href="https://github.com/gabrieloyetunji" target="_blank">gabrieloyetunji</a>
-        </div>
+      <div class="contact-actions">
+        <a class="button button-primary" href="mailto:gabrieloyetunji25@gmail.com">Email Gabriel</a>
+        <a class="button button-secondary" href="https://linkedin.com/in/gabriel-oyetunji-a7aa9513b" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a class="button button-secondary" href="https://github.com/GabrielOyetunji" target="_blank" rel="noopener noreferrer">GitHub</a>
       </div>
     </section>
   </main>
 
-  <footer>
-    <p>&copy; 2025 Gabriel Oyetunji. Building scalable backend systems and intelligent applications.</p>
+  <footer class="site-footer">
+    <p>&copy; 2026 Gabriel Oyetunji. Backend systems, data products, and AI-enabled applications.</p>
   </footer>
 </body>
 </html>
