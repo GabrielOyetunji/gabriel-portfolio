@@ -11,7 +11,7 @@ const WORK = [
     name: "MandateCheck",
     detail: "Civic platform · Django · React",
     href: null,
-    note: "Private",
+    note: "Confidential",
   },
   {
     name: "E-commerce AI recommendations",
@@ -41,7 +41,7 @@ export default function App() {
           Gabriel Oyetunji
         </a>
         <nav className="top-nav" aria-label="Primary">
-          <a href="#focus">Focus</a>
+          <a href="#expertise">Expertise</a>
           <a href="#work">Work</a>
           <a href="#contact">Contact</a>
         </nav>
@@ -56,22 +56,23 @@ export default function App() {
         <section className="hero" aria-labelledby="hero-title">
           <div className="hero-grid">
             <div className="hero-copy">
-              <p className="kicker">Lagos · Product engineer</p>
-              <h1 id="hero-title">Software that holds up in the real world.</h1>
+              <p className="kicker">Lagos, Nigeria · Product engineer</p>
+              <h1 id="hero-title">Production-grade systems across backend, applied AI, and product interfaces.</h1>
               <p className="lede">
-                I work where backends, applied AI, and interfaces meet—shipping systems people rely on, not demos that
-                fall apart under load. Building toward running my own company; this site is the through-line for serious
-                collaborators.
+                I design and deliver software intended for live environments: APIs and services, data-intensive
+                workflows, and interfaces that operators and customers use every day. Engagements emphasise clarity,
+                maintainability, and measurable outcomes. Long term, I am building toward founding a product-led company;
+                until then, I work with organisations that share a similar standard of execution.
               </p>
               <div className="hero-actions">
                 <a className="btn btn--primary" href="mailto:gabrieloyetunji25@gmail.com">
-                  Email me
+                  Get in touch
                 </a>
                 <a className="btn btn--ghost" href="https://github.com/GabrielOyetunji" target="_blank" rel="noopener noreferrer">
-                  GitHub
+                  GitHub profile
                 </a>
                 <a className="btn btn--ghost" href="/resume/Gabriel_Oyetunji_Resume.pdf">
-                  Résumé
+                  Résumé (PDF)
                 </a>
               </div>
             </div>
@@ -94,21 +95,30 @@ export default function App() {
           </div>
         </section>
 
-        <Reveal as="section" className="band" id="focus">
+        <Reveal as="section" className="band" id="expertise">
           <div className="band-inner">
-            <h2 className="section-title">What I focus on</h2>
+            <h2 className="section-title">Areas of expertise</h2>
             <ul className="pillars">
               <li>
-                <h3>Backend &amp; APIs</h3>
-                <p>Domain-shaped services, clear contracts, auth, data modelling, and performance you can reason about.</p>
+                <h3>Backend architecture and APIs</h3>
+                <p>
+                  Domain-aligned services, authentication and authorisation, data modelling, and performance
+                  characteristics suitable for sustained production traffic.
+                </p>
               </li>
               <li>
-                <h3>AI in the product</h3>
-                <p>Features that earn their place: retrieval, classification, and workflows—not bolt-on hype.</p>
+                <h3>Applied machine learning</h3>
+                <p>
+                  Retrieval, classification, and workflow automation integrated into product requirements—not
+                  experimental features disconnected from user or business value.
+                </p>
               </li>
               <li>
-                <h3>Interfaces people use</h3>
-                <p>Dashboards and web surfaces that respect operators, analysts, and everyday users.</p>
+                <h3>Product-facing interfaces</h3>
+                <p>
+                  Dashboards, internal tools, and customer-facing web applications designed for clarity, accessibility,
+                  and day-to-day operational use.
+                </p>
               </li>
             </ul>
           </div>
@@ -116,8 +126,11 @@ export default function App() {
 
         <Reveal as="section" className="band band--tight" id="work">
           <div className="band-inner">
-            <h2 className="section-title">Selected work</h2>
-            <p className="section-lead">A few things I can talk about publicly. Happy to go deeper on a call.</p>
+            <h2 className="section-title">Representative work</h2>
+            <p className="section-lead">
+              Public repositories and live systems shown below. Additional engagements are subject to confidentiality;
+              scope and outcomes can be discussed directly where appropriate.
+            </p>
             <ul className="work-list">
               {WORK.map((item) => (
                 <li key={item.name}>
@@ -144,17 +157,18 @@ export default function App() {
 
         <Reveal as="section" className="band band--cta" id="contact">
           <div className="band-inner band-inner--cta">
-            <h2 className="section-title">If you are building something that needs to last</h2>
+            <h2 className="section-title">Contact</h2>
             <p className="cta-copy">
-              Whether it is a product org, a startup, or your own company down the road—good engineering decisions
-              compound. Reach out if you want that kind of partner in the room.
+              For product organisations, technology leadership, or founders seeking additional engineering capacity,
+              please send a concise description of the initiative, timeline, and how you would like support. I review
+              consulting and employment opportunities on a selective basis.
             </p>
             <a className="btn btn--primary btn--large" href="mailto:gabrieloyetunji25@gmail.com">
               gabrieloyetunji25@gmail.com
             </a>
             <p className="cta-alt">
               <a href="https://linkedin.com/in/gabriel-oyetunji-a7aa9513b" target="_blank" rel="noopener noreferrer">
-                LinkedIn
+                LinkedIn profile
               </a>
             </p>
           </div>
@@ -162,8 +176,8 @@ export default function App() {
       </main>
 
       <footer className="foot">
-        <p>© {new Date().getFullYear()} Gabriel Oyetunji · Product engineer</p>
-        <p className="foot-note">Open to selective collaborations and serious product work.</p>
+        <p>© {new Date().getFullYear()} Gabriel Oyetunji. Product engineering and software architecture.</p>
+        <p className="foot-note">Consulting engagements and relevant full-time roles considered by introduction.</p>
       </footer>
     </>
   );
