@@ -1,433 +1,161 @@
-import gsap from "gsap";
-import { useCallback, useEffect, useRef, useState } from "react";
-import type { PointerEvent } from "react";
-import { IntroLoader } from "./components/IntroLoader";
-import { usePrefersReducedMotion } from "./hooks/usePrefersReducedMotion";
-import { useSmoothScroll } from "./hooks/useSmoothScroll";
+import { Reveal } from "./components/Reveal";
 import { useTheme } from "./hooks/useTheme";
 
-type Filter = "all" | "backend" | "ai" | "private";
-
-function tagMatches(filter: Filter, tags: string): boolean {
-  if (filter === "all") return true;
-  const parts = tags.split(/\s+/);
-  return parts.includes(filter);
-}
+const WORK = [
+  {
+    name: "Flight Booking API",
+    detail: "FastAPI · PostgreSQL · JWT",
+    href: "https://github.com/GabrielOyetunji/flight-booking-api",
+  },
+  {
+    name: "MandateCheck",
+    detail: "Civic platform · Django · React",
+    href: null,
+    note: "Private",
+  },
+  {
+    name: "E-commerce AI recommendations",
+    detail: "Flask · vectors · OCR",
+    href: "https://github.com/GabrielOyetunji/ds_task_1ab",
+  },
+  {
+    name: "Histopathology classifier",
+    detail: "CNN · Grad-CAM · UI",
+    href: "https://github.com/GabrielOyetunji/breast-cancer-classifier",
+  },
+] as const;
 
 export default function App() {
-  const prefersReducedMotion = usePrefersReducedMotion();
   const { isDark, toggle } = useTheme();
-  const [introDone, setIntroDone] = useState(prefersReducedMotion);
-  const [filter, setFilter] = useState<Filter>("all");
-  const heroFrameRef = useRef<HTMLDivElement>(null);
-
-  const handleIntroDone = useCallback(() => setIntroDone(true), []);
-
-  useSmoothScroll(introDone && !prefersReducedMotion);
-
-  useEffect(() => {
-    if (!introDone || prefersReducedMotion) return;
-    const frame = heroFrameRef.current;
-    if (!frame) return;
-    const targets = frame.querySelectorAll(".hero-location, .hero-role, .hero-portrait, .hero-copy");
-    const ctx = gsap.context(() => {
-      gsap.from(targets, {
-        opacity: 0,
-        y: 28,
-        duration: 0.85,
-        stagger: 0.08,
-        ease: "power3.out",
-        clearProps: "all",
-      });
-    }, frame);
-    return () => ctx.revert();
-  }, [introDone, prefersReducedMotion]);
 
   return (
     <>
-      <IntroLoader skip={prefersReducedMotion} onDone={handleIntroDone} />
-
       <a className="skip-link" href="#main">
         Skip to main content
       </a>
 
-      <header className="site-header">
-        <nav className="nav" aria-label="Main navigation">
-          <a className="brand" href="#top" aria-label="Gabriel Oyetunji home">
-            Gabriel O.
-          </a>
-          <ul className="nav-links">
-            <li>
-              <a href="#work">Work</a>
-            </li>
-            <li>
-              <a href="#about">About</a>
-            </li>
-            <li>
-              <a href="#contact">Contact</a>
-            </li>
-          </ul>
-          <button className="theme-toggle" type="button" aria-pressed={isDark} onClick={toggle}>
-            <span className="theme-dot" aria-hidden="true" />
-            <span className="sr-only">Theme: </span>
-            <span className="theme-label">{isDark ? "Dark" : "Light"}</span>
-          </button>
+      <div className="page-bg" aria-hidden="true" />
+
+      <header className="top">
+        <a className="mark" href="#main">
+          Gabriel Oyetunji
+        </a>
+        <nav className="top-nav" aria-label="Primary">
+          <a href="#focus">Focus</a>
+          <a href="#work">Work</a>
+          <a href="#contact">Contact</a>
         </nav>
+        <button className="theme-btn" type="button" onClick={toggle} aria-pressed={isDark}>
+          <span className="theme-btn__knob" aria-hidden="true" />
+          <span className="sr-only">Toggle light and dark theme</span>
+          <span aria-hidden="true">{isDark ? "Dark" : "Light"}</span>
+        </button>
       </header>
 
       <main id="main">
-        <section id="top" className="hero" aria-label="Gabriel Oyetunji portfolio introduction">
-          <div className="grain" aria-hidden="true" />
-          <div className="hero-frame" ref={heroFrameRef}>
-            <div className="hero-location">
-              <span>Based in</span>
-              <strong>Lagos, Nigeria</strong>
-              <span className="orb" aria-hidden="true">
-                <span />
-              </span>
-            </div>
-
-            <div className="hero-role">
-              <span aria-hidden="true">↘</span>
-              <p>
-                Product Engineer
-                <br />
-                Backend, AI & Interfaces
-              </p>
-            </div>
-
-            <picture className="hero-portrait">
-              <source srcSet="/images/profile.avif" type="image/avif" />
-              <img
-                src="/images/profile.jpg"
-                width={800}
-                height={800}
-                alt="Portrait of Gabriel Oyetunji"
-                fetchPriority="high"
-              />
-            </picture>
-
+        <section className="hero" aria-labelledby="hero-title">
+          <div className="hero-grid">
             <div className="hero-copy">
-              <h1>Gabriel Oyetunji</h1>
-            </div>
-          </div>
-        </section>
-
-        <section className="intro-section" aria-labelledby="intro-title">
-          <div className="intro-mark" aria-hidden="true">
-            ↓
-          </div>
-          <div>
-            <p className="eyebrow">Profile</p>
-            <h2 id="intro-title">I build systems that have to work, and interfaces people can actually use.</h2>
-          </div>
-          <p>
-            My work sits between backend architecture, applied AI, data-heavy workflows, and product UI. Some projects
-            are public. Some are private while they mature. The important thing is the pattern: taking messy ideas and
-            turning them into shipped, usable software.
-          </p>
-        </section>
-
-        <WorkSection filter={filter} onFilterChange={setFilter} reducedMotion={prefersReducedMotion} />
-
-        <section className="featured-section" aria-label="Featured project details">
-          <article
-            className={`case-study primary-case${tagMatches(filter, "backend public") ? "" : " is-hidden"}`}
-            data-tags="backend public"
-          >
-            <div className="case-media">
-              <img
-                src="/images/api-homepage.png"
-                width={1280}
-                height={800}
-                alt="Flight Booking API documentation interface"
-                loading="lazy"
-              />
-            </div>
-            <div className="case-copy">
-              <span className="case-pill">Backend system</span>
-              <h3>Flight Booking API</h3>
-              <p>
-                A Nigerian domestic flight reservation API with flight search, seat availability, multi-passenger
-                bookings, JWT authentication, payment flow, and generated docs.
+              <p className="kicker">Lagos · Product engineer</p>
+              <h1 id="hero-title">Software that holds up in the real world.</h1>
+              <p className="lede">
+                I work where backends, applied AI, and interfaces meet—shipping systems people rely on, not demos that
+                fall apart under load. Building toward running my own company; this site is the through-line for serious
+                collaborators.
               </p>
-              <div className="case-stats">
-                <span>
-                  <strong>20+</strong> endpoints
-                </span>
-                <span>
-                  <strong>2000+</strong> seeded flights
-                </span>
-                <span>
-                  <strong>10</strong> airports
-                </span>
+              <div className="hero-actions">
+                <a className="btn btn--primary" href="mailto:gabrieloyetunji25@gmail.com">
+                  Email me
+                </a>
+                <a className="btn btn--ghost" href="https://github.com/GabrielOyetunji" target="_blank" rel="noopener noreferrer">
+                  GitHub
+                </a>
+                <a className="btn btn--ghost" href="/resume/Gabriel_Oyetunji_Resume.pdf">
+                  Résumé
+                </a>
               </div>
             </div>
-          </article>
-
-          <div className="case-grid">
-            <article className={`case-study${tagMatches(filter, "ai public") ? "" : " is-hidden"}`} data-tags="ai public">
-              <img
-                src="/images/breast-cancer-demo.png"
-                width={1906}
-                height={923}
-                alt="Breast cancer classifier interface"
-                loading="lazy"
-              />
-              <div>
-                <span className="case-pill">AI interface</span>
-                <h3>Breast Cancer Classifier</h3>
-                <p>CNN classifier with confidence output, threshold controls, and Grad-CAM explainability.</p>
-              </div>
-            </article>
-
-            <article className={`case-study${tagMatches(filter, "data public") ? "" : " is-hidden"}`} data-tags="data public">
-              <img src="/images/uv.app.avif" width={1359} height={723} alt="UV-Vis processor app interface" loading="lazy" />
-              <div>
-                <span className="case-pill">Data workflow</span>
-                <h3>UV-Vis Processor</h3>
-                <p>Streamlit app for cleaning CARY 50 CSV exports, previewing spectra, and exporting clean datasets.</p>
-              </div>
-            </article>
+            <figure className="hero-photo">
+              <picture>
+                <source srcSet="/images/profile.avif" type="image/avif" />
+                <img src="/images/profile.jpg" width={560} height={560} alt="" decoding="async" fetchPriority="high" />
+              </picture>
+              <figcaption className="sr-only">Portrait of Gabriel Oyetunji</figcaption>
+            </figure>
           </div>
         </section>
 
-        <section id="about" className="about-section" aria-labelledby="about-title">
-          <div className="about-heading">
-            <p className="eyebrow">About</p>
-            <h2 id="about-title">Backend depth, product taste, and a growing interface practice.</h2>
+        <Reveal as="section" className="band" id="focus">
+          <div className="band-inner">
+            <h2 className="section-title">What I focus on</h2>
+            <ul className="pillars">
+              <li>
+                <h3>Backend &amp; APIs</h3>
+                <p>Domain-shaped services, clear contracts, auth, data modelling, and performance you can reason about.</p>
+              </li>
+              <li>
+                <h3>AI in the product</h3>
+                <p>Features that earn their place: retrieval, classification, and workflows—not bolt-on hype.</p>
+              </li>
+              <li>
+                <h3>Interfaces people use</h3>
+                <p>Dashboards and web surfaces that respect operators, analysts, and everyday users.</p>
+              </li>
+            </ul>
           </div>
+        </Reveal>
 
-          <div className="about-grid">
-            <p>
-              I am building a portfolio around the work I actually want more of: systems with clear domain logic, AI
-              features that serve the product, dashboards that make data easier to act on, and websites that feel
-              considered and personal.
+        <Reveal as="section" className="band band--tight" id="work">
+          <div className="band-inner">
+            <h2 className="section-title">Selected work</h2>
+            <p className="section-lead">A few things I can talk about publicly. Happy to go deeper on a call.</p>
+            <ul className="work-list">
+              {WORK.map((item) => (
+                <li key={item.name}>
+                  {item.href ? (
+                    <a className="work-row" href={item.href} target="_blank" rel="noopener noreferrer">
+                      <span className="work-row__name">{item.name}</span>
+                      <span className="work-row__meta">{item.detail}</span>
+                      <span className="work-row__arrow" aria-hidden="true">
+                        ↗
+                      </span>
+                    </a>
+                  ) : (
+                    <div className="work-row work-row--static">
+                      <span className="work-row__name">{item.name}</span>
+                      <span className="work-row__meta">{item.detail}</span>
+                      <span className="work-row__tag">{item.note}</span>
+                    </div>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Reveal>
+
+        <Reveal as="section" className="band band--cta" id="contact">
+          <div className="band-inner band-inner--cta">
+            <h2 className="section-title">If you are building something that needs to last</h2>
+            <p className="cta-copy">
+              Whether it is a product org, a startup, or your own company down the road—good engineering decisions
+              compound. Reach out if you want that kind of partner in the room.
             </p>
-            <div className="capability-list" aria-label="Capabilities">
-              <span>FastAPI</span>
-              <span>Django REST</span>
-              <span>PostgreSQL</span>
-              <span>Redis</span>
-              <span>React</span>
-              <span>Streamlit</span>
-              <span>PyTorch</span>
-              <span>TensorFlow</span>
-              <span>Docker</span>
-              <span>Vercel</span>
-            </div>
+            <a className="btn btn--primary btn--large" href="mailto:gabrieloyetunji25@gmail.com">
+              gabrieloyetunji25@gmail.com
+            </a>
+            <p className="cta-alt">
+              <a href="https://linkedin.com/in/gabriel-oyetunji-a7aa9513b" target="_blank" rel="noopener noreferrer">
+                LinkedIn
+              </a>
+            </p>
           </div>
-        </section>
-
-        <section id="contact" className="contact-section" aria-labelledby="contact-title">
-          <div>
-            <p className="eyebrow">Contact</p>
-            <h2 id="contact-title">Have something worth building?</h2>
-          </div>
-          <div className="contact-actions">
-            <a className="circle-link primary" href="mailto:gabrieloyetunji25@gmail.com">
-              Email
-            </a>
-            <a className="circle-link" href="https://github.com/GabrielOyetunji" target="_blank" rel="noopener noreferrer">
-              GitHub
-            </a>
-            <a
-              className="circle-link"
-              href="https://linkedin.com/in/gabriel-oyetunji-a7aa9513b"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              LinkedIn
-            </a>
-            <a className="circle-link" href="/resume/Gabriel_Oyetunji_Resume.pdf">
-              Resume
-            </a>
-          </div>
-        </section>
+        </Reveal>
       </main>
 
-      <footer className="site-footer">
-        <p>Gabriel Oyetunji · Product Engineer · Backend / AI / Interfaces</p>
+      <footer className="foot">
+        <p>© {new Date().getFullYear()} Gabriel Oyetunji · Product engineer</p>
+        <p className="foot-note">Open to selective collaborations and serious product work.</p>
       </footer>
     </>
-  );
-}
-
-type WorkSectionProps = {
-  filter: Filter;
-  onFilterChange: (f: Filter) => void;
-  reducedMotion: boolean;
-};
-
-function WorkSection({ filter, onFilterChange, reducedMotion }: WorkSectionProps) {
-  const previewRef = useRef<HTMLDivElement>(null);
-  const previewImageRef = useRef<HTMLImageElement>(null);
-
-  const onRowEnter = (src: string) => {
-    if (reducedMotion) return;
-    const wrap = previewRef.current;
-    const img = previewImageRef.current;
-    if (!wrap || !img) return;
-    img.src = src;
-    wrap.classList.add("is-visible");
-  };
-
-  const onRowMove = (clientX: number, clientY: number) => {
-    if (reducedMotion) return;
-    const wrap = previewRef.current;
-    if (!wrap) return;
-    wrap.style.setProperty("--preview-x", `${clientX + 24}px`);
-    wrap.style.setProperty("--preview-y", `${clientY - 18}px`);
-  };
-
-  const onRowLeave = () => {
-    if (reducedMotion) return;
-    previewRef.current?.classList.remove("is-visible");
-  };
-
-  const rowProps = (preview: string) =>
-    reducedMotion
-      ? {}
-      : {
-          onPointerEnter: () => onRowEnter(preview),
-          onPointerMove: (e: PointerEvent) => onRowMove(e.clientX, e.clientY),
-          onPointerLeave: onRowLeave,
-        };
-
-  return (
-    <section id="work" className="work-section" aria-labelledby="work-title">
-      <div className="work-heading">
-        <div>
-          <p className="eyebrow">Selected work</p>
-          <h2 id="work-title">Creating useful systems with real product shape.</h2>
-        </div>
-        <div className="work-controls" aria-label="Project filters">
-          {(["all", "backend", "ai", "private"] as const).map((key) => (
-            <button
-              key={key}
-              type="button"
-              className={`filter-button${filter === key ? " active" : ""}`}
-              onClick={() => onFilterChange(key)}
-            >
-              {key === "all" ? "All" : key === "ai" ? "AI" : key.charAt(0).toUpperCase() + key.slice(1)}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      <div className="project-preview" aria-hidden="true" ref={previewRef}>
-        <img ref={previewImageRef} src="/images/api-homepage.png" width={640} height={400} alt="" />
-      </div>
-
-      <div className="project-table" aria-label="Project index">
-        <div className="project-row table-head" aria-hidden="true">
-          <span>Project</span>
-          <span>Focus</span>
-          <span>Stack</span>
-          <span>Status</span>
-        </div>
-
-        <a
-          className={`project-row${tagMatches(filter, "backend public") ? "" : " is-hidden"}`}
-          href="https://github.com/GabrielOyetunji/flight-booking-api"
-          target="_blank"
-          rel="noopener noreferrer"
-          data-tags="backend public"
-          data-preview="/images/api-homepage.png"
-          {...rowProps("/images/api-homepage.png")}
-        >
-          <span className="project-name">Flight Booking API</span>
-          <span>Reservation backend</span>
-          <span>FastAPI, PostgreSQL, JWT</span>
-          <span>Public</span>
-        </a>
-
-        <article
-          className={`project-row${tagMatches(filter, "backend private") ? "" : " is-hidden"}`}
-          data-tags="backend private"
-          data-preview="/images/profile.jpg"
-          tabIndex={0}
-          {...rowProps("/images/profile.jpg")}
-        >
-          <span className="project-name">MandateCheck</span>
-          <span>Civic accountability platform</span>
-          <span>Django, React, Redis</span>
-          <span>Private build</span>
-        </article>
-
-        <a
-          className={`project-row${tagMatches(filter, "ai backend public") ? "" : " is-hidden"}`}
-          href="https://github.com/GabrielOyetunji/ds_task_1ab"
-          target="_blank"
-          rel="noopener noreferrer"
-          data-tags="ai backend public"
-          data-preview="/images/profile.jpg"
-          {...rowProps("/images/profile.jpg")}
-        >
-          <span className="project-name">E-commerce AI Recommendation</span>
-          <span>Semantic product search</span>
-          <span>Flask, OCR, vectors</span>
-          <span>Public</span>
-        </a>
-
-        <a
-          className={`project-row${tagMatches(filter, "data public") ? "" : " is-hidden"}`}
-          href="https://uvvis-app-nsglt4gukbq3vntcwwpknb.streamlit.app/"
-          target="_blank"
-          rel="noopener noreferrer"
-          data-tags="data public"
-          data-preview="/images/uv.app.avif"
-          {...rowProps("/images/uv.app.avif")}
-        >
-          <span className="project-name">UV-Vis Processor</span>
-          <span>Scientific data workflow</span>
-          <span>Streamlit, pandas</span>
-          <span>Live</span>
-        </a>
-
-        <a
-          className={`project-row${tagMatches(filter, "ai public") ? "" : " is-hidden"}`}
-          href="https://github.com/GabrielOyetunji/breast-cancer-classifier"
-          target="_blank"
-          rel="noopener noreferrer"
-          data-tags="ai public"
-          data-preview="/images/breast-cancer-demo.png"
-          {...rowProps("/images/breast-cancer-demo.png")}
-        >
-          <span className="project-name">Histopathology Classifier</span>
-          <span>Model-backed interface</span>
-          <span>CNN, Grad-CAM</span>
-          <span>Public</span>
-        </a>
-
-        <a
-          className={`project-row${tagMatches(filter, "ai data public") ? "" : " is-hidden"}`}
-          href="https://github.com/GabrielOyetunji/spatio-temporal-interaction-recognition"
-          target="_blank"
-          rel="noopener noreferrer"
-          data-tags="ai data public"
-          data-preview="/images/stgcn-confusion-matrices.png"
-          {...rowProps("/images/stgcn-confusion-matrices.png")}
-        >
-          <span className="project-name">ST-GCN Interaction Recognition</span>
-          <span>Skeleton action recognition</span>
-          <span>PyTorch, graphs</span>
-          <span>Public</span>
-        </a>
-
-        <article
-          className={`project-row${tagMatches(filter, "private") ? "" : " is-hidden"}`}
-          data-tags="private"
-          data-preview="/images/profile.jpg"
-          tabIndex={0}
-          {...rowProps("/images/profile.jpg")}
-        >
-          <span className="project-name">Private Website Builds</span>
-          <span>Product pages and interfaces</span>
-          <span>React, design systems</span>
-          <span>In progress</span>
-        </article>
-      </div>
-    </section>
   );
 }
