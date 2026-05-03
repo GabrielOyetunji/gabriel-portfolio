@@ -1,3 +1,4 @@
+import { HeroArt } from "./components/HeroArt";
 import { Reveal } from "./components/Reveal";
 import { useTheme } from "./hooks/useTheme";
 
@@ -75,13 +76,7 @@ export default function App() {
                 </a>
               </div>
             </div>
-            <figure className="hero-photo">
-              <picture>
-                <source srcSet="/images/profile.avif" type="image/avif" />
-                <img src="/images/profile.jpg" width={560} height={560} alt="" decoding="async" fetchPriority="high" />
-              </picture>
-              <figcaption className="sr-only">Portrait of Gabriel Oyetunji</figcaption>
-            </figure>
+            <HeroArt />
           </div>
         </section>
 

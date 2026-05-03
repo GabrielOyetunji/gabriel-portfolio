@@ -2,6 +2,8 @@
 
 Single-page **founder-style** landing (original layout, not a marketplace template): clear positioning, proof of work, and a direct path to contact. Built with **Vite**, **React**, and **TypeScript**.
 
+Visual direction follows common 2025 landing patterns: **cool monochromatic base**, **one strong accent** (teal) for CTAs, **bold sans hierarchy** (Plus Jakarta Sans), generous whitespace, and an **abstract hero panel** instead of photography—mesh gradient, grid mask, and slow motion (disabled when `prefers-reduced-motion`).
+
 Live: https://gabriel-portfolio-orpin.vercel.app
 
 ## Why this shape
