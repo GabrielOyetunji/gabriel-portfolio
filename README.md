@@ -6,10 +6,6 @@ Visual direction follows common 2025 landing patterns: **cool monochromatic base
 
 Live: https://gabriel-portfolio-orpin.vercel.app
 
-## Why this shape
-
-- **Company later:** a credible personal home beats a flashy clone—you own the story, typography, and code.
-- **Templates:** licensed themes are fine for speed; this repo stays **custom** so you can evolve branding without fighting someone else’s structure.
 
 ## Commands
 
