@@ -80,9 +80,9 @@ export default function App() {
               <div className="hero-visual__glow" aria-hidden="true" />
               <figure className="hero-photo">
                 <picture>
-                  <source srcSet="/images/profile.avif" type="image/avif" />
+                  <source srcSet="/images/profile-cutout.webp" type="image/webp" />
                   <img
-                    src="/images/profile.jpg"
+                    src="/images/profile-cutout.png"
                     width={640}
                     height={640}
                     alt="Portrait of Gabriel Oyetunji"
