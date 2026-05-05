@@ -81,10 +81,11 @@ export default function App() {
               <figure className="hero-photo">
                 <picture>
                   <source srcSet="/images/profile-cutout.webp" type="image/webp" />
+                  <source srcSet="/images/profile-cutout.png" type="image/png" />
                   <img
                     src="/images/profile-cutout.png"
-                    width={640}
-                    height={640}
+                    width={900}
+                    height={900}
                     alt="Portrait of Gabriel Oyetunji"
                     decoding="async"
                     fetchPriority="high"

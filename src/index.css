@@ -329,24 +329,19 @@ img {
   overflow: hidden;
   border: 1px solid color-mix(in srgb, var(--line-strong) 55%, transparent);
   background: var(--bg-elev);
-  /* Soft edge fade so the background feels less “present” */
-  -webkit-mask-image: radial-gradient(circle at 50% 42%, black 62%, transparent 78%);
-  mask-image: radial-gradient(circle at 50% 42%, black 62%, transparent 78%);
+  /* Cutout already has transparency; keep clean edge */
   filter: drop-shadow(0 18px 36px rgba(0, 0, 0, 0.35));
 }
 
 .hero-photo img {
   width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  /* Bias crop upward to reduce background */
-  object-position: 50% 22%;
-  /* De-emphasise photo background while keeping skin tones natural-ish */
-  filter: saturate(0.92) contrast(1.08);
+  height: auto;
+  object-fit: contain;
+  filter: none;
 }
 
 html[data-theme="light"] .hero-photo img {
-  filter: saturate(0.95) contrast(1.06);
+  filter: none;
 }
 
 /* —— Sections —— */
